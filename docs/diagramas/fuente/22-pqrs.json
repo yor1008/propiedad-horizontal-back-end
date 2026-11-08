@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-029, CU-030 y CU-031 PQRS",
+    "output": "docs/diagramas/22-pqrs.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Residente / Admin",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "PqrsController",
+      "sublabel": "/api/pqrs"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "PqrsService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "est",
+      "type": "backend",
+      "label": "GestorEstados",
+      "sublabel": "máquina de estados"
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "evento RESPUESTA_PQRS"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Pqrs",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/pqrs",
+      "variant": "emphasis",
+      "note": "@SoloPersonaVinculada. {tipoId, asunto, descripcion}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "radicar(solicitud)",
+      "variant": "default",
+      "note": "Exige vínculo vigente (422)"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "est",
+      "y": 300,
+      "label": "inicial(PQRS)",
+      "variant": "default",
+      "note": "Estado Radicada"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "repo",
+      "y": 346,
+      "label": "save(pqrs)",
+      "variant": "default",
+      "note": "El inmueble sale del vínculo de la persona"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 403,
+      "label": "201 PqrsResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 435,
+      "label": "GET /mias",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 467,
+      "label": "200 lista propia",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 515,
+      "label": "GET /api/pqrs",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 561,
+      "label": "200 todas las PQRS",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 593,
+      "label": "PATCH /{id}/atender",
+      "variant": "emphasis",
+      "note": "Cuerpo {respuesta}"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "est",
+      "y": 639,
+      "label": "transicionar(→ Respondida)",
+      "variant": "default",
+      "note": "Una segunda respuesta: 422"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 696,
+      "label": "responder(respuesta)",
+      "variant": "default"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "noti",
+      "y": 728,
+      "label": "notificar(RESPUESTA_PQRS)",
+      "variant": "dashed",
+      "note": "Avisa a quien la radicó"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 785,
+      "label": "200 {estado: Respondida}",
+      "variant": "return"
+    },
+    {
+      "id": "m15",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 817,
+      "label": "DELETE /{id}",
+      "variant": "emphasis",
+      "note": "Solo en estado Radicada; atendida: 409"
+    },
+    {
+      "id": "m16",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 874,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 880,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 734,
+      "type": "backend"
+    },
+    {
+      "participant": "est",
+      "from": 295,
+      "to": 645,
+      "type": "backend"
+    },
+    {
+      "participant": "noti",
+      "from": 723,
+      "to": 734,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 341,
+      "to": 702,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Plazo de respuesta",
+      "items": [
+        "La respuesta incluye \"vencida\" según el plazo configurado",
+        "plazoRespuestaPqrsDias (días hábiles) sale de la configuración general",
+        "Lunes a viernes, sin festivos"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 479,
+      "label": "Radicar y consultar"
+    },
+    {
+      "from": 501,
+      "to": 886,
+      "label": "Atender"
+    }
+  ]
+}

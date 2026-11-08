@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-005 Gestionar cuentas de usuario",
+    "output": "docs/diagramas/13-cuentas.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "CuentaUsuarioController",
+      "sublabel": "/api/cuentas"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "CuentaUsuarioService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "uact",
+      "type": "security",
+      "label": "UsuarioActual",
+      "sublabel": "identidad del token"
+    },
+    {
+      "id": "enc",
+      "type": "security",
+      "label": "PasswordEncoder",
+      "sublabel": "BCrypt"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "CuentaUsuario",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/cuentas",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador. {correo, contrasena, rol, personaId}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "Correo único (409); una cuenta por persona (409)"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 311,
+      "label": "persona existe y sin cuenta",
+      "variant": "default",
+      "note": "PERSONA_VINCULADA exige personaId (422)"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "enc",
+      "y": 368,
+      "label": "encode(contrasena)",
+      "variant": "security"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "repo",
+      "y": 400,
+      "label": "save(cuenta)",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 432,
+      "label": "201 CuentaResponse",
+      "variant": "return",
+      "note": "Nunca incluye el hash"
+    },
+    {
+      "id": "m7",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 494,
+      "label": "GET /api/cuentas y /{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 526,
+      "label": "PATCH /{id}/desactivar",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "uact",
+      "y": 558,
+      "label": "cuentaId()",
+      "variant": "security",
+      "note": "No se puede desactivar la propia cuenta (422)"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "repo",
+      "y": 626,
+      "label": "desactivar() / reactivar()",
+      "variant": "default"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 658,
+      "label": "200 CuentaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m12",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 706,
+      "label": "DELETE /api/cuentas/{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "uact",
+      "y": 738,
+      "label": "cuentaId()",
+      "variant": "security",
+      "note": "No se puede borrar la propia cuenta (422)"
+    },
+    {
+      "id": "m14",
+      "from": "svc",
+      "to": "repo",
+      "y": 795,
+      "label": "delete(cuenta)",
+      "variant": "default",
+      "note": "Nada depende de una cuenta"
+    },
+    {
+      "id": "m15",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 852,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 858,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 801,
+      "type": "backend"
+    },
+    {
+      "participant": "uact",
+      "from": 553,
+      "to": 744,
+      "type": "security"
+    },
+    {
+      "participant": "enc",
+      "from": 363,
+      "to": 374,
+      "type": "security"
+    },
+    {
+      "participant": "repo",
+      "from": 306,
+      "to": 801,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Seguridad",
+      "items": [
+        "Solo el administrador gestiona cuentas",
+        "El correo se guarda en minúsculas y la clave como hash BCrypt"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 458,
+      "label": "Crear"
+    },
+    {
+      "from": 480,
+      "to": 670,
+      "label": "Consultar y cambiar estado"
+    },
+    {
+      "from": 692,
+      "to": 864,
+      "label": "Borrar"
+    }
+  ]
+}

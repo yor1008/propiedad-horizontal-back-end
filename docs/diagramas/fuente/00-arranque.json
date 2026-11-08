@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Arranque de la aplicación (migraciones y siembras)",
+    "output": "docs/diagramas/00-arranque.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "app",
+      "type": "backend",
+      "label": "Spring Boot",
+      "sublabel": "ApplicationRunner"
+    },
+    {
+      "id": "fly",
+      "type": "database",
+      "label": "Flyway",
+      "sublabel": "V1, V2... esquema"
+    },
+    {
+      "id": "bd",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "Neon / compose"
+    },
+    {
+      "id": "adm",
+      "type": "security",
+      "label": "AdministradorInicial",
+      "sublabel": "primer admin"
+    },
+    {
+      "id": "sie",
+      "type": "backend",
+      "label": "Siembras",
+      "sublabel": "estados, catálogos, tipos"
+    },
+    {
+      "id": "cfg",
+      "type": "backend",
+      "label": "ConfiguracionInicial",
+      "sublabel": "parámetros y eventos"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "app",
+      "to": "fly",
+      "y": 175,
+      "label": "migrate()",
+      "variant": "emphasis",
+      "note": "Aplica las migraciones pendientes antes de todo"
+    },
+    {
+      "id": "m2",
+      "from": "fly",
+      "to": "bd",
+      "y": 243,
+      "label": "CREATE / ALTER tablas",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "bd",
+      "to": "app",
+      "y": 275,
+      "label": "esquema listo",
+      "variant": "return",
+      "note": "Hibernate solo valida (ddl-auto=validate)"
+    },
+    {
+      "id": "m4",
+      "from": "app",
+      "to": "adm",
+      "y": 348,
+      "label": "run()",
+      "variant": "security",
+      "note": "Solo si hay BOOTSTRAP_ADMIN_* y no existe un admin"
+    },
+    {
+      "id": "m5",
+      "from": "adm",
+      "to": "bd",
+      "y": 416,
+      "label": "guarda cuenta ADMINISTRADOR",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "app",
+      "to": "sie",
+      "y": 448,
+      "label": "EstadosIniciales + Catalogos + Tipos",
+      "variant": "default",
+      "note": "Crea solo lo que falta, por nombre"
+    },
+    {
+      "id": "m7",
+      "from": "sie",
+      "to": "bd",
+      "y": 505,
+      "label": "guarda estados y catálogos",
+      "variant": "default"
+    },
+    {
+      "id": "m8",
+      "from": "app",
+      "to": "cfg",
+      "y": 537,
+      "label": "run()",
+      "variant": "default"
+    },
+    {
+      "id": "m9",
+      "from": "cfg",
+      "to": "bd",
+      "y": 569,
+      "label": "ConfiguracionGeneral + eventos",
+      "variant": "default",
+      "note": "Fila única y un registro por tipo de evento"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "app",
+      "from": 170,
+      "to": 543,
+      "type": "backend"
+    },
+    {
+      "participant": "fly",
+      "from": 170,
+      "to": 249,
+      "type": "database"
+    },
+    {
+      "participant": "bd",
+      "from": 238,
+      "to": 575,
+      "type": "database"
+    },
+    {
+      "participant": "adm",
+      "from": 343,
+      "to": 422,
+      "type": "security"
+    },
+    {
+      "participant": "sie",
+      "from": 443,
+      "to": 511,
+      "type": "backend"
+    },
+    {
+      "participant": "cfg",
+      "from": 532,
+      "to": 575,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Orden y seguridad",
+      "items": [
+        "Flyway va primero: sin la migración correspondiente la app no arranca",
+        "JWT_SECRET es obligatorio (mínimo 32 caracteres)",
+        "Todo es idempotente: reiniciar no duplica datos"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 312,
+      "label": "Esquema"
+    },
+    {
+      "from": 334,
+      "to": 606,
+      "label": "Datos iniciales"
+    }
+  ]
+}

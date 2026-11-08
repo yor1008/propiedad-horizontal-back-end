@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-016 y CU-017 Ingreso sin pre-registro",
+    "output": "docs/diagramas/18-ingreso-sin-preregistro.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Vigilante",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AccesoController",
+      "sublabel": "/api/accesos"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "IngresoVisitante",
+      "sublabel": "Service"
+    },
+    {
+      "id": "rper",
+      "type": "database",
+      "label": "Inmueble / Persona",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "vis",
+      "type": "backend",
+      "label": "Visitantes",
+      "sublabel": "obtenerOCrear"
+    },
+    {
+      "id": "reg",
+      "type": "database",
+      "label": "RegistroVisita",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "evento INGRESO"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /api/accesos/inmuebles",
+      "variant": "emphasis",
+      "note": "Inmuebles con residentes vigentes"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 232,
+      "label": "200 directorio",
+      "variant": "return",
+      "note": "El vigilante llama al residente por teléfono"
+    },
+    {
+      "id": "m3",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 289,
+      "label": "POST /sin-preregistro",
+      "variant": "emphasis",
+      "note": "APRUEBA, NO_APRUEBA o NO_CONTESTA"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 346,
+      "label": "autorizarSinPreRegistro(...)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "rper",
+      "y": 378,
+      "label": "unidad privada activa",
+      "variant": "default",
+      "note": "Si no: 422"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "rper",
+      "y": 424,
+      "label": "residente vigente del inmueble",
+      "variant": "default",
+      "note": "Si no lo es: 422"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "vis",
+      "y": 470,
+      "label": "obtenerOCrear(nombre, doc)",
+      "variant": "default"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "reg",
+      "y": 502,
+      "label": "ya está dentro?",
+      "variant": "default",
+      "note": "Sin salida registrada: 409"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "reg",
+      "y": 559,
+      "label": "save(contacto + decisión)",
+      "variant": "default",
+      "note": "Siempre queda en el historial, también si se niega"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "noti",
+      "y": 627,
+      "label": "notificar(INGRESO_VISITANTE)",
+      "variant": "dashed",
+      "note": "Solo si el ingreso fue autorizado"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 684,
+      "label": "201 {estado}",
+      "variant": "return",
+      "note": "Dentro o Negado con su motivo"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 690,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 341,
+      "to": 633,
+      "type": "backend"
+    },
+    {
+      "participant": "rper",
+      "from": 373,
+      "to": 430,
+      "type": "database"
+    },
+    {
+      "participant": "vis",
+      "from": 465,
+      "to": 476,
+      "type": "backend"
+    },
+    {
+      "participant": "reg",
+      "from": 497,
+      "to": 565,
+      "type": "database"
+    },
+    {
+      "participant": "noti",
+      "from": 622,
+      "to": 633,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Ingreso negado",
+      "items": [
+        "NO_APRUEBA o NO_CONTESTA niegan el ingreso",
+        "El intento negado también se guarda con su motivo"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 721,
+      "label": "Contacto con el residente"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-001 Iniciar sesión (login)",
+    "output": "docs/diagramas/01-login.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Cliente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AuthController",
+      "sublabel": "POST /api/auth/login"
+    },
+    {
+      "id": "aut",
+      "type": "backend",
+      "label": "AutenticacionService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "mgr",
+      "type": "security",
+      "label": "AuthenticationManager",
+      "sublabel": "Dao + BCrypt"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "CuentaUsuario",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "tok",
+      "type": "security",
+      "label": "JwtTokenService",
+      "sublabel": "firma HS256"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/auth/login",
+      "variant": "emphasis",
+      "note": "Ruta pública. LoginRequest {correo, contrasena}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "aut",
+      "y": 243,
+      "label": "iniciarSesion(correo, clave)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "aut",
+      "to": "mgr",
+      "y": 275,
+      "label": "authenticate(correo, clave)",
+      "variant": "security",
+      "note": "Correo en minúsculas y sin espacios"
+    },
+    {
+      "id": "m4",
+      "from": "mgr",
+      "to": "repo",
+      "y": 332,
+      "label": "buscar cuenta por correo",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "repo",
+      "to": "mgr",
+      "y": 364,
+      "label": "cuenta + hash BCrypt",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "mgr",
+      "to": "aut",
+      "y": 396,
+      "label": "autenticado",
+      "variant": "return",
+      "note": "Clave mala, cuenta inexistente o inactiva: 401 igual"
+    },
+    {
+      "id": "m7",
+      "from": "aut",
+      "to": "repo",
+      "y": 480,
+      "label": "registrarAcceso(ahora)",
+      "variant": "default"
+    },
+    {
+      "id": "m8",
+      "from": "aut",
+      "to": "tok",
+      "y": 512,
+      "label": "emitir(cuenta)",
+      "variant": "security",
+      "note": "Claims: sub, correo, rol, personaId, autoridades, iss, iat, exp, jti"
+    },
+    {
+      "id": "m9",
+      "from": "tok",
+      "to": "aut",
+      "y": 591,
+      "label": "TokenEmitido (Bearer)",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "aut",
+      "to": "ctrl",
+      "y": 623,
+      "label": "TokenEmitido",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 655,
+      "label": "200 {accessToken, tokenType, expiresIn}",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 661,
+      "type": "backend"
+    },
+    {
+      "participant": "aut",
+      "from": 238,
+      "to": 629,
+      "type": "backend"
+    },
+    {
+      "participant": "mgr",
+      "from": 270,
+      "to": 402,
+      "type": "security"
+    },
+    {
+      "participant": "repo",
+      "from": 327,
+      "to": 486,
+      "type": "database"
+    },
+    {
+      "participant": "tok",
+      "from": 507,
+      "to": 597,
+      "type": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Sin sesión en el servidor",
+      "items": [
+        "El token JWT lo firma el back con HS256 y vale 60 minutos",
+        "Cerrar sesión es descartar el token en el cliente",
+        "El servidor no guarda estado de sesión"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Sin enumeración de cuentas",
+      "items": [
+        "Clave mala, cuenta inexistente o inactiva dan el mismo 401",
+        "El hash BCrypt nunca sale en una respuesta"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 444,
+      "label": "Verificar credenciales"
+    },
+    {
+      "from": 466,
+      "to": 667,
+      "label": "Emitir el token"
+    }
+  ]
+}

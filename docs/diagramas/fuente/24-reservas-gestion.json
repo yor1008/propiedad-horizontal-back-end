@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-027 Gestionar reservas (administrador)",
+    "output": "docs/diagramas/24-reservas-gestion.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "ReservaController",
+      "sublabel": "/api/reservas"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "GestionReservaService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "est",
+      "type": "backend",
+      "label": "GestorEstados",
+      "sublabel": "transiciones por datos"
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "evento CAMBIO_ESTADO"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Reserva",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /api/reservas",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 221,
+      "label": "200 todas las reservas",
+      "variant": "return"
+    },
+    {
+      "id": "m3",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 253,
+      "label": "PATCH /{id}/aprobar",
+      "variant": "emphasis",
+      "note": "Condiciones opcionales"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 299,
+      "label": "aprobar(id, condiciones)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "est",
+      "y": 331,
+      "label": "transicionar(→ Aprobada)",
+      "variant": "default",
+      "note": "Transición inválida: 422"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 388,
+      "label": "aprobar(condiciones)",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "noti",
+      "y": 420,
+      "label": "notificar(...)",
+      "variant": "dashed",
+      "note": "\"Su reserva ... fue aprobada\""
+    },
+    {
+      "id": "m8",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 477,
+      "label": "200 {estado: Aprobada}",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 509,
+      "label": "PATCH /{id}/rechazar",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo} obligatorio"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "est",
+      "y": 566,
+      "label": "transicionar(→ Rechazada)",
+      "variant": "default",
+      "note": "Desde Pendiente; exige motivo"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "noti",
+      "y": 623,
+      "label": "notificar(...)",
+      "variant": "dashed",
+      "note": "Incluye el motivo"
+    },
+    {
+      "id": "m12",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 685,
+      "label": "PATCH /{id}/anular",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo}; sin límite de horas"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "est",
+      "y": 742,
+      "label": "transicionar(→ Cancelada)",
+      "variant": "default",
+      "note": "Desde Pendiente o Aprobada"
+    },
+    {
+      "id": "m14",
+      "from": "svc",
+      "to": "noti",
+      "y": 799,
+      "label": "notificar(...)",
+      "variant": "dashed",
+      "note": "Cancelada por la administración"
+    },
+    {
+      "id": "m15",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 856,
+      "label": "PATCH /{id}/finalizar",
+      "variant": "emphasis",
+      "note": "Aprobada → Finalizada"
+    },
+    {
+      "id": "m16",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 902,
+      "label": "DELETE /{id}",
+      "variant": "emphasis",
+      "note": "Solo en estado Pendiente"
+    },
+    {
+      "id": "m17",
+      "from": "svc",
+      "to": "repo",
+      "y": 959,
+      "label": "delete(reserva)",
+      "variant": "default",
+      "note": "Cualquier otro estado: 409, usar anular"
+    },
+    {
+      "id": "m18",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 1016,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 1022,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 294,
+      "to": 965,
+      "type": "backend"
+    },
+    {
+      "participant": "est",
+      "from": 326,
+      "to": 748,
+      "type": "backend"
+    },
+    {
+      "participant": "noti",
+      "from": 415,
+      "to": 805,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 383,
+      "to": 965,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Flujo de la reserva",
+      "items": [
+        "Pendiente → Aprobada | Rechazada | Cancelada",
+        "Aprobada → Cancelada | Finalizada",
+        "Una zona sin aprobación hace nacer la reserva Aprobada"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 649,
+      "label": "Decidir"
+    },
+    {
+      "from": 671,
+      "to": 1028,
+      "label": "Anular, finalizar y borrar"
+    }
+  ]
+}

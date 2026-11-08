@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-016 Ingreso de visitante con pre-registro",
+    "output": "docs/diagramas/17-ingreso-con-preregistro.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Vigilante",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AccesoController",
+      "sublabel": "/api/accesos"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "IngresoVisitante",
+      "sublabel": "Service"
+    },
+    {
+      "id": "pre",
+      "type": "database",
+      "label": "PreRegistro",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "reg",
+      "type": "database",
+      "label": "RegistroVisita",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "evento INGRESO"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /pre-registros?documento",
+      "variant": "emphasis",
+      "note": "@SoloVigilante"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "preRegistrosVigentes(doc)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "pre",
+      "y": 253,
+      "label": "vigentes de hoy del visitante",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 285,
+      "label": "200 lista",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 333,
+      "label": "POST /con-preregistro",
+      "variant": "emphasis",
+      "note": "Cuerpo {preRegistroId}"
+    },
+    {
+      "id": "m6",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 379,
+      "label": "autorizarConPreRegistro(id)",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "pre",
+      "y": 411,
+      "label": "estaVigente(hoy)",
+      "variant": "default",
+      "note": "Cancelado, usado o de otra fecha: 422"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "reg",
+      "y": 468,
+      "label": "ya está dentro?",
+      "variant": "default",
+      "note": "Sin salida registrada: 409"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "reg",
+      "y": 525,
+      "label": "save(autorizado, entrada)",
+      "variant": "default",
+      "note": "El residente debe seguir con vínculo vigente"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "pre",
+      "y": 582,
+      "label": "marcarUsado()",
+      "variant": "default",
+      "note": "Solo si es FECHA_ESPECIFICA"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "noti",
+      "y": 639,
+      "label": "notificar(INGRESO_VISITANTE)",
+      "variant": "dashed",
+      "note": "Avisa al residente: \"Ingresó su visitante...\""
+    },
+    {
+      "id": "m12",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 707,
+      "label": "201 {estado: Dentro}",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 713,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 645,
+      "type": "backend"
+    },
+    {
+      "participant": "pre",
+      "from": 248,
+      "to": 588,
+      "type": "database"
+    },
+    {
+      "participant": "reg",
+      "from": 463,
+      "to": 531,
+      "type": "database"
+    },
+    {
+      "participant": "noti",
+      "from": 634,
+      "to": 645,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Sin llamar al residente",
+      "items": [
+        "Con pre-registro vigente el visitante entra sin contactar al residente",
+        "Un visitante no entra dos veces sin registrar su salida"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 297,
+      "label": "Buscar el pre-registro"
+    },
+    {
+      "from": 319,
+      "to": 719,
+      "label": "Autorizar el ingreso"
+    }
+  ]
+}

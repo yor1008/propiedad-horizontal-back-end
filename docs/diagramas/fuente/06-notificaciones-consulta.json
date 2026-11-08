@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-004 Consultar notificaciones propias",
+    "output": "docs/diagramas/06-notificaciones-consulta.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Persona vinculada",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "NotificacionController",
+      "sublabel": "/api/notificaciones"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "NotificacionService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "pa",
+      "type": "security",
+      "label": "PersonaAutenticada",
+      "sublabel": "persona del token"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Notificacion",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /mias?soloNoLeidas",
+      "variant": "emphasis",
+      "note": "@SoloPersonaVinculada"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "mias(soloNoLeidas)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "pa",
+      "y": 253,
+      "label": "id()",
+      "variant": "security",
+      "note": "Sin persona asociada: 422"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "repo",
+      "y": 310,
+      "label": "findByPersonaId... DESC",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 342,
+      "label": "200 lista",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 374,
+      "label": "GET /mias/conteo",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "repo",
+      "y": 406,
+      "label": "countByPersonaIdAndLeidaFalse",
+      "variant": "default",
+      "note": "Alimenta la campana del front"
+    },
+    {
+      "id": "m8",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 463,
+      "label": "200 {noLeidas}",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 495,
+      "label": "PATCH /{id}/leer",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "repo",
+      "y": 527,
+      "label": "findById(id) de esa persona",
+      "variant": "default",
+      "note": "Una ajena da 404: no revela que existe"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 584,
+      "label": "200 {leida: true}",
+      "variant": "return"
+    },
+    {
+      "id": "m12",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 616,
+      "label": "PATCH /leer-todas",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "repo",
+      "y": 648,
+      "label": "marcarLeida() de cada una",
+      "variant": "default"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 680,
+      "label": "200 {noLeidas: 0}",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 686,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 654,
+      "type": "backend"
+    },
+    {
+      "participant": "pa",
+      "from": 248,
+      "to": 259,
+      "type": "security"
+    },
+    {
+      "participant": "repo",
+      "from": 305,
+      "to": 654,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Siempre sobre lo propio",
+      "items": [
+        "El personaId sale del token, nunca del cliente",
+        "Administrador y vigilante no tienen notificaciones"
+      ]
+    }
+  ]
+}

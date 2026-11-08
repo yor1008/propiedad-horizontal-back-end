@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-002 Cambiar contraseña (con sesión)",
+    "output": "docs/diagramas/03-cambiar-contrasena.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Cliente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AuthController",
+      "sublabel": "POST /cambiar-contrasena"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "ContrasenaService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "uact",
+      "type": "security",
+      "label": "UsuarioActual",
+      "sublabel": "identidad del token"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "CuentaUsuario",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "enc",
+      "type": "security",
+      "label": "PasswordEncoder",
+      "sublabel": "BCrypt"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/auth/cambiar-contrasena",
+      "variant": "emphasis",
+      "note": "@Autenticado. Cuerpo {actual, nueva} (8 a 72 caracteres)"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "cambiar(actual, nueva)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "uact",
+      "y": 275,
+      "label": "cuentaId()",
+      "variant": "security",
+      "note": "La cuenta sale del token, nunca del cliente"
+    },
+    {
+      "id": "m4",
+      "from": "uact",
+      "to": "svc",
+      "y": 332,
+      "label": "id de la cuenta",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "repo",
+      "y": 364,
+      "label": "findById(id)",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "repo",
+      "to": "svc",
+      "y": 396,
+      "label": "cuenta + hash",
+      "variant": "return"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "enc",
+      "y": 428,
+      "label": "matches(actual, hash)",
+      "variant": "security",
+      "note": "Si no coincide: 422 \"La contrasena actual no es correcta\""
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "enc",
+      "y": 496,
+      "label": "matches(nueva, hash)",
+      "variant": "security",
+      "note": "Si es igual a la actual: 422"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "enc",
+      "y": 553,
+      "label": "encode(nueva)",
+      "variant": "security"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "repo",
+      "y": 585,
+      "label": "actualizarHashContrasena",
+      "variant": "default",
+      "note": "Los tokens ya emitidos siguen vigentes hasta su exp"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 653,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 659,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 591,
+      "type": "backend"
+    },
+    {
+      "participant": "uact",
+      "from": 270,
+      "to": 338,
+      "type": "security"
+    },
+    {
+      "participant": "repo",
+      "from": 359,
+      "to": 591,
+      "type": "database"
+    },
+    {
+      "participant": "enc",
+      "from": 423,
+      "to": 559,
+      "type": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Detalles",
+      "items": [
+        "La contraseña solo se guarda como hash BCrypt",
+        "Nunca se devuelve ni se escribe en logs"
+      ]
+    }
+  ]
+}

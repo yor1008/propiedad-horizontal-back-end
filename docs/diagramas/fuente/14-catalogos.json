@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-006 Administrar catálogos",
+    "output": "docs/diagramas/14-catalogos.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Usuario autenticado",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "CatalogoController",
+      "sublabel": "/api/catalogos"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "CatalogoService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "ValorCatalogo",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /api/catalogos/{tipo}",
+      "variant": "emphasis",
+      "note": "@Autenticado. Solo valores activos"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 232,
+      "label": "listar(tipo, soloActivos)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 264,
+      "label": "findByTipo...OrderByNombre",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 296,
+      "label": "200 lista",
+      "variant": "return",
+      "note": "El administrador usa /{tipo}/todos"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 369,
+      "label": "POST /api/catalogos",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador. {tipo, nombre}"
+    },
+    {
+      "id": "m6",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 426,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "Nombre repetido en el tipo: 409"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "repo",
+      "y": 483,
+      "label": "save(valor)",
+      "variant": "default"
+    },
+    {
+      "id": "m8",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 515,
+      "label": "201 CatalogoResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 547,
+      "label": "PUT /{id} y PATCH desactivar",
+      "variant": "emphasis",
+      "note": "Renombrar, desactivar o reactivar"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "repo",
+      "y": 604,
+      "label": "modificar() / desactivar()",
+      "variant": "default"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 636,
+      "label": "DELETE /api/catalogos/{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 668,
+      "label": "delete + flush",
+      "variant": "default",
+      "note": "Si algo lo usa: 409, se desactiva en su lugar"
+    },
+    {
+      "id": "m13",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 736,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 742,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 227,
+      "to": 674,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 259,
+      "to": 674,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Catálogos sembrados",
+      "items": [
+        "Los valores iniciales se recrean al arrancar si faltan por nombre",
+        "Para ocultar uno de verdad, desactivarlo"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 333,
+      "label": "Lectura"
+    },
+    {
+      "from": 355,
+      "to": 748,
+      "label": "Escritura (administrador)"
+    }
+  ]
+}

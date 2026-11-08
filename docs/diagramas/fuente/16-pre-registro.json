@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-015 Pre-registro de visitantes (residente)",
+    "output": "docs/diagramas/16-pre-registro.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Residente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "PreRegistroController",
+      "sublabel": "/api/pre-registros"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "PreRegistroService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "pa",
+      "type": "security",
+      "label": "PersonaAutenticada",
+      "sublabel": "persona del token"
+    },
+    {
+      "id": "vis",
+      "type": "backend",
+      "label": "Visitantes",
+      "sublabel": "obtenerOCrear"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "PreRegistro",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/pre-registros",
+      "variant": "emphasis",
+      "note": "@SoloResidente. FECHA_ESPECIFICA o PERMANENTE"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "crear(solicitud)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "pa",
+      "y": 275,
+      "label": "entidad()",
+      "variant": "security",
+      "note": "Exige residente con vínculo vigente (422)"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "vis",
+      "y": 332,
+      "label": "obtenerOCrear(nombre, doc)",
+      "variant": "default",
+      "note": "Busca por documento y conserva su nombre"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "repo",
+      "y": 389,
+      "label": "duplicados vigentes",
+      "variant": "default",
+      "note": "Ya existe uno igual: 409"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 446,
+      "label": "save(preRegistro)",
+      "variant": "default",
+      "note": "Fecha específica: hoy o futura; el inmueble sale del vínculo"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 514,
+      "label": "201 PreRegistroResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 562,
+      "label": "GET /mios",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "repo",
+      "y": 594,
+      "label": "findByPersonaId...",
+      "variant": "default"
+    },
+    {
+      "id": "m10",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 626,
+      "label": "200 lista",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 658,
+      "label": "PATCH /{id}/cancelar",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 690,
+      "label": "findById de esa persona",
+      "variant": "default",
+      "note": "Ajeno: 404. Cancelado o usado: 422"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "repo",
+      "y": 747,
+      "label": "cancelar()",
+      "variant": "default"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 779,
+      "label": "200 {activo: false}",
+      "variant": "return"
+    },
+    {
+      "id": "m15",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 827,
+      "label": "DELETE /{id}",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m16",
+      "from": "svc",
+      "to": "repo",
+      "y": 873,
+      "label": "delete + flush",
+      "variant": "default",
+      "note": "Con visitas registradas: 409, usar cancelar"
+    },
+    {
+      "id": "m17",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 930,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 936,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 879,
+      "type": "backend"
+    },
+    {
+      "participant": "pa",
+      "from": 270,
+      "to": 281,
+      "type": "security"
+    },
+    {
+      "participant": "vis",
+      "from": 327,
+      "to": 338,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 384,
+      "to": 879,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Vigencia",
+      "items": [
+        "FECHA_ESPECIFICA sirve un solo ingreso y se marca usado",
+        "PERMANENTE vale hasta que se cancele"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 526,
+      "label": "Crear"
+    },
+    {
+      "from": 548,
+      "to": 791,
+      "label": "Consultar y cancelar"
+    },
+    {
+      "from": 813,
+      "to": 942,
+      "label": "Borrar (administrador)"
+    }
+  ]
+}

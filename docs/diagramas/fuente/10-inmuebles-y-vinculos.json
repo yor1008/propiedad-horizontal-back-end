@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-009 y CU-010 Inmuebles y vínculos con personas",
+    "output": "docs/diagramas/10-inmuebles-y-vinculos.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "InmuebleController",
+      "sublabel": "/api/inmuebles"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "InmuebleService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "ocup",
+      "type": "backend",
+      "label": "OcupacionInmuebles",
+      "sublabel": "recalcular"
+    },
+    {
+      "id": "hist",
+      "type": "backend",
+      "label": "HistorialInmueble",
+      "sublabel": "tieneHistorial"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Inmueble / Persona",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/inmuebles",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "torre-número único: 409 si se repite"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 278,
+      "label": "save(inmueble)",
+      "variant": "default"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 310,
+      "label": "201 InmuebleResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 342,
+      "label": "PATCH /{id}/desactivar",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo}"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 388,
+      "label": "personas con vínculo vigente",
+      "variant": "default",
+      "note": "Si hay alguna: 422, finalice los vínculos primero"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 456,
+      "label": "200 {activo: false}",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 504,
+      "label": "POST /{id}/vinculos",
+      "variant": "emphasis",
+      "note": "Cuerpo {personaId, tipoPersonaId}"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 561,
+      "label": "vincular(inmuebleId, datos)",
+      "variant": "default",
+      "note": "Inmueble activo y unidad privada; persona activa"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "repo",
+      "y": 629,
+      "label": "persona.vincularInmueble",
+      "variant": "default",
+      "note": "Una persona tiene un solo vínculo vigente (409)"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "ocup",
+      "y": 697,
+      "label": "recalcular(inmueble)",
+      "variant": "default",
+      "note": "ocupado = hay algún residente vigente"
+    },
+    {
+      "id": "m12",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 754,
+      "label": "201 PersonaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m13",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 786,
+      "label": "PATCH /personas/{id}/finalizar-vinculo",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo}"
+    },
+    {
+      "id": "m14",
+      "from": "svc",
+      "to": "repo",
+      "y": 832,
+      "label": "finalizarVinculo(ayer, motivo)",
+      "variant": "default",
+      "note": "Sin vínculo vigente: 422"
+    },
+    {
+      "id": "m15",
+      "from": "svc",
+      "to": "ocup",
+      "y": 889,
+      "label": "recalcular(inmueble)",
+      "variant": "default"
+    },
+    {
+      "id": "m16",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 937,
+      "label": "DELETE /api/inmuebles/{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m17",
+      "from": "svc",
+      "to": "hist",
+      "y": 969,
+      "label": "tieneHistorial(inmueble)",
+      "variant": "default",
+      "note": "Con historia responde 409"
+    },
+    {
+      "id": "m18",
+      "from": "svc",
+      "to": "repo",
+      "y": 1026,
+      "label": "delete(inmueble)",
+      "variant": "default"
+    },
+    {
+      "id": "m19",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 1058,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 1064,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 1032,
+      "type": "backend"
+    },
+    {
+      "participant": "ocup",
+      "from": 692,
+      "to": 895,
+      "type": "backend"
+    },
+    {
+      "participant": "hist",
+      "from": 964,
+      "to": 975,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 273,
+      "to": 1032,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Reglas del vínculo",
+      "items": [
+        "El vínculo son campos de Persona (inmueble, fechas, motivo)",
+        "Finalizar fija la fecha fin en \"ayer\"",
+        "Los parqueaderos no se vinculan a personas"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 468,
+      "label": "Crear y desactivar"
+    },
+    {
+      "from": 490,
+      "to": 901,
+      "label": "Vincular y finalizar"
+    },
+    {
+      "from": 923,
+      "to": 1070,
+      "label": "Borrado físico"
+    }
+  ]
+}

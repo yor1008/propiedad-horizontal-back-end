@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-025 y CU-026 Reservar una zona común (residente)",
+    "output": "docs/diagramas/23-reservar-zona-comun.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Residente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "ReservaController",
+      "sublabel": "/api/reservas"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "ReservaService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "zona",
+      "type": "database",
+      "label": "ZonaComun",
+      "sublabel": "reglas y horarios"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Reserva / Mantenim.",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "est",
+      "type": "backend",
+      "label": "GestorEstados",
+      "sublabel": "máquina de estados"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/reservas",
+      "variant": "emphasis",
+      "note": "@SoloResidente. {zonaId, fecha, horas, asistentes}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "reservar(solicitud)",
+      "variant": "default",
+      "note": "Exige vínculo vigente (422)"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "zona",
+      "y": 300,
+      "label": "activa + validarReserva",
+      "variant": "default",
+      "note": "Horario, capacidad, duración, anticipación (422)"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "repo",
+      "y": 368,
+      "label": "traslape de reservas",
+      "variant": "default",
+      "note": "Ya hay una en ese horario: 409"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "repo",
+      "y": 425,
+      "label": "mantenimiento en ese horario",
+      "variant": "default",
+      "note": "Zona bloqueada: 409"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 471,
+      "label": "límite por inmueble y periodo",
+      "variant": "default",
+      "note": "DIA, SEMANA o MES; si se alcanza: 422"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "est",
+      "y": 528,
+      "label": "inicial(RESERVA)",
+      "variant": "default",
+      "note": "Pendiente, o Aprobada si no requiere aprobación"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "repo",
+      "y": 596,
+      "label": "save(reserva)",
+      "variant": "default"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 628,
+      "label": "201 ReservaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 676,
+      "label": "GET /mias",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 708,
+      "label": "200 lista propia",
+      "variant": "return",
+      "note": "Con \"puedeCancelar\""
+    },
+    {
+      "id": "m12",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 754,
+      "label": "PATCH /{id}/cancelar",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo}"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "repo",
+      "y": 800,
+      "label": "reserva propia",
+      "variant": "default",
+      "note": "Una ajena da 404"
+    },
+    {
+      "id": "m14",
+      "from": "svc",
+      "to": "est",
+      "y": 846,
+      "label": "transicionar(→ Cancelada)",
+      "variant": "default",
+      "note": "Hasta limiteCancelacionHoras antes (422)"
+    },
+    {
+      "id": "m15",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 903,
+      "label": "200 {estado: Cancelada}",
+      "variant": "return",
+      "note": "El horario cancelado queda libre"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 909,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 852,
+      "type": "backend"
+    },
+    {
+      "participant": "zona",
+      "from": 295,
+      "to": 306,
+      "type": "database"
+    },
+    {
+      "participant": "repo",
+      "from": 363,
+      "to": 806,
+      "type": "database"
+    },
+    {
+      "participant": "est",
+      "from": 523,
+      "to": 852,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Estados que liberan el horario",
+      "items": [
+        "Rechazada, Cancelada y Finalizada ya no ocupan la franja",
+        "El traslape solo mira reservas no finales"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 640,
+      "label": "Reservar"
+    },
+    {
+      "from": 662,
+      "to": 940,
+      "label": "Consultar y cancelar"
+    }
+  ]
+}

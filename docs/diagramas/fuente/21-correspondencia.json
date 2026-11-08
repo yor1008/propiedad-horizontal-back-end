@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-022 y CU-023 Correspondencia",
+    "output": "docs/diagramas/21-correspondencia.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Vigilante/Residente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "CorrespondenciaCtrl",
+      "sublabel": "/api/correspondencia"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "CorrespondenciaSvc",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "est",
+      "type": "backend",
+      "label": "GestorEstados",
+      "sublabel": "máquina de estados"
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "evento CORRESPONDENCIA"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Correspondencia",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/correspondencia",
+      "variant": "emphasis",
+      "note": "@SoloVigilante. {inmuebleId, personaId?, tipoId}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 243,
+      "label": "registrar(solicitud)",
+      "variant": "default",
+      "note": "Destinatario con vínculo vigente (422)"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "est",
+      "y": 300,
+      "label": "inicial(CORRESPONDENCIA)",
+      "variant": "default",
+      "note": "Estado Pendiente"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "repo",
+      "y": 346,
+      "label": "save(correspondencia)",
+      "variant": "default",
+      "note": "Sin persona va dirigida al inmueble"
+    },
+    {
+      "id": "m5",
+      "from": "svc",
+      "to": "noti",
+      "y": 403,
+      "label": "notificar(CORRESPONDENCIA_RECIBIDA)",
+      "variant": "dashed",
+      "note": "A la persona o a los vigentes del inmueble"
+    },
+    {
+      "id": "m6",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 460,
+      "label": "201 CorrespondenciaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m7",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 508,
+      "label": "PATCH /{id}/entregar",
+      "variant": "emphasis",
+      "note": "Cuerpo {nombreRecibe, documentoRecibe}"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "est",
+      "y": 565,
+      "label": "transicionar(→ Entregada)",
+      "variant": "default",
+      "note": "Una segunda entrega: 422"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "repo",
+      "y": 622,
+      "label": "registrarEntrega(...)",
+      "variant": "default"
+    },
+    {
+      "id": "m10",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 654,
+      "label": "200 {estado: Entregada}",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 686,
+      "label": "GET /mias",
+      "variant": "emphasis",
+      "note": "@SoloPersonaVinculada"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 732,
+      "label": "por persona y por inmueble",
+      "variant": "default",
+      "note": "Incluye la dirigida a su inmueble"
+    },
+    {
+      "id": "m13",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 789,
+      "label": "200 lista",
+      "variant": "return"
+    },
+    {
+      "id": "m14",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 837,
+      "label": "DELETE /{id}",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m15",
+      "from": "svc",
+      "to": "repo",
+      "y": 883,
+      "label": "solo en estado Pendiente",
+      "variant": "default",
+      "note": "Entregada: 409"
+    },
+    {
+      "id": "m16",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 929,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 935,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 238,
+      "to": 889,
+      "type": "backend"
+    },
+    {
+      "participant": "est",
+      "from": 295,
+      "to": 571,
+      "type": "backend"
+    },
+    {
+      "participant": "noti",
+      "from": 398,
+      "to": 409,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 341,
+      "to": 889,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Quién ve qué",
+      "items": [
+        "El vigilante registra, entrega y lista todo (filtro por persona)",
+        "La persona vinculada ve la suya y la de su inmueble"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 472,
+      "label": "Registrar (vigilante)"
+    },
+    {
+      "from": 494,
+      "to": 801,
+      "label": "Entregar y consultar"
+    },
+    {
+      "from": 823,
+      "to": 941,
+      "label": "Borrar (administrador)"
+    }
+  ]
+}

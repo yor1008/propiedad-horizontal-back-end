@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-002 Restablecer contraseña por correo",
+    "output": "docs/diagramas/04-restablecer-contrasena.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Cliente",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AuthController",
+      "sublabel": "rutas públicas"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "Restablecimiento",
+      "sublabel": "ContrasenaService"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "CuentaUsuario",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "tok",
+      "type": "security",
+      "label": "TokenRestablecimiento",
+      "sublabel": "JWT un solo uso"
+    },
+    {
+      "id": "corr",
+      "type": "messagebus",
+      "label": "EnviadorCorreo",
+      "sublabel": "SMTP o Gmail API"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /olvide-contrasena",
+      "variant": "emphasis",
+      "note": "Público. Cuerpo {correo}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 232,
+      "label": "solicitar(correo)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 264,
+      "label": "cuenta activa por correo",
+      "variant": "default",
+      "note": "Si no existe o está inactiva, no hace nada"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "tok",
+      "y": 321,
+      "label": "emitir(cuenta)",
+      "variant": "security",
+      "note": "Emisor propio, 30 min y huella del hash actual"
+    },
+    {
+      "id": "m5",
+      "from": "tok",
+      "to": "svc",
+      "y": 389,
+      "label": "token",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "corr",
+      "y": 421,
+      "label": "enviar(correo, enlace)",
+      "variant": "dashed",
+      "note": "Asíncrono; el enlace lleva ?token="
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 478,
+      "label": "204 siempre",
+      "variant": "return",
+      "note": "No revela si la cuenta existe"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 551,
+      "label": "POST /restablecer-contrasena",
+      "variant": "emphasis",
+      "note": "Cuerpo {token, nueva}"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 597,
+      "label": "restablecer(token, nueva)",
+      "variant": "default"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "tok",
+      "y": 629,
+      "label": "validar(token)",
+      "variant": "security",
+      "note": "Firma, expiración, emisor: si falla, 422"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "repo",
+      "y": 686,
+      "label": "findById(cuenta)",
+      "variant": "default",
+      "note": "Debe estar activa"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "tok",
+      "y": 732,
+      "label": "huellaDe(cuenta) = huella",
+      "variant": "security",
+      "note": "Si ya cambió la clave, el token no sirve"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "repo",
+      "y": 789,
+      "label": "actualizarHashContrasena",
+      "variant": "default",
+      "note": "BCrypt de la nueva contraseña"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 846,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 852,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 227,
+      "to": 795,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 259,
+      "to": 795,
+      "type": "database"
+    },
+    {
+      "participant": "tok",
+      "from": 316,
+      "to": 738,
+      "type": "security"
+    },
+    {
+      "participant": "corr",
+      "from": 416,
+      "to": 427,
+      "type": "messagebus"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Un solo uso, sin estado",
+      "items": [
+        "No hay tabla de tokens: la huella del hash invalida el enlace al cambiar la clave",
+        "El token de restablecimiento no sirve como token de acceso"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Enlace del correo",
+      "items": [
+        "Apunta a FRONTEND_URL_RESTABLECER?token=...",
+        "El front llama a restablecer-contrasena con ese token"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 515,
+      "label": "Solicitar el enlace"
+    },
+    {
+      "from": 537,
+      "to": 858,
+      "label": "Fijar la nueva contraseña"
+    }
+  ]
+}

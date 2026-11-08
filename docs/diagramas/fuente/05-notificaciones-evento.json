@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-004 Generar notificaciones y correo por evento",
+    "output": "docs/diagramas/05-notificaciones-evento.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "caso",
+      "type": "backend",
+      "label": "Caso de uso",
+      "sublabel": "reserva, PQRS, visita..."
+    },
+    {
+      "id": "noti",
+      "type": "backend",
+      "label": "Notificador",
+      "sublabel": "NotificadorImpl"
+    },
+    {
+      "id": "cfg",
+      "type": "database",
+      "label": "ConfiguracionNotif.",
+      "sublabel": "por tipo de evento"
+    },
+    {
+      "id": "nrepo",
+      "type": "database",
+      "label": "Notificacion",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "tx",
+      "type": "messagebus",
+      "label": "Transacción",
+      "sublabel": "commit / rollback"
+    },
+    {
+      "id": "corr",
+      "type": "messagebus",
+      "label": "EnviadorCorreo",
+      "sublabel": "@Async"
+    },
+    {
+      "id": "ext",
+      "type": "external",
+      "label": "SMTP o Gmail API",
+      "sublabel": "bandeja"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caso",
+      "to": "noti",
+      "y": 175,
+      "label": "notificar(evento, personas, texto)",
+      "variant": "emphasis",
+      "note": "Solo personas vinculadas reciben notificaciones"
+    },
+    {
+      "id": "m2",
+      "from": "noti",
+      "to": "cfg",
+      "y": 243,
+      "label": "findByEvento(evento)",
+      "variant": "default",
+      "note": "Sin fila: activa y sin correo"
+    },
+    {
+      "id": "m3",
+      "from": "cfg",
+      "to": "noti",
+      "y": 300,
+      "label": "activa, enviarCorreo",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "noti",
+      "to": "nrepo",
+      "y": 332,
+      "label": "saveAll(generar(...))",
+      "variant": "default",
+      "note": "activa = false: no genera nada"
+    },
+    {
+      "id": "m5",
+      "from": "noti",
+      "to": "tx",
+      "y": 389,
+      "label": "registrar afterCommit",
+      "variant": "dashed",
+      "note": "Solo si hay destinatarios con correo"
+    },
+    {
+      "id": "m6",
+      "from": "caso",
+      "to": "tx",
+      "y": 462,
+      "label": "commit",
+      "variant": "default",
+      "note": "Si el caso de uso se revierte, no sale correo"
+    },
+    {
+      "id": "m7",
+      "from": "tx",
+      "to": "corr",
+      "y": 530,
+      "label": "afterCommit: enviar(...)",
+      "variant": "dashed"
+    },
+    {
+      "id": "m8",
+      "from": "corr",
+      "to": "ext",
+      "y": 562,
+      "label": "correo al destinatario",
+      "variant": "dashed",
+      "note": "Mejor esfuerzo: si falla, solo queda en el log"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "caso",
+      "from": 170,
+      "to": 468,
+      "type": "backend"
+    },
+    {
+      "participant": "noti",
+      "from": 170,
+      "to": 395,
+      "type": "backend"
+    },
+    {
+      "participant": "cfg",
+      "from": 238,
+      "to": 306,
+      "type": "database"
+    },
+    {
+      "participant": "nrepo",
+      "from": 327,
+      "to": 338,
+      "type": "database"
+    },
+    {
+      "participant": "tx",
+      "from": 384,
+      "to": 536,
+      "type": "messagebus"
+    },
+    {
+      "participant": "corr",
+      "from": 525,
+      "to": 568,
+      "type": "messagebus"
+    },
+    {
+      "participant": "ext",
+      "from": 557,
+      "to": 568,
+      "type": "external"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Eventos conectados",
+      "items": [
+        "Correspondencia recibida",
+        "Ingreso de un visitante",
+        "Cambio de estado de una reserva (admin)",
+        "Respuesta a una PQRS"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Correo",
+      "items": [
+        "Se envía solo si el evento tiene enviarCorreo = true",
+        "Un destinatario sin correo no recibe nada por esa vía",
+        "El mensaje se recorta a 500 caracteres"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 426,
+      "label": "En la transacción"
+    },
+    {
+      "from": 448,
+      "to": 610,
+      "label": "Tras confirmar"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "DELETE: borrado físico solo sin historia",
+    "output": "docs/diagramas/27-borrado-sin-historia.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "Controller",
+      "sublabel": "@SoloAdministrador"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "Service",
+      "sublabel": "eliminar(id)"
+    },
+    {
+      "id": "bor",
+      "type": "backend",
+      "label": "Borrado",
+      "sublabel": "utilidad interna"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Repository",
+      "sublabel": "JpaRepository"
+    },
+    {
+      "id": "bd",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "claves foráneas"
+    },
+    {
+      "id": "err",
+      "type": "backend",
+      "label": "ManejadorErrores",
+      "sublabel": "ErrorApi"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "DELETE /api/{recurso}/{id}",
+      "variant": "emphasis",
+      "note": "Solo administrador; 403 para otros roles"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 232,
+      "label": "eliminar(id)",
+      "variant": "default",
+      "note": "No existe: 404"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "bor",
+      "y": 278,
+      "label": "fisico(repo, entidad)",
+      "variant": "default",
+      "note": "Catálogos, zonas, parqueaderos, pre-registros"
+    },
+    {
+      "id": "m4",
+      "from": "bor",
+      "to": "repo",
+      "y": 346,
+      "label": "delete + flush",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "repo",
+      "to": "bd",
+      "y": 378,
+      "label": "DELETE",
+      "variant": "default"
+    },
+    {
+      "id": "m6",
+      "from": "bd",
+      "to": "bor",
+      "y": 410,
+      "label": "viola una clave foránea",
+      "variant": "dashed",
+      "note": "Alternativa: algo referencia el registro"
+    },
+    {
+      "id": "m7",
+      "from": "bor",
+      "to": "err",
+      "y": 467,
+      "label": "ConflictoException",
+      "variant": "dashed",
+      "note": "Mensaje: usar desactivar en su lugar"
+    },
+    {
+      "id": "m8",
+      "from": "err",
+      "to": "cliente",
+      "y": 524,
+      "label": "409 ErrorApi",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "svc",
+      "to": "bor",
+      "y": 572,
+      "label": "exigirEstadoInicial(estado)",
+      "variant": "default",
+      "note": "Reservas, PQRS, correspondencia, mantenimientos"
+    },
+    {
+      "id": "m10",
+      "from": "bor",
+      "to": "err",
+      "y": 640,
+      "label": "ConflictoException",
+      "variant": "dashed",
+      "note": "Si ya tuvo movimiento: usar cancelar o anular"
+    },
+    {
+      "id": "m11",
+      "from": "err",
+      "to": "cliente",
+      "y": 708,
+      "label": "409 ErrorApi",
+      "variant": "return"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 740,
+      "label": "delete(entidad)",
+      "variant": "default",
+      "note": "Sin historia"
+    },
+    {
+      "id": "m13",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 786,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 792,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 227,
+      "to": 746,
+      "type": "backend"
+    },
+    {
+      "participant": "bor",
+      "from": 273,
+      "to": 646,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 341,
+      "to": 746,
+      "type": "database"
+    },
+    {
+      "participant": "bd",
+      "from": 373,
+      "to": 416,
+      "type": "database"
+    },
+    {
+      "participant": "err",
+      "from": 462,
+      "to": 714,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Misma política en todo",
+      "items": [
+        "Personas e inmuebles usan sus propios Historial*",
+        "Cuentas y vehículos no tienen dependientes: se borran directo",
+        "La cuenta propia no se puede borrar (422)"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 536,
+      "label": "Maestros"
+    },
+    {
+      "from": 558,
+      "to": 798,
+      "label": "Registros con estados"
+    }
+  ]
+}

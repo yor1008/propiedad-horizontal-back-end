@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-014 Parqueaderos: crear, asignar, liberar y borrar",
+    "output": "docs/diagramas/12-parqueaderos.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "ParqueaderoController",
+      "sublabel": "/api/parqueaderos"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "ParqueaderoService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "cat",
+      "type": "database",
+      "label": "ValorCatalogo",
+      "sublabel": "TIPO_INMUEBLE"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Inmueble",
+      "sublabel": "categoría PARQUEADERO"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/parqueaderos",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "torre-número único entre todos los inmuebles"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "cat",
+      "y": 278,
+      "label": "tipo activo",
+      "variant": "default",
+      "note": "Tipo de inmueble inexistente o inactivo falla"
+    },
+    {
+      "id": "m4",
+      "from": "svc",
+      "to": "repo",
+      "y": 346,
+      "label": "save(PARQUEADERO)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 378,
+      "label": "201 ParqueaderoResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 426,
+      "label": "PATCH /{id}/asignar",
+      "variant": "emphasis",
+      "note": "Cuerpo {inmuebleId}"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 472,
+      "label": "asignar(id, inmuebleId)",
+      "variant": "default",
+      "note": "Activo y libre; si no: 409"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "repo",
+      "y": 529,
+      "label": "asignarParqueadero(...)",
+      "variant": "default",
+      "note": "Solo a una unidad privada activa (422)"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 586,
+      "label": "200 {disponible: false}",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 618,
+      "label": "PATCH /{id}/liberar",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "repo",
+      "y": 650,
+      "label": "retirarParqueadero(...)",
+      "variant": "default",
+      "note": "Si no estaba asignado: 422"
+    },
+    {
+      "id": "m12",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 707,
+      "label": "200 {disponible: true}",
+      "variant": "return"
+    },
+    {
+      "id": "m13",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 755,
+      "label": "PATCH /{id}/desactivar",
+      "variant": "emphasis",
+      "note": "Baja lógica con motivo"
+    },
+    {
+      "id": "m14",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 801,
+      "label": "DELETE /{id}",
+      "variant": "emphasis",
+      "note": "Asignado: 422. Con visitas: 409"
+    },
+    {
+      "id": "m15",
+      "from": "svc",
+      "to": "repo",
+      "y": 858,
+      "label": "delete + flush",
+      "variant": "default",
+      "note": "La clave foránea de las visitas da el 409"
+    },
+    {
+      "id": "m16",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 915,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 921,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 864,
+      "type": "backend"
+    },
+    {
+      "participant": "cat",
+      "from": 273,
+      "to": 284,
+      "type": "database"
+    },
+    {
+      "participant": "repo",
+      "from": 341,
+      "to": 864,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "Un parqueadero es un Inmueble",
+      "items": [
+        "inmuebleAsociado apunta a la unidad a la que pertenece",
+        "Sin inmuebleAsociado es un parqueadero de visitantes"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 390,
+      "label": "Crear"
+    },
+    {
+      "from": 412,
+      "to": 719,
+      "label": "Asignar y liberar"
+    },
+    {
+      "from": 741,
+      "to": 927,
+      "label": "Baja y borrado"
+    }
+  ]
+}

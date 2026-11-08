@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-007 Configurar parámetros y notificaciones",
+    "output": "docs/diagramas/15-configuracion.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "ConfiguracionController",
+      "sublabel": "/api/configuracion"
+    },
+    {
+      "id": "sg",
+      "type": "backend",
+      "label": "ConfiguracionGeneral",
+      "sublabel": "Service"
+    },
+    {
+      "id": "sn",
+      "type": "backend",
+      "label": "ConfiguracionNotificacion",
+      "sublabel": "Service"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Configuración",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /general",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "sg",
+      "y": 221,
+      "label": "obtener()",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "sg",
+      "to": "repo",
+      "y": 253,
+      "label": "fila única",
+      "variant": "default",
+      "note": "Si falta, la crea con valores por defecto"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 310,
+      "label": "200 {maxVehiculos, plazoPqrs}",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 342,
+      "label": "PUT /general",
+      "variant": "emphasis",
+      "note": "maxVehiculosPorInmueble y plazoRespuestaPqrsDias"
+    },
+    {
+      "id": "m6",
+      "from": "sg",
+      "to": "repo",
+      "y": 410,
+      "label": "actualizar(max, plazo)",
+      "variant": "default",
+      "note": "Los aplican VehiculoService y PqrsResponse"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 467,
+      "label": "200 parámetros",
+      "variant": "return"
+    },
+    {
+      "id": "m8",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 515,
+      "label": "GET /notificaciones",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "sn",
+      "y": 547,
+      "label": "listar()",
+      "variant": "default",
+      "note": "Siempre los 4 eventos; sin fila: activa y sin correo"
+    },
+    {
+      "id": "m10",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 615,
+      "label": "200 [4 eventos]",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 647,
+      "label": "PUT /notificaciones/{evento}",
+      "variant": "emphasis",
+      "note": "Cuerpo {activa, enviarCorreo}, ambos obligatorios"
+    },
+    {
+      "id": "m12",
+      "from": "sn",
+      "to": "repo",
+      "y": 715,
+      "label": "configurar(activa, correo)",
+      "variant": "default",
+      "note": "activa = false: no se generan notificaciones"
+    },
+    {
+      "id": "m13",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 772,
+      "label": "200 configuración",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 778,
+      "type": "backend"
+    },
+    {
+      "participant": "sg",
+      "from": 216,
+      "to": 416,
+      "type": "backend"
+    },
+    {
+      "participant": "sn",
+      "from": 542,
+      "to": 721,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 248,
+      "to": 721,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Efecto",
+      "items": [
+        "Notificador consulta esta configuración en cada evento",
+        "enviarCorreo = true envía además un correo (después del commit)"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 479,
+      "label": "Parámetros generales"
+    },
+    {
+      "from": 501,
+      "to": 784,
+      "label": "Notificaciones por evento"
+    }
+  ]
+}

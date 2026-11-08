@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-008 Alta de persona con verificación de correo",
+    "output": "docs/diagramas/08-alta-persona-verificacion.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "PersonaController",
+      "sublabel": "/api/personas"
+    },
+    {
+      "id": "ver",
+      "type": "backend",
+      "label": "VerificacionCorreo",
+      "sublabel": "código de 6 dígitos"
+    },
+    {
+      "id": "vrepo",
+      "type": "database",
+      "label": "verificacion_correo",
+      "sublabel": "huella, vence, intentos"
+    },
+    {
+      "id": "corr",
+      "type": "messagebus",
+      "label": "EnviadorCorreo",
+      "sublabel": "SMTP o Gmail API"
+    },
+    {
+      "id": "psvc",
+      "type": "backend",
+      "label": "PersonaService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "prepo",
+      "type": "database",
+      "label": "Persona",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /verificar-correo",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador. Cuerpo {correo}"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "ver",
+      "y": 232,
+      "label": "enviarCodigo(correo)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "ver",
+      "to": "vrepo",
+      "y": 264,
+      "label": "guarda huella (vence 10 min)",
+      "variant": "default",
+      "note": "Un código nuevo reemplaza al anterior"
+    },
+    {
+      "id": "m4",
+      "from": "ver",
+      "to": "corr",
+      "y": 321,
+      "label": "enviar(correo, código)",
+      "variant": "dashed",
+      "note": "Asíncrono: el correo puede no llegar"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 378,
+      "label": "204 sin cuerpo",
+      "variant": "return",
+      "note": "La persona se lo dicta al administrador"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 451,
+      "label": "POST /api/personas",
+      "variant": "emphasis",
+      "note": "Con codigoVerificacion si lleva correo"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "psvc",
+      "y": 508,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "Valida tipo, documento único y catálogo"
+    },
+    {
+      "id": "m8",
+      "from": "psvc",
+      "to": "ver",
+      "y": 565,
+      "label": "confirmar(correo, código)",
+      "variant": "security",
+      "note": "Máx. 5 intentos; si falla: 422"
+    },
+    {
+      "id": "m9",
+      "from": "ver",
+      "to": "vrepo",
+      "y": 622,
+      "label": "consume la fila",
+      "variant": "default",
+      "note": "Los intentos fallidos se conservan"
+    },
+    {
+      "id": "m10",
+      "from": "psvc",
+      "to": "prepo",
+      "y": 679,
+      "label": "save(persona)",
+      "variant": "default"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 711,
+      "label": "201 PersonaResponse",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 717,
+      "type": "backend"
+    },
+    {
+      "participant": "ver",
+      "from": 227,
+      "to": 628,
+      "type": "backend"
+    },
+    {
+      "participant": "vrepo",
+      "from": 259,
+      "to": 628,
+      "type": "database"
+    },
+    {
+      "participant": "corr",
+      "from": 316,
+      "to": 327,
+      "type": "messagebus"
+    },
+    {
+      "participant": "psvc",
+      "from": 503,
+      "to": 685,
+      "type": "backend"
+    },
+    {
+      "participant": "prepo",
+      "from": 674,
+      "to": 685,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Qué prueba el código",
+      "items": [
+        "SMTP no detecta una dirección inexistente en el momento",
+        "Sin el código no se crea la persona: el correo queda comprobado",
+        "Sin correo no se pide código"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 415,
+      "label": "Enviar el código"
+    },
+    {
+      "from": 437,
+      "to": 723,
+      "label": "Crear la persona"
+    }
+  ]
+}

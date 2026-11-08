@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Máquina de estados por datos (GestorEstados)",
+    "output": "docs/diagramas/28-maquina-de-estados.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "caso",
+      "type": "backend",
+      "label": "Caso de uso",
+      "sublabel": "reserva, PQRS..."
+    },
+    {
+      "id": "est",
+      "type": "backend",
+      "label": "GestorEstados",
+      "sublabel": "GestorEstadosImpl"
+    },
+    {
+      "id": "erepo",
+      "type": "database",
+      "label": "Estado",
+      "sublabel": "por proceso"
+    },
+    {
+      "id": "trepo",
+      "type": "database",
+      "label": "TransicionEstado",
+      "sublabel": "origen → destino"
+    },
+    {
+      "id": "ent",
+      "type": "database",
+      "label": "Entidad",
+      "sublabel": "cambiarEstado"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "caso",
+      "to": "est",
+      "y": 175,
+      "label": "inicial(proceso)",
+      "variant": "emphasis",
+      "note": "Al crear la reserva, PQRS, correo o mantenimiento"
+    },
+    {
+      "id": "m2",
+      "from": "est",
+      "to": "erepo",
+      "y": 243,
+      "label": "es_inicial = true",
+      "variant": "default",
+      "note": "Si no hay: 422"
+    },
+    {
+      "id": "m3",
+      "from": "est",
+      "to": "caso",
+      "y": 289,
+      "label": "Estado inicial",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "caso",
+      "to": "est",
+      "y": 337,
+      "label": "transicionar(actual, destino, motivo)",
+      "variant": "emphasis",
+      "note": "La valida un servicio, no la entidad"
+    },
+    {
+      "id": "m5",
+      "from": "est",
+      "to": "erepo",
+      "y": 394,
+      "label": "porNombre(proceso, destino)",
+      "variant": "default",
+      "note": "Estado no configurado: 422"
+    },
+    {
+      "id": "m6",
+      "from": "est",
+      "to": "trepo",
+      "y": 451,
+      "label": "origen → destino",
+      "variant": "default",
+      "note": "No hay transición: 422"
+    },
+    {
+      "id": "m7",
+      "from": "est",
+      "to": "caso",
+      "y": 497,
+      "label": "exige motivo?",
+      "variant": "dashed",
+      "note": "Si requiere motivo y falta: 422"
+    },
+    {
+      "id": "m8",
+      "from": "est",
+      "to": "caso",
+      "y": 554,
+      "label": "Estado destino",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "caso",
+      "to": "ent",
+      "y": 586,
+      "label": "cambiarEstado(destino)",
+      "variant": "default",
+      "note": "Guarda el nuevo estado"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "caso",
+      "from": 170,
+      "to": 592,
+      "type": "backend"
+    },
+    {
+      "participant": "est",
+      "from": 170,
+      "to": 560,
+      "type": "backend"
+    },
+    {
+      "participant": "erepo",
+      "from": 238,
+      "to": 400,
+      "type": "database"
+    },
+    {
+      "participant": "trepo",
+      "from": 446,
+      "to": 457,
+      "type": "database"
+    },
+    {
+      "participant": "ent",
+      "from": 581,
+      "to": 592,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Los estados son datos",
+      "items": [
+        "EstadosIniciales siembra estados y transiciones al arrancar",
+        "Cambiar el flujo no exige cambiar código ni enums"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 301,
+      "label": "Estado inicial"
+    },
+    {
+      "from": 323,
+      "to": 612,
+      "label": "Cambio de estado"
+    }
+  ]
+}

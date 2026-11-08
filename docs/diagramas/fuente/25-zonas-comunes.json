@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-024 Zonas comunes: crear, disponibilidad y borrar",
+    "output": "docs/diagramas/25-zonas-comunes.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Usuario / Admin",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "ZonaComunController",
+      "sublabel": "/api/zonas-comunes"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "ZonaComunService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "ZonaComun",
+      "sublabel": "con HorarioDisponibilidad"
+    },
+    {
+      "id": "res",
+      "type": "database",
+      "label": "Reserva / Mantenim.",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "POST /api/zonas-comunes",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador. Reglas + horarios"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 232,
+      "label": "crear(solicitud)",
+      "variant": "default",
+      "note": "Mínimo un horario; nombre único (409)"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 289,
+      "label": "save(zona + horarios)",
+      "variant": "default",
+      "note": "Un 0 en una regla numérica = sin restricción"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 346,
+      "label": "201 ZonaComunResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 378,
+      "label": "PUT /{id} y PATCH desactivar",
+      "variant": "emphasis",
+      "note": "Reemplaza reglas y horarios, o baja lógica"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 435,
+      "label": "modificarDatos / desactivar",
+      "variant": "default",
+      "note": "No se bloquea con reservas futuras"
+    },
+    {
+      "id": "m7",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 492,
+      "label": "DELETE /{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m8",
+      "from": "svc",
+      "to": "res",
+      "y": 524,
+      "label": "delete + flush",
+      "variant": "default",
+      "note": "Con reservas o mantenimientos: 409"
+    },
+    {
+      "id": "m9",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 581,
+      "label": "204 sin cuerpo",
+      "variant": "return",
+      "note": "Se borra con sus horarios"
+    },
+    {
+      "id": "m10",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 654,
+      "label": "GET /{id}/disponibilidad?fecha",
+      "variant": "emphasis",
+      "note": "@Autenticado"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 700,
+      "label": "disponibilidad(id, fecha)",
+      "variant": "default"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "repo",
+      "y": 732,
+      "label": "horarios del día",
+      "variant": "default"
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "res",
+      "y": 764,
+      "label": "reservas y mantenimientos",
+      "variant": "default",
+      "note": "Franjas ocupadas del día"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 821,
+      "label": "200 {horarios, ocupadas}",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 827,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 227,
+      "to": 770,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 284,
+      "to": 738,
+      "type": "database"
+    },
+    {
+      "participant": "res",
+      "from": 519,
+      "to": 770,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Lectura abierta",
+      "items": [
+        "Cualquier autenticado ve las zonas activas",
+        "Solo el administrador escribe y ve todas"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 618,
+      "label": "Administrar"
+    },
+    {
+      "from": 640,
+      "to": 833,
+      "label": "Consultar"
+    }
+  ]
+}

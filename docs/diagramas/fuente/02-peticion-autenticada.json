@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Petición autenticada y autorización por etiqueta",
+    "output": "docs/diagramas/02-peticion-autenticada.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Cliente",
+      "sublabel": "Authorization: Bearer"
+    },
+    {
+      "id": "filtro",
+      "type": "security",
+      "label": "Resource Server",
+      "sublabel": "filtro Bearer JWT"
+    },
+    {
+      "id": "dec",
+      "type": "security",
+      "label": "JwtDecoder",
+      "sublabel": "HS256 + emisor"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "Controller",
+      "sublabel": "método con etiqueta"
+    },
+    {
+      "id": "pre",
+      "type": "security",
+      "label": "@PreAuthorize",
+      "sublabel": "etiqueta de rol"
+    },
+    {
+      "id": "srv",
+      "type": "backend",
+      "label": "Service",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "err",
+      "type": "backend",
+      "label": "ManejadorErrores",
+      "sublabel": "ErrorApi 401 / 403"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "filtro",
+      "y": 175,
+      "label": "GET /api/... + Bearer",
+      "variant": "emphasis",
+      "note": "Sin sesión ni cookies: el token viaja en cada petición"
+    },
+    {
+      "id": "m2",
+      "from": "filtro",
+      "to": "dec",
+      "y": 243,
+      "label": "decode(token)",
+      "variant": "security",
+      "note": "Valida firma, expiración y emisor"
+    },
+    {
+      "id": "m3",
+      "from": "dec",
+      "to": "filtro",
+      "y": 300,
+      "label": "Jwt válido",
+      "variant": "return"
+    },
+    {
+      "id": "m4",
+      "from": "filtro",
+      "to": "err",
+      "y": 332,
+      "label": "token ausente o inválido",
+      "variant": "dashed",
+      "note": "Alternativa: responde 401 sin llegar al controller"
+    },
+    {
+      "id": "m5",
+      "from": "err",
+      "to": "cliente",
+      "y": 400,
+      "label": "401 ErrorApi",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "filtro",
+      "to": "ctrl",
+      "y": 448,
+      "label": "SecurityContext con autoridades",
+      "variant": "default",
+      "note": "Autoridades = claim \"autoridades\" del token"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "pre",
+      "y": 505,
+      "label": "evalúa la etiqueta",
+      "variant": "security",
+      "note": "Ej.: @SoloAdministrador, @SoloResidente, @Autenticado"
+    },
+    {
+      "id": "m8",
+      "from": "pre",
+      "to": "err",
+      "y": 573,
+      "label": "rol insuficiente",
+      "variant": "dashed",
+      "note": "Alternativa: 403 sin permiso"
+    },
+    {
+      "id": "m9",
+      "from": "err",
+      "to": "cliente",
+      "y": 630,
+      "label": "403 ErrorApi",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "pre",
+      "to": "ctrl",
+      "y": 662,
+      "label": "permitido",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "ctrl",
+      "to": "srv",
+      "y": 694,
+      "label": "ejecuta el caso de uso",
+      "variant": "default",
+      "note": "Casos \"propios\": filtra por personaId del token"
+    },
+    {
+      "id": "m12",
+      "from": "srv",
+      "to": "ctrl",
+      "y": 762,
+      "label": "respuesta DTO",
+      "variant": "return"
+    },
+    {
+      "id": "m13",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 794,
+      "label": "2xx + cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "filtro",
+      "from": 170,
+      "to": 454,
+      "type": "security"
+    },
+    {
+      "participant": "dec",
+      "from": 238,
+      "to": 306,
+      "type": "security"
+    },
+    {
+      "participant": "ctrl",
+      "from": 443,
+      "to": 800,
+      "type": "backend"
+    },
+    {
+      "participant": "pre",
+      "from": 500,
+      "to": 668,
+      "type": "security"
+    },
+    {
+      "participant": "srv",
+      "from": 689,
+      "to": 768,
+      "type": "backend"
+    },
+    {
+      "participant": "err",
+      "from": 327,
+      "to": 636,
+      "type": "backend"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Reglas que no se rompen",
+      "items": [
+        "Los permisos se declaran con etiquetas, nunca con requestMatchers por URL",
+        "Solo login, olvidé y restablecer contraseña son públicos",
+        "Un endpoint sin etiqueta exige al menos un token válido",
+        "SeguridadPorEtiquetaTest falla si falta una etiqueta"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 412,
+      "label": "Autenticación (stateless)"
+    },
+    {
+      "from": 434,
+      "to": 806,
+      "label": "Autorización por etiqueta"
+    }
+  ]
+}

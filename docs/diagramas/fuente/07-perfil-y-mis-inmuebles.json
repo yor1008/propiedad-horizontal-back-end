@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-003 Datos propios y CU-011 Mis inmuebles",
+    "output": "docs/diagramas/07-perfil-y-mis-inmuebles.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Persona vinculada",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "Perfil / MisInmuebles",
+      "sublabel": "controllers"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "PerfilService",
+      "sublabel": "MisInmueblesService"
+    },
+    {
+      "id": "pa",
+      "type": "security",
+      "label": "PersonaAutenticada",
+      "sublabel": "persona del token"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Persona / Inmueble",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /api/perfil",
+      "variant": "emphasis",
+      "note": "@SoloPersonaVinculada"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "obtener()",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "pa",
+      "y": 253,
+      "label": "entidad()",
+      "variant": "security",
+      "note": "Siempre la persona del token"
+    },
+    {
+      "id": "m4",
+      "from": "pa",
+      "to": "repo",
+      "y": 310,
+      "label": "findById(personaId)",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 342,
+      "label": "200 PersonaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 374,
+      "label": "PUT /api/perfil",
+      "variant": "emphasis",
+      "note": "Corrige nombres, apellidos, teléfono y correo"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "repo",
+      "y": 442,
+      "label": "actualizarDatos(...)",
+      "variant": "default",
+      "note": "El documento no cambia; el correo se normaliza"
+    },
+    {
+      "id": "m8",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 510,
+      "label": "200 PersonaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 558,
+      "label": "GET /api/mis-inmuebles",
+      "variant": "emphasis",
+      "note": "@SoloPropietario"
+    },
+    {
+      "id": "m10",
+      "from": "svc",
+      "to": "pa",
+      "y": 604,
+      "label": "entidad()",
+      "variant": "security",
+      "note": "Exige vínculo vigente y tipo propietario"
+    },
+    {
+      "id": "m11",
+      "from": "svc",
+      "to": "repo",
+      "y": 661,
+      "label": "parqueaderos del inmueble",
+      "variant": "default",
+      "note": "Sin vínculo vigente devuelve lista vacía"
+    },
+    {
+      "id": "m12",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 718,
+      "label": "200 [inmueble + parqueaderos]",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 724,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 667,
+      "type": "backend"
+    },
+    {
+      "participant": "pa",
+      "from": 248,
+      "to": 610,
+      "type": "security"
+    },
+    {
+      "participant": "repo",
+      "from": 305,
+      "to": 667,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "Alcance",
+      "items": [
+        "Administrador y vigilante no tienen perfil de persona (usan /api/auth/me)",
+        "Tiene un solo vínculo, así que la lista trae 0 o 1 inmueble"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 522,
+      "label": "CU-003 Perfil"
+    },
+    {
+      "from": 544,
+      "to": 730,
+      "label": "CU-011 Mis inmuebles"
+    }
+  ]
+}

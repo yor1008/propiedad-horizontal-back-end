@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-021 Historial de accesos",
+    "output": "docs/diagramas/20-historial-accesos.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Admin / Vigilante",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AccesoController",
+      "sublabel": "GET /historial"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "HistorialAcceso",
+      "sublabel": "Service"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "RegistroVisita",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /historial?desde&hasta&documento",
+      "variant": "emphasis",
+      "note": "@AdministradorOVigilante"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 232,
+      "label": "consultar(desde, hasta, doc)",
+      "variant": "default",
+      "note": "hasta anterior a desde: 422"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 289,
+      "label": "Specification + PageRequest(500)",
+      "variant": "default",
+      "note": "Filtros opcionales por día de llegada y documento"
+    },
+    {
+      "id": "m4",
+      "from": "repo",
+      "to": "svc",
+      "y": 357,
+      "label": "últimos registros",
+      "variant": "return",
+      "note": "Orden: llegada descendente"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 414,
+      "label": "200 hasta 500 registros",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 420,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 227,
+      "to": 363,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 284,
+      "to": 363,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Alcance",
+      "items": [
+        "Incluye ingresos autorizados y negados",
+        "Máximo 500 registros recientes"
+      ]
+    }
+  ]
+}

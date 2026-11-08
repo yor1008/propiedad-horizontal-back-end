@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-018, CU-019 y CU-020 Parqueadero de visitante y salida",
+    "output": "docs/diagramas/19-parqueadero-visitante-y-salida.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Vigilante",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "AccesoController",
+      "sublabel": "/api/accesos"
+    },
+    {
+      "id": "park",
+      "type": "backend",
+      "label": "ParqueaderoVisitante",
+      "sublabel": "Service"
+    },
+    {
+      "id": "salida",
+      "type": "backend",
+      "label": "SalidaVisitante",
+      "sublabel": "Service"
+    },
+    {
+      "id": "reg",
+      "type": "database",
+      "label": "RegistroVisita",
+      "sublabel": "PostgreSQL"
+    },
+    {
+      "id": "inm",
+      "type": "database",
+      "label": "Inmueble",
+      "sublabel": "parqueaderos"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "GET /parqueaderos-disponibles",
+      "variant": "emphasis",
+      "note": "@SoloVigilante"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "park",
+      "y": 221,
+      "label": "disponibles()",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "park",
+      "to": "reg",
+      "y": 253,
+      "label": "visitas dentro con parqueadero",
+      "variant": "default",
+      "note": "La ocupación se deriva, no se guarda"
+    },
+    {
+      "id": "m4",
+      "from": "park",
+      "to": "inm",
+      "y": 310,
+      "label": "activos, sin dueño, libres",
+      "variant": "default"
+    },
+    {
+      "id": "m5",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 342,
+      "label": "200 lista",
+      "variant": "return"
+    },
+    {
+      "id": "m6",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 374,
+      "label": "PATCH /{id}/parqueadero",
+      "variant": "emphasis",
+      "note": "Cuerpo {parqueaderoId}"
+    },
+    {
+      "id": "m7",
+      "from": "ctrl",
+      "to": "park",
+      "y": 420,
+      "label": "asignar(registroId, parqueaderoId)",
+      "variant": "default",
+      "note": "Solo a quien está dentro (422)"
+    },
+    {
+      "id": "m8",
+      "from": "park",
+      "to": "inm",
+      "y": 477,
+      "label": "activo y de visitantes",
+      "variant": "default",
+      "note": "Si pertenece a un inmueble: 422"
+    },
+    {
+      "id": "m9",
+      "from": "park",
+      "to": "reg",
+      "y": 534,
+      "label": "asignarParqueadero()",
+      "variant": "default",
+      "note": "Si lo ocupa otro visitante: 409"
+    },
+    {
+      "id": "m10",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 591,
+      "label": "200 RegistroVisita",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 639,
+      "label": "PATCH /{id}/salida",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m12",
+      "from": "ctrl",
+      "to": "salida",
+      "y": 671,
+      "label": "registrarSalida(id)",
+      "variant": "default",
+      "note": "Si no está dentro: 422"
+    },
+    {
+      "id": "m13",
+      "from": "salida",
+      "to": "reg",
+      "y": 717,
+      "label": "registrarSalida()",
+      "variant": "default",
+      "note": "Libera el parqueadero"
+    },
+    {
+      "id": "m14",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 763,
+      "label": "200 RegistroVisita",
+      "variant": "return"
+    },
+    {
+      "id": "m15",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 795,
+      "label": "GET /dentro",
+      "variant": "emphasis",
+      "note": "Visitantes dentro, más recientes primero"
+    },
+    {
+      "id": "m16",
+      "from": "salida",
+      "to": "reg",
+      "y": 852,
+      "label": "ingreso sin salida",
+      "variant": "default"
+    },
+    {
+      "id": "m17",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 884,
+      "label": "200 lista",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 890,
+      "type": "backend"
+    },
+    {
+      "participant": "park",
+      "from": 216,
+      "to": 540,
+      "type": "backend"
+    },
+    {
+      "participant": "salida",
+      "from": 666,
+      "to": 858,
+      "type": "backend"
+    },
+    {
+      "participant": "reg",
+      "from": 248,
+      "to": 858,
+      "type": "database"
+    },
+    {
+      "participant": "inm",
+      "from": 305,
+      "to": 483,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "slate",
+      "title": "Sin estado guardado",
+      "items": [
+        "Un parqueadero de visitantes está ocupado si hay una visita dentro que lo usa",
+        "La salida lo libera automáticamente"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 603,
+      "label": "Asignar parqueadero"
+    },
+    {
+      "from": 625,
+      "to": 896,
+      "label": "Salida y consulta"
+    }
+  ]
+}

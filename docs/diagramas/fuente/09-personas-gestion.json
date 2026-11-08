@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "CU-008 Gestionar personas: editar, desactivar y borrar",
+    "output": "docs/diagramas/09-personas-gestion.html",
+    "locale": "es",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {
+      "id": "cliente",
+      "type": "external",
+      "label": "Administrador",
+      "sublabel": "front-end"
+    },
+    {
+      "id": "ctrl",
+      "type": "backend",
+      "label": "PersonaController",
+      "sublabel": "/api/personas/{id}"
+    },
+    {
+      "id": "svc",
+      "type": "backend",
+      "label": "PersonaService",
+      "sublabel": "caso de uso"
+    },
+    {
+      "id": "hist",
+      "type": "backend",
+      "label": "HistorialPersona",
+      "sublabel": "tieneHistorial"
+    },
+    {
+      "id": "ocup",
+      "type": "backend",
+      "label": "OcupacionInmuebles",
+      "sublabel": "recalcular"
+    },
+    {
+      "id": "repo",
+      "type": "database",
+      "label": "Persona",
+      "sublabel": "PostgreSQL"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m1",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 175,
+      "label": "PUT /api/personas/{id}",
+      "variant": "emphasis",
+      "note": "@SoloAdministrador"
+    },
+    {
+      "id": "m2",
+      "from": "ctrl",
+      "to": "svc",
+      "y": 221,
+      "label": "actualizar(id, datos)",
+      "variant": "default"
+    },
+    {
+      "id": "m3",
+      "from": "svc",
+      "to": "repo",
+      "y": 253,
+      "label": "findById + actualizarDatos",
+      "variant": "default",
+      "note": "El documento no cambia; 404 si no existe"
+    },
+    {
+      "id": "m4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 310,
+      "label": "200 PersonaResponse",
+      "variant": "return"
+    },
+    {
+      "id": "m5",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 358,
+      "label": "PATCH /{id}/desactivar",
+      "variant": "emphasis",
+      "note": "Cuerpo {motivo}"
+    },
+    {
+      "id": "m6",
+      "from": "svc",
+      "to": "repo",
+      "y": 404,
+      "label": "desactivar(motivo)",
+      "variant": "default"
+    },
+    {
+      "id": "m7",
+      "from": "svc",
+      "to": "ocup",
+      "y": 436,
+      "label": "recalcular(inmueble)",
+      "variant": "default",
+      "note": "Sin vínculo vigente el inmueble puede dejar de estar ocupado"
+    },
+    {
+      "id": "m8",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 504,
+      "label": "200 {activa: false}",
+      "variant": "return"
+    },
+    {
+      "id": "m9",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 536,
+      "label": "PATCH /{id}/reactivar",
+      "variant": "emphasis",
+      "note": "Mismo recálculo de ocupación"
+    },
+    {
+      "id": "m10",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 593,
+      "label": "200 {activa: true}",
+      "variant": "return"
+    },
+    {
+      "id": "m11",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 641,
+      "label": "DELETE /api/personas/{id}",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m12",
+      "from": "svc",
+      "to": "hist",
+      "y": 673,
+      "label": "tieneHistorial(persona)",
+      "variant": "default",
+      "note": "Vínculo, cuenta, vehículos, PQRS, reservas, visitas..."
+    },
+    {
+      "id": "m13",
+      "from": "svc",
+      "to": "cliente",
+      "y": 741,
+      "label": "409 si tiene historia",
+      "variant": "dashed",
+      "note": "Alternativa: se usa desactivar en su lugar"
+    },
+    {
+      "id": "m14",
+      "from": "svc",
+      "to": "repo",
+      "y": 798,
+      "label": "delete(persona)",
+      "variant": "default",
+      "note": "Sin historia"
+    },
+    {
+      "id": "m15",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 844,
+      "label": "204 sin cuerpo",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "ctrl",
+      "from": 170,
+      "to": 850,
+      "type": "backend"
+    },
+    {
+      "participant": "svc",
+      "from": 216,
+      "to": 804,
+      "type": "backend"
+    },
+    {
+      "participant": "hist",
+      "from": 668,
+      "to": 679,
+      "type": "backend"
+    },
+    {
+      "participant": "ocup",
+      "from": 431,
+      "to": 442,
+      "type": "backend"
+    },
+    {
+      "participant": "repo",
+      "from": 248,
+      "to": 804,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Baja lógica, no borrar historia",
+      "items": [
+        "Desactivar una persona no desactiva su cuenta",
+        "El borrado físico solo procede sin ninguna historia asociada"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": 161,
+      "to": 322,
+      "label": "Editar"
+    },
+    {
+      "from": 344,
+      "to": 605,
+      "label": "Baja lógica"
+    },
+    {
+      "from": 627,
+      "to": 856,
+      "label": "Borrado físico"
+    }
+  ]
+}
