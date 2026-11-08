@@ -206,4 +206,4 @@ Las fuentes están en [`docs/diagramas/fuente`](docs/diagramas/fuente) (una por 
 node <ruta-de-archify>/bin/archify.mjs finalize sequence docs/diagramas/fuente/01-login.json docs/diagramas/01-login.html --quality showcase
 ```
 
-Los HTML y sus recibos no se versionan (pesan unos 800 KB cada uno); los SVG de `docs/diagramas/svg` sí. Cada SVG sale del HTML con la opción **Exportar → SVG (claro)** del visor.
+Los HTML y sus recibos no se versionan (pesan unos 800 KB cada uno); los SVG de `docs/diagramas/svg` sí. Cada SVG sale del HTML con la opción **Exportar → SVG (claro)** del visor, y después se le quitan los fondos de las etiquetas con `python docs/diagramas/quitar-fondos-etiquetas.py` (esos recuadros tapaban parte de las flechas).
