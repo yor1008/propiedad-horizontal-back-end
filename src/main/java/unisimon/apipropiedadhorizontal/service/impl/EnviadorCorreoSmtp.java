@@ -3,6 +3,7 @@ package unisimon.apipropiedadhorizontal.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -15,6 +16,7 @@ import unisimon.apipropiedadhorizontal.service.EnviadorCorreo;
  */
 @Slf4j
 @Component
+@ConditionalOnExpression("'${app.mail.brevo.api-key:}'.isEmpty()")
 public class EnviadorCorreoSmtp implements EnviadorCorreo {
 
     private final ObjectProvider<JavaMailSender> emisor;

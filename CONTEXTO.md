@@ -29,7 +29,7 @@ Si el diagrama cambia (nueva versión), actualiza entidades **y** la sección 4 
 | Lenguaje / build | Java 25, Maven (`./mvnw`), Spring Boot 4.1.x (Spring Security 7, Jackson 3 = `tools.jackson`) |
 | Persistencia | Spring Data JPA + Hibernate (`ddl-auto=validate`), PostgreSQL (`compose.yaml`; Boot lo conecta solo en desarrollo). **Esquema con Flyway** (ver sección 9) |
 | Seguridad | Spring Security + `oauth2-resource-server` (JWT HS256 con Nimbus). Sin sesión, sin CSRF |
-| Correo | `spring-boot-starter-mail` (SMTP) tras el puerto `EnviadorCorreo`; `@Async` para no bloquear la petición |
+| Correo | Puerto `EnviadorCorreo` con dos adaptadores: SMTP (`spring-boot-starter-mail`) o API HTTP de Brevo si hay `BREVO_API_KEY`; `@Async` para no bloquear la petición |
 | Otros | Lombok (`@SuperBuilder`, `@Getter`), Bean Validation |
 | Pruebas | JUnit 5 + MockMvc; H2 en memoria (modo PostgreSQL) en `src/test/resources/application.properties` |
 
@@ -212,8 +212,10 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
   envía además un correo a quien tenga correo (ver 4.10).
 
 ### 4.10 Decisiones de implementación (correo y restablecer contraseña)
-- **Puerto `EnviadorCorreo`** (`service`), implementado por `EnviadorCorreoSmtp` (`@Async`, mejor esfuerzo: nunca lanza ni registra
-  el cuerpo del correo). Sin `MAIL_HOST` la app arranca y solo avisa en el log. En pruebas lo reemplaza `CorreoCapturado`.
+- **Puerto `EnviadorCorreo`** (`service`), con dos adaptadores excluyentes (`@ConditionalOnExpression` sobre `app.mail.brevo.api-key`):
+  `EnviadorCorreoSmtp` (por defecto) y `EnviadorCorreoBrevo` (API HTTP, puerto 443; se activa con `BREVO_API_KEY`). Ambos `@Async`, mejor
+  esfuerzo: nunca lanzan ni registran el cuerpo del correo. Brevo existe porque Render gratis **bloquea el SMTP saliente**; su remitente
+  (`MAIL_REMITENTE`) debe estar verificado en Brevo. Sin `MAIL_HOST` ni `BREVO_API_KEY` la app arranca y solo avisa en el log. En pruebas lo reemplaza `CorreoCapturado`.
 - **Notificaciones por correo:** `NotificadorImpl` envía **después del commit** (si el caso de uso se revierte no sale correo) y solo
   a destinatarios con correo; `Notificacion.enviadaPorCorreo` es verdadero únicamente si de verdad se pidió enviarlo.
 - **Restablecer contraseña (CU-002):** `POST /api/auth/olvide-contrasena {correo}` → 204 siempre (no revela si la cuenta existe; solo
@@ -321,6 +323,7 @@ Variables de entorno:
 | `JWT_SECRET` | **Sí** (≥ 32 chars) | Clave HS256 |
 | `BOOTSTRAP_ADMIN_CORREO` / `BOOTSTRAP_ADMIN_CONTRASENA` | No | Crea el primer administrador al arrancar si no existe ninguno (≥ 8 chars). Con la tabla de cuentas vacía queda con **id 1** (reinicia el contador de identidad); con otras cuentas ya creadas usa el siguiente id. Solo se aplica si no hay administrador: cambiar la clave en el `.env` después no modifica una cuenta existente (usar `/api/auth/cambiar-contrasena`) |
 | `MAIL_HOST`, `MAIL_PORT` (587), `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_REMITENTE` | No | SMTP. Sin `MAIL_HOST` no se envían correos (aviso en el log). Gmail: `smtp.gmail.com` + contraseña de aplicación. `MAIL_REMITENTE` vacío usa `MAIL_USERNAME` |
+| `BREVO_API_KEY` | No | Si tiene valor, el correo sale por la API de Brevo en vez de SMTP (necesario en Render gratis). Requiere `MAIL_REMITENTE` = remitente verificado en Brevo (Senders & IP). Plan gratis: 300 correos/día |
 | `FRONTEND_URL_RESTABLECER` | No | Página del front a la que apunta el enlace del correo (por defecto `http://localhost:3000/restablecer-contrasena`); en producción, la URL pública del front |
 
 Ejecutar: completa `.env` (plantilla en `.env.example`) y corre `./mvnw spring-boot:run` (necesita Docker para PostgreSQL vía `compose.yaml`).
@@ -366,8 +369,7 @@ jar; variables `SPRING_DATASOURCE_URL` (**formato JDBC**: `jdbc:postgresql://hos
 - Todos los CU de la tabla 4.4 están implementados (✅); solo queda lo pendiente de esta sección.
 - **Página del front `/restablecer-contrasena`**: el correo enlaza a `FRONTEND_URL_RESTABLECER?token=…`; el front debe leer el
   `token` y llamar a `POST /api/auth/restablecer-contrasena` (pendiente del lado del front).
-- Correo: hoy solo SMTP (`EnviadorCorreoSmtp`). Si el hosting bloquea SMTP saliente, se cambia por la API de un proveedor
-  implementando `EnviadorCorreo` (los casos de uso no se tocan). Verificar el envío real contra un SMTP al desplegar.
+- Correo: SMTP o Brevo (4.10). El envío real contra Brevo/SMTP aún no se ha verificado en producción (las pruebas usan un servidor simulado).
 - **Login con Google (OAuth2): pendiente, se agrega después** (decisión del usuario). Hoy el `pom.xml` solo trae
   `oauth2-resource-server` (validar el JWT propio); al implementarlo habrá que añadir `spring-boot-starter-security-oauth2-client`,
   usar `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET` (ya reservadas en `.env.example`) y respetar las reglas de la sección 5
