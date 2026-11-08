@@ -29,6 +29,7 @@ Si el diagrama cambia (nueva versión), actualiza entidades **y** la sección 4 
 | Lenguaje / build | Java 25, Maven (`./mvnw`), Spring Boot 4.1.x (Spring Security 7, Jackson 3 = `tools.jackson`) |
 | Persistencia | Spring Data JPA + Hibernate (`ddl-auto=validate`), PostgreSQL (`compose.yaml`; Boot lo conecta solo en desarrollo). **Esquema con Flyway** (ver sección 9) |
 | Seguridad | Spring Security + `oauth2-resource-server` (JWT HS256 con Nimbus). Sin sesión, sin CSRF |
+| Correo | `spring-boot-starter-mail` (SMTP) tras el puerto `EnviadorCorreo`; `@Async` para no bloquear la petición |
 | Otros | Lombok (`@SuperBuilder`, `@Getter`), Bean Validation |
 | Pruebas | JUnit 5 + MockMvc; H2 en memoria (modo PostgreSQL) en `src/test/resources/application.properties` |
 
@@ -104,7 +105,7 @@ Con `@Valid` y `@PreAuthorize` juntos, un body inválido responde 400 antes que 
 | CU | Descripción | Etiqueta | Estado |
 |---|---|---|---|
 | 001 | Gestionar sesión (login; cerrar sesión = descartar token) | login público / `@Autenticado` | ✅ `AuthController` |
-| 002 | Gestionar contraseña | `@Autenticado` | ✅ cambio (restablecer por correo: pendiente) |
+| 002 | Gestionar contraseña | `@Autenticado` | ✅ cambio (`/api/auth/cambiar-contrasena`) y restablecer por correo (`/api/auth/olvide-contrasena` + `/restablecer-contrasena`, públicos) |
 | 003 | Gestionar datos propios | `@SoloPersonaVinculada` | ✅ `PerfilController` |
 | 004 | Consultar notificaciones | `@SoloPersonaVinculada` | ✅ `NotificacionController` |
 | 005 | Gestionar cuentas de usuario | `@SoloAdministrador` | ✅ `CuentaUsuarioController` |
@@ -191,7 +192,7 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
 - **Notificaciones (CU-004):** `Notificador` (servicio) las crea en la **misma transacción** del evento, respetando
   `ConfiguracionNotificacion` (sin fila = activa y sin correo; `activa=false` = no genera). Eventos conectados:
   correspondencia recibida, ingreso de visitante, cambios de estado de reserva hechos por el administrador (aprobar, rechazar,
-  anular) y respuesta de PQRS. Solo las personas vinculadas tienen notificaciones. El envío por correo sigue pendiente.
+  anular) y respuesta de PQRS. Solo las personas vinculadas tienen notificaciones. El correo se envía si el evento lo configura (4.9, 4.10).
   Los tests que borran personas deben borrar antes `notificaciones` (FK).
 - **Inmuebles del propietario (CU-011):** `GET /api/mis-inmuebles` devuelve el inmueble del vínculo vigente si el tipo es
   propietario (lista de 0..1 porque `Persona` tiene un solo vínculo), con sus parqueaderos asignados.
@@ -206,8 +207,20 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
   y el servicio la crea si faltara.
 - **Notificaciones por evento** (`ConfiguracionNotificacion`): `GET /api/configuracion/notificaciones` devuelve siempre los 4
   `ETipoEvento` (uno sin fila = activa y sin correo); `PUT /api/configuracion/notificaciones/{evento}` con `activa` y `enviarCorreo`
-  (ambos obligatorios). `activa=false` hace que `Notificador` no genere nada. `enviarCorreo` solo se **guarda** y marca
-  `Notificacion.enviadaPorCorreo`: el envío real de correo sigue pendiente (sección 10).
+  (ambos obligatorios). `activa=false` hace que `Notificador` no genere nada. Con `enviarCorreo=true`, `Notificador`
+  envía además un correo a quien tenga correo (ver 4.10).
+
+### 4.10 Decisiones de implementación (correo y restablecer contraseña)
+- **Puerto `EnviadorCorreo`** (`service`), implementado por `EnviadorCorreoSmtp` (`@Async`, mejor esfuerzo: nunca lanza ni registra
+  el cuerpo del correo). Sin `MAIL_HOST` la app arranca y solo avisa en el log. En pruebas lo reemplaza `CorreoCapturado`.
+- **Notificaciones por correo:** `NotificadorImpl` envía **después del commit** (si el caso de uso se revierte no sale correo) y solo
+  a destinatarios con correo; `Notificacion.enviadaPorCorreo` es verdadero únicamente si de verdad se pidió enviarlo.
+- **Restablecer contraseña (CU-002):** `POST /api/auth/olvide-contrasena {correo}` → 204 siempre (no revela si la cuenta existe; solo
+  envía si existe y está activa) y `POST /api/auth/restablecer-contrasena {token, nueva}` → 204. Ambos **públicos** (`RutasPublicas`),
+  porque quien olvidó su clave no tiene token. El token (`TokenRestablecimientoService`) es un JWT HS256 firmado con la misma clave pero
+  **emisor distinto** (`<emisor>-restablecer`): el `JwtDecoder` de la API lo rechaza como token de acceso y el de restablecimiento
+  rechaza los de acceso. Vale 30 min (`app.security.jwt.expiracion-restablecimiento`) y es **de un solo uso sin guardar estado**: lleva
+  la huella SHA-256 del hash de contraseña vigente y deja de coincidir al cambiarla. Token inválido/expirado/usado → 422.
 
 ## 5. Reglas de seguridad (NO negociables)
 
@@ -222,8 +235,9 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
    `@Autenticado`, `@SoloAdministrador`, `@SoloVigilante`, `@AdministradorOVigilante`, `@SoloPersonaVinculada`,
    `@SoloPropietario`, `@SoloResidente`. **Prohibido** agregar `requestMatchers(...).hasRole(...)` en
    `SecurityConfig`. Para un permiso nuevo, crea una nueva anotación en esa carpeta.
-4. **Única excepción por URL:** `POST /api/auth/login` (`RutasPublicas.LOGIN`), porque no puede exigir un token
-   que aún no existe. Cualquier otra ruta pública requiere permiso explícito del usuario y registrarse aquí.
+4. **Únicas excepciones por URL** (`RutasPublicas`): `POST /api/auth/login`, `POST /api/auth/olvide-contrasena` y
+   `POST /api/auth/restablecer-contrasena`, porque quien las usa aún no tiene token (las dos últimas: autorizadas por el
+   usuario al pedir el restablecimiento; ver 4.10). Cualquier otra ruta pública requiere permiso explícito del usuario y registrarse aquí.
 5. **Seguro por defecto.** La cadena exige `authenticated()` a todo lo demás; un endpoint sin etiqueta exige al
    menos token válido, y `SeguridadPorEtiquetaTest` **falla** si algún método de controlador no tiene etiqueta
    (salvo `AuthController#iniciarSesion`). Todo endpoint nuevo lleva etiqueta.
@@ -293,6 +307,8 @@ Variables de entorno:
 |---|---|---|
 | `JWT_SECRET` | **Sí** (≥ 32 chars) | Clave HS256 |
 | `BOOTSTRAP_ADMIN_CORREO` / `BOOTSTRAP_ADMIN_CONTRASENA` | No | Crea el primer administrador al arrancar si no existe ninguno (≥ 8 chars). Con la tabla de cuentas vacía queda con **id 1** (reinicia el contador de identidad); con otras cuentas ya creadas usa el siguiente id. Solo se aplica si no hay administrador: cambiar la clave en el `.env` después no modifica una cuenta existente (usar `/api/auth/cambiar-contrasena`) |
+| `MAIL_HOST`, `MAIL_PORT` (587), `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_REMITENTE` | No | SMTP. Sin `MAIL_HOST` no se envían correos (aviso en el log). Gmail: `smtp.gmail.com` + contraseña de aplicación. `MAIL_REMITENTE` vacío usa `MAIL_USERNAME` |
+| `FRONTEND_URL_RESTABLECER` | No | Página del front a la que apunta el enlace del correo (por defecto `http://localhost:3000/restablecer-contrasena`); en producción, la URL pública del front |
 
 Ejecutar: completa `.env` (plantilla en `.env.example`) y corre `./mvnw spring-boot:run` (necesita Docker para PostgreSQL vía `compose.yaml`).
 Pruebas: `./mvnw test` (no necesita Docker ni variables: usa H2 y un secreto de prueba).
@@ -335,9 +351,10 @@ jar; variables `SPRING_DATASOURCE_URL` (**formato JDBC**: `jdbc:postgresql://hos
 ## 10. Pendientes y decisiones abiertas
 
 - Todos los CU de la tabla 4.4 están implementados (✅); solo queda lo pendiente de esta sección.
-- Restablecer contraseña (`solicitarRestablecimiento`/`restablecerContrasena` del diagrama): requiere envío de
-  correo; diseñar como token JWT de un solo propósito, sin guardar estado.
-- Envío real de correos para `ConfiguracionNotificacion.enviarCorreo`.
+- **Página del front `/restablecer-contrasena`**: el correo enlaza a `FRONTEND_URL_RESTABLECER?token=…`; el front debe leer el
+  `token` y llamar a `POST /api/auth/restablecer-contrasena` (pendiente del lado del front).
+- Correo: hoy solo SMTP (`EnviadorCorreoSmtp`). Si el hosting bloquea SMTP saliente, se cambia por la API de un proveedor
+  implementando `EnviadorCorreo` (los casos de uso no se tocan). Verificar el envío real contra un SMTP al desplegar.
 - **Login con Google (OAuth2): pendiente, se agrega después** (decisión del usuario). Hoy el `pom.xml` solo trae
   `oauth2-resource-server` (validar el JWT propio); al implementarlo habrá que añadir `spring-boot-starter-security-oauth2-client`,
   usar `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET` (ya reservadas en `.env.example`) y respetar las reglas de la sección 5

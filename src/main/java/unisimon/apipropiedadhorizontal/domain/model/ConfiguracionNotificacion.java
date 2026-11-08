@@ -51,7 +51,7 @@ public class ConfiguracionNotificacion extends EntidadBase {
                         .evento(evento)
                         .mensaje(mensaje)
                         .fechaHora(ahora)
-                        .enviadaPorCorreo(enviarCorreo)
+                        .enviadaPorCorreo(enviarCorreo && persona.getCorreo() != null && !persona.getCorreo().isBlank())
                         .build())
                 .toList();
     }

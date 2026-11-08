@@ -24,7 +24,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class SeguridadPorEtiquetaTest {
 
-    private static final Set<String> EXCEPCIONES = Set.of("AuthController#iniciarSesion");
+    private static final Set<String> EXCEPCIONES = Set.of("AuthController#iniciarSesion",
+            "AuthController#olvideContrasena", "AuthController#restablecerContrasena");
 
     @Test
     void todoEndpointTieneEtiquetaDeAutorizacion() throws ClassNotFoundException {

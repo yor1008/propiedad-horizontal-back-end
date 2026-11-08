@@ -56,7 +56,8 @@ public class SecurityConfig {
                 .requestCache(cache -> cache.disable())
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(a -> a
-                        .requestMatchers(HttpMethod.POST, RutasPublicas.LOGIN).permitAll()
+                        .requestMatchers(HttpMethod.POST, RutasPublicas.LOGIN, RutasPublicas.OLVIDE_CONTRASENA,
+                                RutasPublicas.RESTABLECER_CONTRASENA).permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(e -> e
                         .authenticationEntryPoint(errores)
