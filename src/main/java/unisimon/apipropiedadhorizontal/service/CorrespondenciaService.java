@@ -18,4 +18,7 @@ public interface CorrespondenciaService {
 
     /** Las de la persona autenticada y las dirigidas a su inmueble vigente. */
     List<CorrespondenciaResponse> mias();
+
+    /** Borrado fisico solo de correspondencia sin entregar; despues, 409. */
+    void eliminar(Long id);
 }

@@ -381,4 +381,45 @@ class AdministracionIntegracionTest {
         Number id = JsonPath.read(accion.andReturn().getResponse().getContentAsString(), "$.id");
         return id.longValue();
     }
+
+    // ---------- borrado (solo administrador; sin historia) ----------
+
+    @Test
+    void catalogoSinUsoSeBorraYElUsadoNo() throws Exception {
+        Long libre = catalogo(ETipoCatalogo.TIPO_VEHICULO, "Bicicleta");
+        crearPersona("9201").andExpect(status().isCreated()); // usa tipoDocumento
+
+        borrar("/api/catalogos/" + libre, vigilante).andExpect(status().isForbidden());
+        borrar("/api/catalogos/" + libre, admin).andExpect(status().isNoContent());
+        borrar("/api/catalogos/" + libre, admin).andExpect(status().isNotFound());
+        borrar("/api/catalogos/" + tipoDocumento, admin).andExpect(status().isConflict());
+    }
+
+    @Test
+    void cuentaSeBorraPeroNoLaPropia() throws Exception {
+        Long propia = cuentas.findByCorreoAcceso("admin@ph.com").orElseThrow().getId();
+        Long ajena = cuentas.findByCorreoAcceso("vig@ph.com").orElseThrow().getId();
+
+        borrar("/api/cuentas/" + ajena, vigilante).andExpect(status().isForbidden());
+        borrar("/api/cuentas/" + propia, admin).andExpect(status().isUnprocessableContent());
+        borrar("/api/cuentas/" + ajena, admin).andExpect(status().isNoContent());
+        borrar("/api/cuentas/" + ajena, admin).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void vehiculoSeBorra() throws Exception {
+        Long personaId = id(crearPersona("9301"));
+        Long inmuebleId = id(enviarPost("/api/inmuebles", admin, inmueble("C", "301", 3, tipoInmueble)).andExpect(status().isCreated()));
+        enviarPost("/api/inmuebles/" + inmuebleId + "/vinculos", admin,
+                "{\"personaId\":" + personaId + ",\"tipoPersonaId\":" + tipoResidente + "}").andExpect(status().isCreated());
+        Long vehiculoId = id(enviarPost("/api/vehiculos", admin, vehiculoJson(personaId, inmuebleId, "xyz789")).andExpect(status().isCreated()));
+
+        borrar("/api/vehiculos/" + vehiculoId, vigilante).andExpect(status().isForbidden());
+        borrar("/api/vehiculos/" + vehiculoId, admin).andExpect(status().isNoContent());
+        borrar("/api/vehiculos/" + vehiculoId, admin).andExpect(status().isNotFound());
+    }
+
+    private ResultActions borrar(String ruta, String token) throws Exception {
+        return mvc.perform(delete(ruta).header("Authorization", "Bearer " + token));
+    }
 }

@@ -1,5 +1,6 @@
 package unisimon.apipropiedadhorizontal.web.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -83,5 +84,12 @@ public class ZonaComunController {
     public DisponibilidadResponse disponibilidad(@PathVariable Long id,
                                                  @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         return zonas.disponibilidad(id, fecha);
+    }
+
+    @SoloAdministrador
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        zonas.eliminar(id);
     }
 }

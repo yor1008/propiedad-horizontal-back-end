@@ -30,6 +30,7 @@ import unisimon.apipropiedadhorizontal.repository.VehiculoRepository;
 
 import java.time.LocalDate;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -216,5 +217,52 @@ class OperacionesIntegracionTest {
     private Long id(ResultActions accion) throws Exception {
         Number id = JsonPath.read(accion.andReturn().getResponse().getContentAsString(), "$.id");
         return id.longValue();
+    }
+
+    // ---------- borrado (solo administrador; sin historia) ----------
+
+    @Test
+    void correspondenciaSinEntregarSeBorraYLaEntregadaNo() throws Exception {
+        String cuerpo = "{\"inmuebleId\":" + inmuebleId + ",\"tipoId\":" + tipoCorrespondencia + "}";
+        Long pendiente = id(enviar("post", "/api/correspondencia", vigilante, cuerpo).andExpect(status().isCreated()));
+        Long entregada = id(enviar("post", "/api/correspondencia", vigilante, cuerpo).andExpect(status().isCreated()));
+        enviar("patch", "/api/correspondencia/" + entregada + "/entregar", vigilante,
+                "{\"nombreRecibe\":\"Ana\",\"documentoRecibe\":\"1001\"}").andExpect(status().isOk());
+
+        mvc.perform(delete("/api/correspondencia/" + pendiente)).andExpect(status().isUnauthorized());
+        borrar("/api/correspondencia/" + pendiente, vigilante).andExpect(status().isForbidden());
+        borrar("/api/correspondencia/" + pendiente, admin).andExpect(status().isNoContent());
+        borrar("/api/correspondencia/" + pendiente, admin).andExpect(status().isNotFound());
+        borrar("/api/correspondencia/" + entregada, admin).andExpect(status().isConflict());
+    }
+
+    @Test
+    void pqrsSinAtenderSeBorraYLaAtendidaNo() throws Exception {
+        String cuerpo = "{\"tipoId\":" + tipoPqrs + ",\"asunto\":\"Ruido\",\"descripcion\":\"Fiesta\"}";
+        Long radicada = id(enviar("post", "/api/pqrs", residente, cuerpo).andExpect(status().isCreated()));
+        Long atendida = id(enviar("post", "/api/pqrs", residente, cuerpo).andExpect(status().isCreated()));
+        enviar("patch", "/api/pqrs/" + atendida + "/atender", admin, "{\"respuesta\":\"Listo\"}").andExpect(status().isOk());
+
+        borrar("/api/pqrs/" + radicada, residente).andExpect(status().isForbidden());
+        borrar("/api/pqrs/" + radicada, admin).andExpect(status().isNoContent());
+        borrar("/api/pqrs/" + radicada, admin).andExpect(status().isNotFound());
+        borrar("/api/pqrs/" + atendida, admin).andExpect(status().isConflict());
+    }
+
+    @Test
+    void parqueaderoAsignadoNoSeBorraPeroLibreSi() throws Exception {
+        Long id = id(enviar("post", "/api/parqueaderos", admin,
+                "{\"torreBloque\":\"P\",\"numero\":\"7\",\"piso\":0,\"tipoId\":" + tipoInmueble + "}").andExpect(status().isCreated()));
+        enviar("patch", "/api/parqueaderos/" + id + "/asignar", admin, "{\"inmuebleId\":" + inmuebleId + "}").andExpect(status().isOk());
+
+        borrar("/api/parqueaderos/" + id, vigilante).andExpect(status().isForbidden());
+        borrar("/api/parqueaderos/" + id, admin).andExpect(status().isUnprocessableContent());
+        enviar("patch", "/api/parqueaderos/" + id + "/liberar", admin, "").andExpect(status().isOk());
+        borrar("/api/parqueaderos/" + id, admin).andExpect(status().isNoContent());
+        borrar("/api/parqueaderos/" + id, admin).andExpect(status().isNotFound());
+    }
+
+    private ResultActions borrar(String ruta, String token) throws Exception {
+        return mvc.perform(delete(ruta).header("Authorization", "Bearer " + token));
     }
 }

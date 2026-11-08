@@ -77,4 +77,11 @@ public class GestionReservaServiceImpl implements GestionReservaService {
     private Reserva buscar(Long id) {
         return reservas.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Reserva", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Reserva reserva = reservas.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Reserva", id));
+        Borrado.exigirEstadoInicial(reserva.getEstado(), "La reserva");
+        reservas.delete(reserva);
+    }
 }

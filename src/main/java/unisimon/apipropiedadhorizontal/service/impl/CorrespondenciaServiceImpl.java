@@ -117,4 +117,12 @@ public class CorrespondenciaServiceImpl implements CorrespondenciaService {
                 .sorted(Comparator.comparing(Correspondencia::getFechaHoraRecepcion).reversed())
                 .map(CorrespondenciaResponse::de).toList();
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Correspondencia pieza = correspondencias.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Correspondencia", id));
+        Borrado.exigirEstadoInicial(pieza.getEstado(), "La correspondencia");
+        correspondencias.delete(pieza);
+    }
 }

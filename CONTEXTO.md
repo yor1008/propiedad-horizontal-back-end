@@ -22,6 +22,10 @@ operaciones del conjunto (correspondencia, zonas comunes, reservas, mantenimient
 
 Si el diagrama cambia (nueva versión), actualiza entidades **y** la sección 4 de este archivo.
 
+**Documentación de flujos:** el `README.md` muestra un diagrama de secuencia por caso de uso (imágenes en `docs/diagramas/png`,
+fuentes JSON de Archify en `docs/diagramas/fuente`; los HTML se regeneran y no se versionan). Al cambiar un flujo, actualiza su
+fuente `.json`, regenera el HTML y la imagen, y revisa la tabla «Casos de uso y diagramas» del README.
+
 ## 2. Stack
 
 | Aspecto | Decisión |
@@ -237,6 +241,23 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
   el momento; lo prueba el código: sin él no se crea la persona (422 «No se pudo verificar el correo…»). Vale cualquier proveedor.
 - `PersonaServiceImpl.crear` usa `noRollbackFor = ReglaNegocioException` para que los intentos fallidos se conserven.
 - **Pendiente:** `PUT /api/personas/{id}` y `PUT /api/perfil` aún permiten cambiar el correo sin verificarlo.
+
+### 4.12 Decisiones de implementación (borrado, `DELETE`)
+- **Todas las entidades creables tienen `DELETE /api/<recurso>/{id}`**, solo `@SoloAdministrador`, 204 al borrar, 404 si no existe.
+  Misma política que personas e inmuebles: **borrado físico solo sin historia**; con historia 409 (o 422) y se usa la baja lógica
+  (`desactivar`, `cancelar`, `anular`). Los listados no se tocan: no hay columnas nuevas ni migración.
+- **Maestros** (la historia = alguna fila que los referencia; `Borrado.fisico` hace `delete` + `flush` y traduce la violación de clave
+  foránea a 409): catálogos (`/api/catalogos/{id}`), zonas comunes (se borran con sus horarios; 409 si tienen reservas o mantenimientos),
+  parqueaderos (422 si siguen asignados a un inmueble; 409 si tuvieron visitas), vehículos y cuentas (nada depende de ellos; **no se
+  puede borrar la cuenta propia**, 422).
+- **Registros con máquina de estados** (`Borrado.exigirEstadoInicial`): solo se borran en su **estado inicial**; después 409 («ya tuvo
+  movimiento»). Reservas (`Pendiente`; las que nacen `Aprobada` solo se anulan), PQRS (`Radicada`), correspondencia (`Pendiente`) y
+  mantenimientos (`Programado`).
+- **Pre-registros:** se borran si no tienen visitas registradas (clave foránea); si no, 409 y se usa `cancelar`.
+- **Catálogos sembrados:** `CatalogosIniciales` recrea al arrancar los valores iniciales que falten por nombre, así que borrar uno
+  sembrado y sin uso lo hace reaparecer en el siguiente arranque (para ocultarlo de verdad, desactivarlo).
+- Sin `DELETE` a propósito: visitas/historial de acceso (`RegistroVisita`), visitantes, notificaciones, tipos de persona, estados y
+  configuración (son historial o datos de referencia fijos).
 
 ## 5. Reglas de seguridad (NO negociables)
 

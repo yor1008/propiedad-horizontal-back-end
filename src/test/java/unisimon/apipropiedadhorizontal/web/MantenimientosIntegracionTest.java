@@ -32,6 +32,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -210,5 +211,23 @@ class MantenimientosIntegracionTest {
     private Long id(ResultActions accion) throws Exception {
         Number id = JsonPath.read(accion.andReturn().getResponse().getContentAsString(), "$.id");
         return id.longValue();
+    }
+
+    // ---------- borrado (solo administrador; sin historia) ----------
+
+    @Test
+    void mantenimientoProgramadoSeBorraYElQueYaAvanzoNo() throws Exception {
+        Long programado = id(enviar(post("/api/mantenimientos"), admin, mantenimiento(null, dia + "T09:00", dia + "T11:00")).andExpect(status().isCreated()));
+        Long enCurso = id(enviar(post("/api/mantenimientos"), admin, mantenimiento(null, dia + "T13:00", dia + "T15:00")).andExpect(status().isCreated()));
+        mvc.perform(patch("/api/mantenimientos/" + enCurso + "/iniciar").header("Authorization", "Bearer " + admin)).andExpect(status().isOk());
+
+        borrar("/api/mantenimientos/" + programado, vigilante).andExpect(status().isForbidden());
+        borrar("/api/mantenimientos/" + programado, admin).andExpect(status().isNoContent());
+        borrar("/api/mantenimientos/" + programado, admin).andExpect(status().isNotFound());
+        borrar("/api/mantenimientos/" + enCurso, admin).andExpect(status().isConflict());
+    }
+
+    private ResultActions borrar(String ruta, String token) throws Exception {
+        return mvc.perform(delete(ruta).header("Authorization", "Bearer " + token));
     }
 }

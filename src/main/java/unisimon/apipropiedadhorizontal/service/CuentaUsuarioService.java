@@ -17,4 +17,7 @@ public interface CuentaUsuarioService {
     CuentaResponse desactivar(Long id);
 
     CuentaResponse reactivar(Long id);
+
+    /** Borrado fisico de una cuenta; no se puede borrar la propia (422). */
+    void eliminar(Long id);
 }

@@ -13,4 +13,7 @@ public interface PreRegistroService {
     List<PreRegistroResponse> mios();
 
     PreRegistroResponse cancelar(Long id);
+
+    /** Borrado fisico solo si no tiene visitas registradas; si no, 409 (cancelar). */
+    void eliminar(Long id);
 }

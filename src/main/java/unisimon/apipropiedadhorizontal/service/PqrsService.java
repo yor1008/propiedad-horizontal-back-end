@@ -16,4 +16,7 @@ public interface PqrsService {
     List<PqrsResponse> listar();
 
     PqrsResponse atender(Long id, AtenderPqrsRequest solicitud);
+
+    /** Borrado fisico solo de una PQRS sin atender; despues, 409. */
+    void eliminar(Long id);
 }

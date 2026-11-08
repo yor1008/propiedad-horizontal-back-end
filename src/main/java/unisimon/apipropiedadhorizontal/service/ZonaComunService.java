@@ -23,4 +23,7 @@ public interface ZonaComunService {
     ZonaComunResponse reactivar(Long id);
 
     DisponibilidadResponse disponibilidad(Long id, LocalDate fecha);
+
+    /** Borrado fisico (con sus horarios) solo sin reservas ni mantenimientos; si no, 409 (desactivar). */
+    void eliminar(Long id);
 }

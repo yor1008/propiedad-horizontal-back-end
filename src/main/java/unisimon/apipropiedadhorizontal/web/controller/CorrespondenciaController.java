@@ -1,5 +1,7 @@
 package unisimon.apipropiedadhorizontal.web.controller;
 
+import unisimon.apipropiedadhorizontal.security.anotaciones.SoloAdministrador;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,5 +57,12 @@ public class CorrespondenciaController {
     @GetMapping("/mias")
     public List<CorrespondenciaResponse> mias() {
         return correspondencia.mias();
+    }
+
+    @SoloAdministrador
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        correspondencia.eliminar(id);
     }
 }

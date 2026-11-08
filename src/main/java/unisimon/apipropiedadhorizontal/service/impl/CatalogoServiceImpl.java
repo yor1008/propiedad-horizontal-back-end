@@ -71,4 +71,10 @@ public class CatalogoServiceImpl implements CatalogoService {
     private ValorCatalogo buscar(Long id) {
         return catalogos.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Valor de catalogo", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Borrado.fisico(catalogos, buscar(id),
+                "El valor de catalogo esta en uso (personas, inmuebles, vehiculos, PQRS...) y no se puede borrar; desactivelo en su lugar");
+    }
 }

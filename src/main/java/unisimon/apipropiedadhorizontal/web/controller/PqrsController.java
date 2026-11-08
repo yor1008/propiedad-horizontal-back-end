@@ -1,5 +1,6 @@
 package unisimon.apipropiedadhorizontal.web.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,5 +54,12 @@ public class PqrsController {
     @PatchMapping("/{id}/atender")
     public PqrsResponse atender(@PathVariable Long id, @Valid @RequestBody AtenderPqrsRequest solicitud) {
         return pqrs.atender(id, solicitud);
+    }
+
+    @SoloAdministrador
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        pqrs.eliminar(id);
     }
 }

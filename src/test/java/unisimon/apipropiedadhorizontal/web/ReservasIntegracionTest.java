@@ -31,6 +31,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -235,5 +236,38 @@ class ReservasIntegracionTest {
     private Long id(ResultActions accion) throws Exception {
         Number id = JsonPath.read(accion.andReturn().getResponse().getContentAsString(), "$.id");
         return id.longValue();
+    }
+
+    // ---------- borrado (solo administrador; sin historia) ----------
+
+    @Test
+    void reservaPendienteSeBorraYLaAprobadaNo() throws Exception {
+        Long zona = id(enviar(post("/api/zonas-comunes"), admin, zona("Salon", true, 0, "null", HORARIOS)).andExpect(status().isCreated()));
+        Long pendiente = id(enviar(post("/api/reservas"), residente, reserva(zona, "10:00", "12:00", 5)).andExpect(status().isCreated()));
+        Long aprobada = id(enviar(post("/api/reservas"), residente, reserva(zona, "14:00", "16:00", 5)).andExpect(status().isCreated()));
+        mvc.perform(patch("/api/reservas/" + aprobada + "/aprobar").header("Authorization", "Bearer " + admin)).andExpect(status().isOk());
+
+        borrar("/api/reservas/" + pendiente, residente).andExpect(status().isForbidden());
+        borrar("/api/reservas/" + pendiente, admin).andExpect(status().isNoContent());
+        borrar("/api/reservas/" + pendiente, admin).andExpect(status().isNotFound());
+        borrar("/api/reservas/" + aprobada, admin).andExpect(status().isConflict());
+    }
+
+    @Test
+    void zonaSinReservasSeBorraConSusHorariosYConReservasNo() throws Exception {
+        Long libre = id(enviar(post("/api/zonas-comunes"), admin, zona("Terraza", false, 0, "null", HORARIOS)).andExpect(status().isCreated()));
+        Long usada = id(enviar(post("/api/zonas-comunes"), admin, zona("BBQ", false, 0, "null", HORARIOS)).andExpect(status().isCreated()));
+        enviar(post("/api/reservas"), residente, reserva(usada, "10:00", "12:00", 5)).andExpect(status().isCreated());
+
+        borrar("/api/zonas-comunes/" + libre, residente).andExpect(status().isForbidden());
+        borrar("/api/zonas-comunes/" + libre, admin).andExpect(status().isNoContent());
+        borrar("/api/zonas-comunes/" + libre, admin).andExpect(status().isNotFound());
+        borrar("/api/zonas-comunes/" + usada, admin).andExpect(status().isConflict());
+        // La zona con historia sigue ahi: se desactiva en su lugar.
+        mvc.perform(get("/api/zonas-comunes/" + usada).header("Authorization", "Bearer " + residente)).andExpect(status().isOk());
+    }
+
+    private ResultActions borrar(String ruta, String token) throws Exception {
+        return mvc.perform(delete(ruta).header("Authorization", "Bearer " + token));
     }
 }

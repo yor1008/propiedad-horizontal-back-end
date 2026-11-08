@@ -95,4 +95,14 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
                 .filter(i -> i.getCategoria() == ECategoriaInmueble.PARQUEADERO)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Parqueadero", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Inmueble parqueadero = buscarParqueadero(id);
+        if (parqueadero.getInmuebleAsociado() != null) {
+            throw new ReglaNegocioException("El parqueadero esta asignado a un inmueble; liberelo antes de borrarlo");
+        }
+        Borrado.fisico(inmuebles, parqueadero,
+                "El parqueadero tiene visitas registradas y no se puede borrar; desactivelo en su lugar");
+    }
 }

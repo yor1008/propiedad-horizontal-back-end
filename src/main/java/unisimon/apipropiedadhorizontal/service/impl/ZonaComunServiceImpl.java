@@ -140,4 +140,10 @@ public class ZonaComunServiceImpl implements ZonaComunService {
     private ZonaComun buscar(Long id) {
         return zonas.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Zona comun", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Borrado.fisico(zonas, buscar(id),
+                "La zona tiene reservas o mantenimientos asociados y no se puede borrar; desactivela en su lugar");
+    }
 }

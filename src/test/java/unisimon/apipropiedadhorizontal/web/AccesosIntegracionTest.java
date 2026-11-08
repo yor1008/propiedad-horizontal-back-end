@@ -32,6 +32,7 @@ import unisimon.apipropiedadhorizontal.repository.VisitanteRepository;
 
 import java.time.LocalDate;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -352,5 +353,23 @@ class AccesosIntegracionTest {
     private Long id(ResultActions accion, String ruta) throws Exception {
         Number id = JsonPath.read(accion.andReturn().getResponse().getContentAsString(), ruta);
         return id.longValue();
+    }
+
+    // ---------- borrado de pre-registros (solo administrador; sin visitas) ----------
+
+    @Test
+    void preRegistroSinVisitasSeBorraYElUsadoNo() throws Exception {
+        Long libre = id(enviar(post("/api/pre-registros"), ana, preRegistro("9101", hoy.toString())).andExpect(status().isCreated()));
+        Long usado = id(enviar(post("/api/pre-registros"), ana, preRegistro("9102", hoy.toString())).andExpect(status().isCreated()));
+        enviar(post("/api/accesos/con-preregistro"), vigilante, "{\"preRegistroId\":" + usado + "}").andExpect(status().isCreated());
+
+        borrar("/api/pre-registros/" + libre, ana).andExpect(status().isForbidden());
+        borrar("/api/pre-registros/" + libre, admin).andExpect(status().isNoContent());
+        borrar("/api/pre-registros/" + libre, admin).andExpect(status().isNotFound());
+        borrar("/api/pre-registros/" + usado, admin).andExpect(status().isConflict());
+    }
+
+    private ResultActions borrar(String ruta, String token) throws Exception {
+        return mvc.perform(delete(ruta).header("Authorization", "Bearer " + token));
     }
 }

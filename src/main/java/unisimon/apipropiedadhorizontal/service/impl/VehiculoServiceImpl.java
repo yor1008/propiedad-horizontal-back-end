@@ -118,4 +118,9 @@ public class VehiculoServiceImpl implements VehiculoService {
     private static String normalizarPlaca(String placa) {
         return placa.trim().toUpperCase(Locale.ROOT);
     }
+
+    @Override
+    public void eliminar(Long id) {
+        vehiculos.delete(buscar(id));
+    }
 }

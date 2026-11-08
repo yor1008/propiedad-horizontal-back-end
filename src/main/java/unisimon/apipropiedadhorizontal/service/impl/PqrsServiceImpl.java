@@ -108,4 +108,11 @@ public class PqrsServiceImpl implements PqrsService {
                 .map(ConfiguracionGeneral::getPlazoRespuestaPqrsDias);
         return PqrsResponse.de(p, plazo.map(p::estaVencida).orElse(false));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Pqrs radicada = pqrs.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("PQRS", id));
+        Borrado.exigirEstadoInicial(radicada.getEstado(), "La PQRS");
+        pqrs.delete(radicada);
+    }
 }

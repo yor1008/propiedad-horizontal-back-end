@@ -95,4 +95,13 @@ public class CuentaUsuarioServiceImpl implements CuentaUsuarioService {
     private CuentaUsuario buscar(Long id) {
         return cuentas.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Cuenta", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        CuentaUsuario cuenta = buscar(id);
+        if (cuenta.getId().equals(usuarioActual.cuentaId())) {
+            throw new ReglaNegocioException("No puede borrar su propia cuenta");
+        }
+        cuentas.delete(cuenta);
+    }
 }

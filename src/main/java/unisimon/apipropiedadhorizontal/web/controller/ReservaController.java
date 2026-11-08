@@ -1,5 +1,6 @@
 package unisimon.apipropiedadhorizontal.web.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,5 +83,12 @@ public class ReservaController {
     @PatchMapping("/{id}/finalizar")
     public ReservaResponse finalizar(@PathVariable Long id) {
         return gestion.finalizar(id);
+    }
+
+    @SoloAdministrador
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        gestion.eliminar(id);
     }
 }

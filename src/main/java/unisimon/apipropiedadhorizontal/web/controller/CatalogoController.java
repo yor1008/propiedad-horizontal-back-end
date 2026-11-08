@@ -1,5 +1,6 @@
 package unisimon.apipropiedadhorizontal.web.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,5 +68,12 @@ public class CatalogoController {
     @PatchMapping("/{id}/reactivar")
     public CatalogoResponse reactivar(@PathVariable Long id) {
         return catalogos.reactivar(id);
+    }
+
+    @SoloAdministrador
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminar(@PathVariable Long id) {
+        catalogos.eliminar(id);
     }
 }

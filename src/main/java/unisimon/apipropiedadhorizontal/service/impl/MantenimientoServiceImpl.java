@@ -156,4 +156,11 @@ public class MantenimientoServiceImpl implements MantenimientoService {
     private Mantenimiento buscar(Long id) {
         return mantenimientos.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("Mantenimiento", id));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        Mantenimiento mantenimiento = buscar(id);
+        Borrado.exigirEstadoInicial(mantenimiento.getEstado(), "El mantenimiento");
+        mantenimientos.delete(mantenimiento);
+    }
 }

@@ -107,4 +107,12 @@ public class PreRegistroServiceImpl implements PreRegistroService {
         p.cancelar();
         return PreRegistroResponse.de(p, RelojLocal.hoy(reloj));
     }
+
+    @Override
+    public void eliminar(Long id) {
+        PreRegistro preRegistro = preRegistros.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Pre-registro", id));
+        Borrado.fisico(preRegistros, preRegistro,
+                "El pre-registro ya tiene visitas registradas y no se puede borrar; cancelelo en su lugar");
+    }
 }

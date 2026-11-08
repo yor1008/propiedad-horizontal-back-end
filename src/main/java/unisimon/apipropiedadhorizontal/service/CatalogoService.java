@@ -18,4 +18,7 @@ public interface CatalogoService {
     CatalogoResponse desactivar(Long id);
 
     CatalogoResponse reactivar(Long id);
+
+    /** Borrado fisico solo si ningun registro usa el valor; si no, 409 (desactivar). */
+    void eliminar(Long id);
 }

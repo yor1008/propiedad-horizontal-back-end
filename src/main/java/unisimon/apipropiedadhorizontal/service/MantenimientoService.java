@@ -22,4 +22,7 @@ public interface MantenimientoService {
     MantenimientoResponse finalizar(Long id, String observaciones);
 
     MantenimientoResponse cancelar(Long id, String motivo);
+
+    /** Borrado fisico solo en estado inicial; despues, 409 (cancelar). */
+    void eliminar(Long id);
 }

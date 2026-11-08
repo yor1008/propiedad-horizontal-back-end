@@ -17,4 +17,7 @@ public interface GestionReservaService {
     ReservaResponse anular(Long id, String motivo);
 
     ReservaResponse finalizar(Long id);
+
+    /** Borrado fisico solo de una reserva pendiente; despues, 409 (anular). */
+    void eliminar(Long id);
 }

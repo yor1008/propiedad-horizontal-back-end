@@ -20,4 +20,7 @@ public interface VehiculoService {
     VehiculoResponse desactivar(Long id, String motivo);
 
     VehiculoResponse consultarPorPlaca(String placa);
+
+    /** Borrado fisico de un vehiculo (nada depende de el). */
+    void eliminar(Long id);
 }

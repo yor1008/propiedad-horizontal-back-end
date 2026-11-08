@@ -17,4 +17,7 @@ public interface ParqueaderoService {
     ParqueaderoResponse liberar(Long parqueaderoId);
 
     ParqueaderoResponse desactivar(Long parqueaderoId, String motivo);
+
+    /** Borrado fisico solo si esta libre y sin visitas; si no, 422/409 (liberar o desactivar). */
+    void eliminar(Long id);
 }
