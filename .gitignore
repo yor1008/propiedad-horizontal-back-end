@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Documentacion UML (irrelevante para el repositorio) ###
+diagramas_uml/
+
+### Secretos (nunca versionar) ###
+.env
+.env.*
+!.env.example
