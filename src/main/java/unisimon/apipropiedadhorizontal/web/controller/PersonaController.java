@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import unisimon.apipropiedadhorizontal.security.anotaciones.SoloAdministrador;
 import unisimon.apipropiedadhorizontal.service.PersonaService;
+import unisimon.apipropiedadhorizontal.service.VerificacionCorreoService;
 import unisimon.apipropiedadhorizontal.web.dto.ActualizarPersonaRequest;
 import unisimon.apipropiedadhorizontal.web.dto.CrearPersonaRequest;
 import unisimon.apipropiedadhorizontal.web.dto.MotivoRequest;
 import unisimon.apipropiedadhorizontal.web.dto.PersonaResponse;
+import unisimon.apipropiedadhorizontal.web.dto.SolicitarVerificacionCorreoRequest;
 
 import java.util.List;
 
@@ -27,9 +29,19 @@ import java.util.List;
 public class PersonaController {
 
     private final PersonaService personas;
+    private final VerificacionCorreoService verificacionCorreo;
 
-    public PersonaController(PersonaService personas) {
+    public PersonaController(PersonaService personas, VerificacionCorreoService verificacionCorreo) {
         this.personas = personas;
+        this.verificacionCorreo = verificacionCorreo;
+    }
+
+    /** Envia un codigo de 6 digitos al correo; el administrador lo recibe de la persona y lo manda en {@code POST /api/personas}. */
+    @SoloAdministrador
+    @PostMapping("/verificar-correo")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void verificarCorreo(@Valid @RequestBody SolicitarVerificacionCorreoRequest solicitud) {
+        verificacionCorreo.enviarCodigo(solicitud.correo());
     }
 
     @SoloAdministrador

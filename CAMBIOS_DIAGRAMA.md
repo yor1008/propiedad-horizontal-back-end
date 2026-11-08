@@ -70,6 +70,7 @@ si la zona no requiere aprobación la reserva nace `Aprobada`. El máximo por in
 | ⏳ | `RegistroVisita` ↔ parqueadero de visitante | El parqueadero `parqueaderoAsignado` debe ser `PARQUEADERO` activo **sin** `inmuebleAsociado`; la ocupación se deriva de las visitas dentro (sin atributo nuevo). |
 | ⏳ | `RegistroVisita` — ingreso negado | Un intento con `ingresoAutorizado=false` también es un registro (historial); el UML solo muestra `negarIngreso(motivo)`. |
 | ⏳ | `PreRegistro.estaVigente` | `FECHA_ESPECIFICA` se marca `usado` tras el primer ingreso; `PERMANENTE` nunca se marca. Servicio auxiliar `Visitantes.obtenerOCrear` (busca por documento). |
+| ⏳ | Entidad `VerificacionCorreo` (`correo`, `hashCodigo`, `expiraEn`, `intentos`) y servicio `VerificacionCorreoService` | No está en el UML: código de 6 dígitos que se envía al correo de una persona y se exige en `POST /api/personas` (autorizada por el usuario). `CrearPersonaRequest` gana `codigoVerificacion`. Migración `V2__verificacion_correo.sql`. |
 | ⏳ | `Inmueble` — desactivar y borrar | El UML tiene `desactivar(motivo)`/`reactivar()` pero no dice que se prohíbe desactivar con vínculos vigentes (422) ni existe operación de eliminar; el `DELETE` solo procede sin historia (servicio auxiliar `HistorialInmueble.tieneHistorial`). |
 
 ## 5. Propuestas 💡 (nada implementado; decide si entran al diagrama)

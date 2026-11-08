@@ -15,6 +15,7 @@ import unisimon.apipropiedadhorizontal.repository.ValorCatalogoRepository;
 import unisimon.apipropiedadhorizontal.service.HistorialPersona;
 import unisimon.apipropiedadhorizontal.service.OcupacionInmuebles;
 import unisimon.apipropiedadhorizontal.service.PersonaService;
+import unisimon.apipropiedadhorizontal.service.VerificacionCorreoService;
 import unisimon.apipropiedadhorizontal.util.Correos;
 import unisimon.apipropiedadhorizontal.web.dto.ActualizarPersonaRequest;
 import unisimon.apipropiedadhorizontal.web.dto.CrearPersonaRequest;
@@ -34,19 +35,24 @@ public class PersonaServiceImpl implements PersonaService {
     private final Clock reloj;
     private final HistorialPersona historial;
     private final OcupacionInmuebles ocupacion;
+    private final VerificacionCorreoService verificacionCorreo;
 
     public PersonaServiceImpl(PersonaRepository personas, TipoPersonaRepository tiposPersona,
                               ValorCatalogoRepository catalogos, Clock reloj,
-                              HistorialPersona historial, OcupacionInmuebles ocupacion) {
+                              HistorialPersona historial, OcupacionInmuebles ocupacion,
+                              VerificacionCorreoService verificacionCorreo) {
         this.personas = personas;
         this.tiposPersona = tiposPersona;
         this.catalogos = catalogos;
         this.reloj = reloj;
         this.historial = historial;
         this.ocupacion = ocupacion;
+        this.verificacionCorreo = verificacionCorreo;
     }
 
+    /** noRollbackFor: un codigo equivocado da 422 pero su intento fallido debe quedar guardado (limite de intentos). */
     @Override
+    @Transactional(noRollbackFor = ReglaNegocioException.class)
     public PersonaResponse crear(CrearPersonaRequest s) {
         TipoPersona tipo = tiposPersona.findById(s.tipoPersonaId())
                 .orElseThrow(() -> new RecursoNoEncontradoException("Tipo de persona", s.tipoPersonaId()));
@@ -63,6 +69,10 @@ public class PersonaServiceImpl implements PersonaService {
         if (personas.findByTipoDocumentoIdAndNumeroDocumento(tipoDocumento.getId(), numero).isPresent()) {
             throw new ConflictoException("Ya existe una persona con ese documento");
         }
+        String correo = s.correo() == null || s.correo().isBlank() ? null : Correos.normalizar(s.correo());
+        if (correo != null) {
+            verificacionCorreo.confirmar(correo, s.codigoVerificacion());
+        }
         Persona persona = Persona.builder()
                 .tipoPersona(tipo)
                 .tipoDocumento(tipoDocumento)
@@ -70,7 +80,7 @@ public class PersonaServiceImpl implements PersonaService {
                 .nombres(s.nombres().trim())
                 .apellidos(s.apellidos().trim())
                 .telefono(s.telefono())
-                .correo(s.correo() == null || s.correo().isBlank() ? null : Correos.normalizar(s.correo()))
+                .correo(correo)
                 .autorizaTratamientoDatos(s.autorizaTratamientoDatos())
                 .fechaAutorizacionDatos(s.autorizaTratamientoDatos() ? LocalDate.now(reloj) : null)
                 .build();

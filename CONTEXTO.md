@@ -68,6 +68,7 @@ Flujo: `Controller → Service(interfaz) → Repository → Entidad`. Nunca salt
 | Entidad (tabla) | Notas de mapeo / reglas |
 |---|---|
 | `CuentaUsuario` (`cuenta_usuario`) | `correo_acceso` único (minúsculas), `hash_contrasena` BCrypt, `persona_id` único y **nullable** (0..1↔0..1). PERSONA_VINCULADA exige persona (regla de servicio) |
+| `VerificacionCorreo` (`verificacion_correo`) | `correo` único (minúsculas), `hash_codigo` (SHA-256 del correo + código; **nunca** el código), `expira_en`, `intentos`. Una fila por correo; se borra al confirmarse (ver 4.11) |
 | `Persona` (`persona`) | único (`tipo_documento_id`,`numero_documento`); `inmueble_id` nullable (vínculo); `tipo_persona_id` obligatorio |
 | `TipoPersona` (`tipo_persona`) | `nombre` único; flags `es_propietario`, `es_residente` |
 | `Inmueble` (`inmueble`) | único (`torre_bloque`,`numero`); auto-referencia `inmueble_asociado_id` = inmueble al que pertenece un **parqueadero** (un parqueadero es un Inmueble) |
@@ -111,7 +112,7 @@ Con `@Valid` y `@PreAuthorize` juntos, un body inválido responde 400 antes que 
 | 005 | Gestionar cuentas de usuario | `@SoloAdministrador` | ✅ `CuentaUsuarioController` |
 | 006 | Administrar catálogos | lectura `@Autenticado`, escritura `@SoloAdministrador` | ✅ `CatalogoController` |
 | 007 | Configurar parámetros y notificaciones | `@SoloAdministrador` | ✅ `ConfiguracionController` (`/api/configuracion/...`) |
-| 008, 009, 010, 012 | Personas, inmuebles, vinculaciones, vehículos | `@SoloAdministrador` | ✅ `PersonaController`, `InmuebleController`, `VehiculoController` |
+| 008, 009, 010, 012 | Personas (alta con verificación de correo, 4.11), inmuebles, vinculaciones, vehículos | `@SoloAdministrador` | ✅ `PersonaController`, `InmuebleController`, `VehiculoController` |
 | 014 | Parqueaderos | `@SoloAdministrador` | ✅ `ParqueaderoController` (`Inmueble.categoria = PARQUEADERO`) |
 | 011 | Consultar inmuebles propios | `@SoloPropietario` | ✅ `GET /api/mis-inmuebles` |
 | 013 | Consultar vehículo por placa | `@SoloVigilante` | ✅ `GET /api/vehiculos/placa/{placa}` |
@@ -222,11 +223,23 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
   rechaza los de acceso. Vale 30 min (`app.security.jwt.expiracion-restablecimiento`) y es **de un solo uso sin guardar estado**: lleva
   la huella SHA-256 del hash de contraseña vigente y deja de coincidir al cambiarla. Token inválido/expirado/usado → 422.
 
+### 4.11 Decisiones de implementación (verificación de correo al crear persona)
+- **Flujo:** `POST /api/personas/verificar-correo {correo}` (`@SoloAdministrador`, 204) genera un código de 6 dígitos (`SecureRandom`),
+  guarda su huella y lo envía por `EnviadorCorreo`; `POST /api/personas` con `correo` exige `codigoVerificacion`. La persona se lo dicta
+  al administrador. Sin correo no hay verificación. Todo en `VerificacionCorreoService`.
+- **Tabla `verificacion_correo` (autorizada por el usuario, excepción a 5.1 solo para esto):** vigencia 10 min, máx. 5 intentos fallidos
+  (al agotarlos o vencer se borra la fila y hay que pedir otro código), un código nuevo reemplaza al anterior, el correcto se consume.
+  Es un reto de un solo propósito del alta, **no** una sesión: no cambia el carácter stateless de la autenticación.
+- **«El correo no existe»:** el SMTP acepta el mensaje aunque la dirección no exista (el rebote llega después), así que no se detecta en
+  el momento; lo prueba el código: sin él no se crea la persona (422 «No se pudo verificar el correo…»). Vale cualquier proveedor.
+- `PersonaServiceImpl.crear` usa `noRollbackFor = ReglaNegocioException` para que los intentos fallidos se conserven.
+- **Pendiente:** `PUT /api/personas/{id}` y `PUT /api/perfil` aún permiten cambiar el correo sin verificarlo.
+
 ## 5. Reglas de seguridad (NO negociables)
 
 1. **Stateless.** Sin `HttpSession`, sin cookies de autenticación, sin CSRF, sin estado de sesión ni lista de
    tokens en servidor/BD. `SessionCreationPolicy.STATELESS`. No introducir cachés de sesión, `@SessionScope`,
-   ni tablas de tokens/refresh sin autorización explícita del usuario.
+   ni tablas de tokens/refresh sin autorización explícita del usuario (única autorizada: `verificacion_correo`, 4.11).
 2. **Autenticación = JWT Bearer** (`Authorization: Bearer <token>`), HS256, validado por `JwtDecoder`
    (firma + expiración + emisor). Claims: `sub`=id de cuenta, `correo`, `rol`, `personaId` (si hay),
    `autoridades` (lista con prefijo `ROLE_`), `iss`, `iat`, `exp`, `jti`.

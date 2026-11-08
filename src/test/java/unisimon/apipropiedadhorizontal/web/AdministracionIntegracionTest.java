@@ -47,6 +47,8 @@ class AdministracionIntegracionTest {
     @Autowired TipoPersonaRepository tiposPersona;
     @Autowired ValorCatalogoRepository catalogos;
     @Autowired PasswordEncoder codificador;
+    @Autowired unisimon.apipropiedadhorizontal.support.CorreoCapturado correos;
+    @Autowired unisimon.apipropiedadhorizontal.repository.VerificacionCorreoRepository verificaciones;
 
     Long tipoDocumento;
     Long tipoInmueble;
@@ -70,6 +72,7 @@ class AdministracionIntegracionTest {
 
     @AfterEach
     void limpiar() {
+        verificaciones.deleteAll();
         notificaciones.deleteAll();
         vehiculos.deleteAll();
         cuentas.deleteAll();
@@ -121,6 +124,50 @@ class AdministracionIntegracionTest {
         crearPersona("2002").andExpect(status().isCreated());
         crearPersona("2002").andExpect(status().isConflict());
         enviarPost("/api/personas", admin, "{\"nombres\":\"\"}").andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void personaConCorreoExigeCodigoDeVerificacionValido() throws Exception {
+        // Sin codigo y con codigo equivocado: 422 (el correo no se pudo verificar) y no se crea la persona.
+        crearPersonaConCodigo("7007", null).andExpect(status().isUnprocessableContent());
+        String codigo = codigoEnviadoA("ana@ph.com");
+        String equivocado = codigo.equals("000000") ? "111111" : "000000";
+        crearPersonaConCodigo("7007", equivocado).andExpect(status().isUnprocessableContent());
+        org.junit.jupiter.api.Assertions.assertTrue(personas.findAll().isEmpty());
+
+        // El codigo correcto crea la persona y se consume: no sirve una segunda vez.
+        crearPersonaConCodigo("7007", codigo).andExpect(status().isCreated());
+        crearPersonaConCodigo("7008", codigo).andExpect(status().isUnprocessableContent());
+
+        // Un codigo nuevo invalida al anterior.
+        String viejo = codigoEnviadoA("ana@ph.com");
+        String nuevo = codigoEnviadoA("ana@ph.com");
+        if (!viejo.equals(nuevo)) {
+            crearPersonaConCodigo("7009", viejo).andExpect(status().isUnprocessableContent());
+        }
+        crearPersonaConCodigo("7009", nuevo).andExpect(status().isCreated());
+    }
+
+    @Test
+    void codigoSeBloqueaTrasDemasiadosIntentosFallidos() throws Exception {
+        String codigo = codigoEnviadoA("ana@ph.com");
+        String equivocado = codigo.equals("000000") ? "111111" : "000000";
+        for (int i = 0; i < 5; i++) {
+            crearPersonaConCodigo("8008", equivocado).andExpect(status().isUnprocessableContent());
+        }
+        // Ya agoto los intentos: ni el codigo correcto sirve; hay que pedir otro.
+        crearPersonaConCodigo("8008", codigo).andExpect(status().isUnprocessableContent());
+        crearPersonaConCodigo("8008", codigoEnviadoA("ana@ph.com")).andExpect(status().isCreated());
+    }
+
+    @Test
+    void verificarCorreoSoloAdministradorYConCorreoValido() throws Exception {
+        String cuerpo = "{\"correo\":\"ana@ph.com\"}";
+        mvc.perform(post("/api/personas/verificar-correo").contentType(MediaType.APPLICATION_JSON).content(cuerpo))
+                .andExpect(status().isUnauthorized());
+        enviarPost("/api/personas/verificar-correo", vigilante, cuerpo).andExpect(status().isForbidden());
+        enviarPost("/api/personas/verificar-correo", admin, "{\"correo\":\"no-es-correo\"}").andExpect(status().isBadRequest());
+        enviarPost("/api/personas/verificar-correo", admin, "{}").andExpect(status().isBadRequest());
     }
 
     @Test
@@ -276,9 +323,24 @@ class AdministracionIntegracionTest {
     // ---------- utilidades ----------
 
     private ResultActions crearPersona(String documento) throws Exception {
+        return crearPersonaConCodigo(documento, codigoEnviadoA("ana@ph.com"));
+    }
+
+    private ResultActions crearPersonaConCodigo(String documento, String codigo) throws Exception {
         return enviarPost("/api/personas", admin, "{\"tipoPersonaId\":" + tipoResidente + ",\"tipoDocumentoId\":" + tipoDocumento
                 + ",\"numeroDocumento\":\"" + documento + "\",\"nombres\":\"Ana\",\"apellidos\":\"Ruiz\","
-                + "\"telefono\":\"3000000000\",\"correo\":\"ana@ph.com\",\"autorizaTratamientoDatos\":true}");
+                + "\"telefono\":\"3000000000\",\"correo\":\"ana@ph.com\""
+                + (codigo == null ? "" : ",\"codigoVerificacion\":\"" + codigo + "\"")
+                + ",\"autorizaTratamientoDatos\":true}");
+    }
+
+    /** Pide el codigo de verificacion y lo lee del correo capturado (en produccion lo lee la persona en su bandeja). */
+    private String codigoEnviadoA(String correo) throws Exception {
+        correos.limpiar();
+        enviarPost("/api/personas/verificar-correo", admin, "{\"correo\":\"" + correo + "\"}").andExpect(status().isNoContent());
+        var mensaje = correos.enviados().getLast();
+        org.junit.jupiter.api.Assertions.assertEquals(correo, mensaje.destinatario());
+        return mensaje.texto().replaceAll("(?s).*es: (\\d{6}).*", "$1");
     }
 
     private String inmueble(String torre, String numero, int piso, Long tipoId) {
