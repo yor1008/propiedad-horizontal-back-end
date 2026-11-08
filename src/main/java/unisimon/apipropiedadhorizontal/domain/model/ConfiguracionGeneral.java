@@ -22,6 +22,11 @@ public class ConfiguracionGeneral extends EntidadBase {
     @Column(name = "plazo_respuesta_pqrs_dias", nullable = false)
     private int plazoRespuestaPqrsDias;
 
+    /** Valores iniciales: sin limite de vehiculos (0) y 15 dias habiles para responder una PQRS. */
+    public static ConfiguracionGeneral porDefecto() {
+        return ConfiguracionGeneral.builder().maxVehiculosPorInmueble(0).plazoRespuestaPqrsDias(15).build();
+    }
+
     public void actualizar(int maxVehiculos, int plazoPqrs) {
         this.maxVehiculosPorInmueble = maxVehiculos;
         this.plazoRespuestaPqrsDias = plazoPqrs;

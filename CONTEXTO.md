@@ -109,7 +109,7 @@ Con `@Valid` y `@PreAuthorize` juntos, un body inválido responde 400 antes que 
 | 004 | Consultar notificaciones | `@SoloPersonaVinculada` | ✅ `NotificacionController` |
 | 005 | Gestionar cuentas de usuario | `@SoloAdministrador` | ✅ `CuentaUsuarioController` |
 | 006 | Administrar catálogos | lectura `@Autenticado`, escritura `@SoloAdministrador` | ✅ `CatalogoController` |
-| 007 | Configurar parámetros y notificaciones | `@SoloAdministrador` | ⏳ |
+| 007 | Configurar parámetros y notificaciones | `@SoloAdministrador` | ✅ `ConfiguracionController` (`/api/configuracion/...`) |
 | 008, 009, 010, 012 | Personas, inmuebles, vinculaciones, vehículos | `@SoloAdministrador` | ✅ `PersonaController`, `InmuebleController`, `VehiculoController` |
 | 014 | Parqueaderos | `@SoloAdministrador` | ✅ `ParqueaderoController` (`Inmueble.categoria = PARQUEADERO`) |
 | 011 | Consultar inmuebles propios | `@SoloPropietario` | ✅ `GET /api/mis-inmuebles` |
@@ -198,6 +198,16 @@ la etiqueta dice *qué rol*, el servicio garantiza *que solo vea lo suyo* (nunca
 - **Fecha/hora local:** los servicios nuevos usan `RelojLocal` (fecha del sistema, igual que `Persona.vinculoEstaVigente`).
 - **No implementado a propósito:** resúmenes/tableros y «actividad reciente» (decisión del usuario; el diagrama no los
   contempla). Administrador y vigilante no tienen perfil de persona: el front usa `/api/auth/me`.
+
+### 4.9 Decisiones de implementación (configuración, CU-007)
+- **Parámetros generales** (`ConfiguracionGeneral`, fila única): `GET`/`PUT /api/configuracion/general`. `maxVehiculosPorInmueble`
+  (0 = sin límite) lo aplica `VehiculoService.crear`; `plazoRespuestaPqrsDias` (días hábiles, ≥ 1) alimenta `PqrsResponse.vencida`.
+  Valores por defecto: 0 y 15 (`ConfiguracionGeneral.porDefecto()`). `ConfiguracionInicial` siembra la fila al arrancar (idempotente)
+  y el servicio la crea si faltara.
+- **Notificaciones por evento** (`ConfiguracionNotificacion`): `GET /api/configuracion/notificaciones` devuelve siempre los 4
+  `ETipoEvento` (uno sin fila = activa y sin correo); `PUT /api/configuracion/notificaciones/{evento}` con `activa` y `enviarCorreo`
+  (ambos obligatorios). `activa=false` hace que `Notificador` no genere nada. `enviarCorreo` solo se **guarda** y marca
+  `Notificacion.enviadaPorCorreo`: el envío real de correo sigue pendiente (sección 10).
 
 ## 5. Reglas de seguridad (NO negociables)
 
@@ -324,11 +334,10 @@ jar; variables `SPRING_DATASOURCE_URL` (**formato JDBC**: `jdbc:postgresql://hos
 
 ## 10. Pendientes y decisiones abiertas
 
-- Implementar los CU marcados ⏳ (tabla 4.4).
+- Todos los CU de la tabla 4.4 están implementados (✅); solo queda lo pendiente de esta sección.
 - Restablecer contraseña (`solicitarRestablecimiento`/`restablecerContrasena` del diagrama): requiere envío de
   correo; diseñar como token JWT de un solo propósito, sin guardar estado.
 - Envío real de correos para `ConfiguracionNotificacion.enviarCorreo`.
-- Validar `ConfiguracionGeneral.maxVehiculosPorInmueble` y límites de reservas por inmueble/periodo en servicios.
 - **Login con Google (OAuth2): pendiente, se agrega después** (decisión del usuario). Hoy el `pom.xml` solo trae
   `oauth2-resource-server` (validar el JWT propio); al implementarlo habrá que añadir `spring-boot-starter-security-oauth2-client`,
   usar `GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET` (ya reservadas en `.env.example`) y respetar las reglas de la sección 5
