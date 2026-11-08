@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+!.env.example
+target/
+.idea/
+.claude/
+.agents/
+diagramas_uml/
+graphify-out/
+*.md
