@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /pre-registros?documento",
-      "variant": "emphasis",
-      "note": "@SoloVigilante"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "preRegistrosVigentes(doc)",
       "variant": "default"
     },
@@ -67,7 +66,7 @@
       "id": "m3",
       "from": "svc",
       "to": "pre",
-      "y": 253,
+      "y": 239,
       "label": "vigentes de hoy del visitante",
       "variant": "default"
     },
@@ -75,7 +74,7 @@
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 285,
+      "y": 271,
       "label": "200 lista",
       "variant": "return"
     },
@@ -83,16 +82,15 @@
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 333,
+      "y": 319,
       "label": "POST /con-preregistro",
-      "variant": "emphasis",
-      "note": "Cuerpo {preRegistroId}"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "ctrl",
       "to": "svc",
-      "y": 379,
+      "y": 351,
       "label": "autorizarConPreRegistro(id)",
       "variant": "default"
     },
@@ -100,52 +98,47 @@
       "id": "m7",
       "from": "svc",
       "to": "pre",
-      "y": 411,
+      "y": 383,
       "label": "estaVigente(hoy)",
-      "variant": "default",
-      "note": "Cancelado, usado o de otra fecha: 422"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "svc",
       "to": "reg",
-      "y": 468,
+      "y": 415,
       "label": "ya está dentro?",
-      "variant": "default",
-      "note": "Sin salida registrada: 409"
+      "variant": "default"
     },
     {
       "id": "m9",
       "from": "svc",
       "to": "reg",
-      "y": 525,
+      "y": 447,
       "label": "save(autorizado, entrada)",
-      "variant": "default",
-      "note": "El residente debe seguir con vínculo vigente"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "pre",
-      "y": 582,
+      "y": 479,
       "label": "marcarUsado()",
-      "variant": "default",
-      "note": "Solo si es FECHA_ESPECIFICA"
+      "variant": "default"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "noti",
-      "y": 639,
+      "y": 511,
       "label": "notificar(INGRESO_VISITANTE)",
-      "variant": "dashed",
-      "note": "Avisa al residente: \"Ingresó su visitante...\""
+      "variant": "dashed"
     },
     {
       "id": "m12",
       "from": "ctrl",
       "to": "cliente",
-      "y": 707,
+      "y": 543,
       "label": "201 {estado: Dentro}",
       "variant": "return"
     }
@@ -154,31 +147,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 713,
+      "to": 549,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 645,
+      "from": 202,
+      "to": 517,
       "type": "backend"
     },
     {
       "participant": "pre",
-      "from": 248,
-      "to": 588,
+      "from": 234,
+      "to": 485,
       "type": "database"
     },
     {
       "participant": "reg",
-      "from": 463,
-      "to": 531,
+      "from": 410,
+      "to": 453,
       "type": "database"
     },
     {
       "participant": "noti",
-      "from": 634,
-      "to": 645,
+      "from": 506,
+      "to": 517,
       "type": "backend"
     }
   ],
@@ -195,12 +188,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 297,
+      "to": 283,
       "label": "Buscar el pre-registro"
     },
     {
-      "from": 319,
-      "to": 719,
+      "from": 305,
+      "to": 555,
       "label": "Autorizar el ingreso"
     }
   ]

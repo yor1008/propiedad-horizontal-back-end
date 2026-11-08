@@ -40,41 +40,37 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /historial?desde&hasta&documento",
-      "variant": "emphasis",
-      "note": "@AdministradorOVigilante"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "consultar(desde, hasta, doc)",
-      "variant": "default",
-      "note": "hasta anterior a desde: 422"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 289,
+      "y": 239,
       "label": "Specification + PageRequest(500)",
-      "variant": "default",
-      "note": "Filtros opcionales por día de llegada y documento"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "repo",
       "to": "svc",
-      "y": 357,
+      "y": 271,
       "label": "últimos registros",
-      "variant": "return",
-      "note": "Orden: llegada descendente"
+      "variant": "return"
     },
     {
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 414,
+      "y": 303,
       "label": "200 hasta 500 registros",
       "variant": "return"
     }
@@ -83,19 +79,19 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 420,
+      "to": 309,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 363,
+      "from": 202,
+      "to": 277,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 284,
-      "to": 363,
+      "from": 234,
+      "to": 277,
       "type": "database"
     }
   ],

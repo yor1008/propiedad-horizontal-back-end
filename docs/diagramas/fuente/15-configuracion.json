@@ -46,14 +46,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /general",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "sg",
-      "y": 221,
+      "y": 207,
       "label": "obtener()",
       "variant": "default"
     },
@@ -61,16 +60,15 @@
       "id": "m3",
       "from": "sg",
       "to": "repo",
-      "y": 253,
+      "y": 239,
       "label": "fila única",
-      "variant": "default",
-      "note": "Si falta, la crea con valores por defecto"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 310,
+      "y": 271,
       "label": "200 {maxVehiculos, plazoPqrs}",
       "variant": "return"
     },
@@ -78,25 +76,23 @@
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 342,
+      "y": 303,
       "label": "PUT /general",
-      "variant": "emphasis",
-      "note": "maxVehiculosPorInmueble y plazoRespuestaPqrsDias"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "sg",
       "to": "repo",
-      "y": 410,
+      "y": 335,
       "label": "actualizar(max, plazo)",
-      "variant": "default",
-      "note": "Los aplican VehiculoService y PqrsResponse"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "cliente",
-      "y": 467,
+      "y": 367,
       "label": "200 parámetros",
       "variant": "return"
     },
@@ -104,7 +100,7 @@
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 515,
+      "y": 415,
       "label": "GET /notificaciones",
       "variant": "emphasis"
     },
@@ -112,16 +108,15 @@
       "id": "m9",
       "from": "ctrl",
       "to": "sn",
-      "y": 547,
+      "y": 447,
       "label": "listar()",
-      "variant": "default",
-      "note": "Siempre los 4 eventos; sin fila: activa y sin correo"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "ctrl",
       "to": "cliente",
-      "y": 615,
+      "y": 479,
       "label": "200 [4 eventos]",
       "variant": "return"
     },
@@ -129,25 +124,23 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 647,
+      "y": 511,
       "label": "PUT /notificaciones/{evento}",
-      "variant": "emphasis",
-      "note": "Cuerpo {activa, enviarCorreo}, ambos obligatorios"
+      "variant": "emphasis"
     },
     {
       "id": "m12",
       "from": "sn",
       "to": "repo",
-      "y": 715,
+      "y": 543,
       "label": "configurar(activa, correo)",
-      "variant": "default",
-      "note": "activa = false: no se generan notificaciones"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "ctrl",
       "to": "cliente",
-      "y": 772,
+      "y": 575,
       "label": "200 configuración",
       "variant": "return"
     }
@@ -156,25 +149,25 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 778,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "sg",
-      "from": 216,
-      "to": 416,
+      "from": 202,
+      "to": 341,
       "type": "backend"
     },
     {
       "participant": "sn",
-      "from": 542,
-      "to": 721,
+      "from": 442,
+      "to": 549,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 248,
-      "to": 721,
+      "from": 234,
+      "to": 549,
       "type": "database"
     }
   ],
@@ -191,12 +184,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 479,
+      "to": 379,
       "label": "Parámetros generales"
     },
     {
-      "from": 501,
-      "to": 784,
+      "from": 401,
+      "to": 587,
       "label": "Notificaciones por evento"
     }
   ]

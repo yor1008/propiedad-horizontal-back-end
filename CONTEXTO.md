@@ -22,7 +22,7 @@ operaciones del conjunto (correspondencia, zonas comunes, reservas, mantenimient
 
 Si el diagrama cambia (nueva versión), actualiza entidades **y** la sección 4 de este archivo.
 
-**Documentación de flujos:** el `README.md` muestra un diagrama de secuencia por caso de uso (imágenes en `docs/diagramas/png`,
+**Documentación de flujos:** el `README.md` muestra un diagrama de secuencia por caso de uso (imágenes SVG en modo claro y sin notas en `docs/diagramas/svg`,
 fuentes JSON de Archify en `docs/diagramas/fuente`; los HTML se regeneran y no se versionan). Al cambiar un flujo, actualiza su
 fuente `.json`, regenera el HTML y la imagen, y revisa la tabla «Casos de uso y diagramas» del README.
 

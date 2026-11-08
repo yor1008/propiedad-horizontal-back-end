@@ -52,50 +52,45 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/correspondencia",
-      "variant": "emphasis",
-      "note": "@SoloVigilante. {inmuebleId, personaId?, tipoId}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "registrar(solicitud)",
-      "variant": "default",
-      "note": "Destinatario con vínculo vigente (422)"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "est",
-      "y": 300,
+      "y": 239,
       "label": "inicial(CORRESPONDENCIA)",
-      "variant": "default",
-      "note": "Estado Pendiente"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "repo",
-      "y": 346,
+      "y": 271,
       "label": "save(correspondencia)",
-      "variant": "default",
-      "note": "Sin persona va dirigida al inmueble"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "svc",
       "to": "noti",
-      "y": 403,
+      "y": 303,
       "label": "notificar(CORRESPONDENCIA_RECIBIDA)",
-      "variant": "dashed",
-      "note": "A la persona o a los vigentes del inmueble"
+      "variant": "dashed"
     },
     {
       "id": "m6",
       "from": "ctrl",
       "to": "cliente",
-      "y": 460,
+      "y": 335,
       "label": "201 CorrespondenciaResponse",
       "variant": "return"
     },
@@ -103,25 +98,23 @@
       "id": "m7",
       "from": "cliente",
       "to": "ctrl",
-      "y": 508,
+      "y": 383,
       "label": "PATCH /{id}/entregar",
-      "variant": "emphasis",
-      "note": "Cuerpo {nombreRecibe, documentoRecibe}"
+      "variant": "emphasis"
     },
     {
       "id": "m8",
       "from": "svc",
       "to": "est",
-      "y": 565,
+      "y": 415,
       "label": "transicionar(→ Entregada)",
-      "variant": "default",
-      "note": "Una segunda entrega: 422"
+      "variant": "default"
     },
     {
       "id": "m9",
       "from": "svc",
       "to": "repo",
-      "y": 622,
+      "y": 447,
       "label": "registrarEntrega(...)",
       "variant": "default"
     },
@@ -129,7 +122,7 @@
       "id": "m10",
       "from": "ctrl",
       "to": "cliente",
-      "y": 654,
+      "y": 479,
       "label": "200 {estado: Entregada}",
       "variant": "return"
     },
@@ -137,25 +130,23 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 686,
+      "y": 511,
       "label": "GET /mias",
-      "variant": "emphasis",
-      "note": "@SoloPersonaVinculada"
+      "variant": "emphasis"
     },
     {
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 732,
+      "y": 543,
       "label": "por persona y por inmueble",
-      "variant": "default",
-      "note": "Incluye la dirigida a su inmueble"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "ctrl",
       "to": "cliente",
-      "y": 789,
+      "y": 575,
       "label": "200 lista",
       "variant": "return"
     },
@@ -163,25 +154,23 @@
       "id": "m14",
       "from": "cliente",
       "to": "ctrl",
-      "y": 837,
+      "y": 623,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m15",
       "from": "svc",
       "to": "repo",
-      "y": 883,
+      "y": 655,
       "label": "solo en estado Pendiente",
-      "variant": "default",
-      "note": "Entregada: 409"
+      "variant": "default"
     },
     {
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 929,
+      "y": 687,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -190,31 +179,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 935,
+      "to": 693,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 889,
+      "from": 202,
+      "to": 661,
       "type": "backend"
     },
     {
       "participant": "est",
-      "from": 295,
-      "to": 571,
+      "from": 234,
+      "to": 421,
       "type": "backend"
     },
     {
       "participant": "noti",
-      "from": 398,
-      "to": 409,
+      "from": 298,
+      "to": 309,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 341,
-      "to": 889,
+      "from": 266,
+      "to": 661,
       "type": "database"
     }
   ],
@@ -231,17 +220,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 472,
+      "to": 347,
       "label": "Registrar (vigilante)"
     },
     {
-      "from": 494,
-      "to": 801,
+      "from": 369,
+      "to": 587,
       "label": "Entregar y consultar"
     },
     {
-      "from": 823,
-      "to": 941,
+      "from": 609,
+      "to": 699,
       "label": "Borrar (administrador)"
     }
   ]

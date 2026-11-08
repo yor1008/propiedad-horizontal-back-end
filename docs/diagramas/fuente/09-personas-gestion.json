@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "PUT /api/personas/{id}",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "actualizar(id, datos)",
       "variant": "default"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 253,
+      "y": 239,
       "label": "findById + actualizarDatos",
-      "variant": "default",
-      "note": "El documento no cambia; 404 si no existe"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 310,
+      "y": 271,
       "label": "200 PersonaResponse",
       "variant": "return"
     },
@@ -84,16 +82,15 @@
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 358,
+      "y": 319,
       "label": "PATCH /{id}/desactivar",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 404,
+      "y": 351,
       "label": "desactivar(motivo)",
       "variant": "default"
     },
@@ -101,16 +98,15 @@
       "id": "m7",
       "from": "svc",
       "to": "ocup",
-      "y": 436,
+      "y": 383,
       "label": "recalcular(inmueble)",
-      "variant": "default",
-      "note": "Sin vínculo vigente el inmueble puede dejar de estar ocupado"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 504,
+      "y": 415,
       "label": "200 {activa: false}",
       "variant": "return"
     },
@@ -118,16 +114,15 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 536,
+      "y": 447,
       "label": "PATCH /{id}/reactivar",
-      "variant": "emphasis",
-      "note": "Mismo recálculo de ocupación"
+      "variant": "emphasis"
     },
     {
       "id": "m10",
       "from": "ctrl",
       "to": "cliente",
-      "y": 593,
+      "y": 479,
       "label": "200 {activa: true}",
       "variant": "return"
     },
@@ -135,7 +130,7 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 641,
+      "y": 527,
       "label": "DELETE /api/personas/{id}",
       "variant": "emphasis"
     },
@@ -143,34 +138,31 @@
       "id": "m12",
       "from": "svc",
       "to": "hist",
-      "y": 673,
+      "y": 559,
       "label": "tieneHistorial(persona)",
-      "variant": "default",
-      "note": "Vínculo, cuenta, vehículos, PQRS, reservas, visitas..."
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "cliente",
-      "y": 741,
+      "y": 591,
       "label": "409 si tiene historia",
-      "variant": "dashed",
-      "note": "Alternativa: se usa desactivar en su lugar"
+      "variant": "dashed"
     },
     {
       "id": "m14",
       "from": "svc",
       "to": "repo",
-      "y": 798,
+      "y": 623,
       "label": "delete(persona)",
-      "variant": "default",
-      "note": "Sin historia"
+      "variant": "default"
     },
     {
       "id": "m15",
       "from": "ctrl",
       "to": "cliente",
-      "y": 844,
+      "y": 655,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -179,31 +171,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 850,
+      "to": 661,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 804,
+      "from": 202,
+      "to": 629,
       "type": "backend"
     },
     {
       "participant": "hist",
-      "from": 668,
-      "to": 679,
+      "from": 554,
+      "to": 565,
       "type": "backend"
     },
     {
       "participant": "ocup",
-      "from": 431,
-      "to": 442,
+      "from": 378,
+      "to": 389,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 248,
-      "to": 804,
+      "from": 234,
+      "to": 629,
       "type": "database"
     }
   ],
@@ -220,17 +212,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 322,
+      "to": 283,
       "label": "Editar"
     },
     {
-      "from": 344,
-      "to": 605,
+      "from": 305,
+      "to": 491,
       "label": "Baja lógica"
     },
     {
-      "from": 627,
-      "to": 856,
+      "from": 513,
+      "to": 667,
       "label": "Borrado físico"
     }
   ]

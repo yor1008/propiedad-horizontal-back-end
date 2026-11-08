@@ -52,32 +52,29 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/cuentas",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador. {correo, contrasena, rol, personaId}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "Correo único (409); una cuenta por persona (409)"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 311,
+      "y": 239,
       "label": "persona existe y sin cuenta",
-      "variant": "default",
-      "note": "PERSONA_VINCULADA exige personaId (422)"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "enc",
-      "y": 368,
+      "y": 271,
       "label": "encode(contrasena)",
       "variant": "security"
     },
@@ -85,7 +82,7 @@
       "id": "m5",
       "from": "svc",
       "to": "repo",
-      "y": 400,
+      "y": 303,
       "label": "save(cuenta)",
       "variant": "default"
     },
@@ -93,16 +90,15 @@
       "id": "m6",
       "from": "ctrl",
       "to": "cliente",
-      "y": 432,
+      "y": 335,
       "label": "201 CuentaResponse",
-      "variant": "return",
-      "note": "Nunca incluye el hash"
+      "variant": "return"
     },
     {
       "id": "m7",
       "from": "cliente",
       "to": "ctrl",
-      "y": 494,
+      "y": 383,
       "label": "GET /api/cuentas y /{id}",
       "variant": "emphasis"
     },
@@ -110,7 +106,7 @@
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 526,
+      "y": 415,
       "label": "PATCH /{id}/desactivar",
       "variant": "emphasis"
     },
@@ -118,16 +114,15 @@
       "id": "m9",
       "from": "svc",
       "to": "uact",
-      "y": 558,
+      "y": 447,
       "label": "cuentaId()",
-      "variant": "security",
-      "note": "No se puede desactivar la propia cuenta (422)"
+      "variant": "security"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "repo",
-      "y": 626,
+      "y": 479,
       "label": "desactivar() / reactivar()",
       "variant": "default"
     },
@@ -135,7 +130,7 @@
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 658,
+      "y": 511,
       "label": "200 CuentaResponse",
       "variant": "return"
     },
@@ -143,7 +138,7 @@
       "id": "m12",
       "from": "cliente",
       "to": "ctrl",
-      "y": 706,
+      "y": 559,
       "label": "DELETE /api/cuentas/{id}",
       "variant": "emphasis"
     },
@@ -151,25 +146,23 @@
       "id": "m13",
       "from": "svc",
       "to": "uact",
-      "y": 738,
+      "y": 591,
       "label": "cuentaId()",
-      "variant": "security",
-      "note": "No se puede borrar la propia cuenta (422)"
+      "variant": "security"
     },
     {
       "id": "m14",
       "from": "svc",
       "to": "repo",
-      "y": 795,
+      "y": 623,
       "label": "delete(cuenta)",
-      "variant": "default",
-      "note": "Nada depende de una cuenta"
+      "variant": "default"
     },
     {
       "id": "m15",
       "from": "ctrl",
       "to": "cliente",
-      "y": 852,
+      "y": 655,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -178,31 +171,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 858,
+      "to": 661,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 801,
+      "from": 202,
+      "to": 629,
       "type": "backend"
     },
     {
       "participant": "uact",
-      "from": 553,
-      "to": 744,
+      "from": 442,
+      "to": 597,
       "type": "security"
     },
     {
       "participant": "enc",
-      "from": 363,
-      "to": 374,
+      "from": 266,
+      "to": 277,
       "type": "security"
     },
     {
       "participant": "repo",
-      "from": 306,
-      "to": 801,
+      "from": 234,
+      "to": 629,
       "type": "database"
     }
   ],
@@ -219,17 +212,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 458,
+      "to": 347,
       "label": "Crear"
     },
     {
-      "from": 480,
-      "to": 670,
+      "from": 369,
+      "to": 523,
       "label": "Consultar y cambiar estado"
     },
     {
-      "from": 692,
-      "to": 864,
+      "from": 545,
+      "to": 667,
       "label": "Borrar"
     }
   ]

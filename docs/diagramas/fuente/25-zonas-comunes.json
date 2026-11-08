@@ -46,32 +46,29 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/zonas-comunes",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador. Reglas + horarios"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "Mínimo un horario; nombre único (409)"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 289,
+      "y": 239,
       "label": "save(zona + horarios)",
-      "variant": "default",
-      "note": "Un 0 en una regla numérica = sin restricción"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 346,
+      "y": 271,
       "label": "201 ZonaComunResponse",
       "variant": "return"
     },
@@ -79,25 +76,23 @@
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 378,
+      "y": 303,
       "label": "PUT /{id} y PATCH desactivar",
-      "variant": "emphasis",
-      "note": "Reemplaza reglas y horarios, o baja lógica"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 435,
+      "y": 335,
       "label": "modificarDatos / desactivar",
-      "variant": "default",
-      "note": "No se bloquea con reservas futuras"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "cliente",
       "to": "ctrl",
-      "y": 492,
+      "y": 367,
       "label": "DELETE /{id}",
       "variant": "emphasis"
     },
@@ -105,34 +100,31 @@
       "id": "m8",
       "from": "svc",
       "to": "res",
-      "y": 524,
+      "y": 399,
       "label": "delete + flush",
-      "variant": "default",
-      "note": "Con reservas o mantenimientos: 409"
+      "variant": "default"
     },
     {
       "id": "m9",
       "from": "ctrl",
       "to": "cliente",
-      "y": 581,
+      "y": 431,
       "label": "204 sin cuerpo",
-      "variant": "return",
-      "note": "Se borra con sus horarios"
+      "variant": "return"
     },
     {
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 654,
+      "y": 479,
       "label": "GET /{id}/disponibilidad?fecha",
-      "variant": "emphasis",
-      "note": "@Autenticado"
+      "variant": "emphasis"
     },
     {
       "id": "m11",
       "from": "ctrl",
       "to": "svc",
-      "y": 700,
+      "y": 511,
       "label": "disponibilidad(id, fecha)",
       "variant": "default"
     },
@@ -140,7 +132,7 @@
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 732,
+      "y": 543,
       "label": "horarios del día",
       "variant": "default"
     },
@@ -148,16 +140,15 @@
       "id": "m13",
       "from": "svc",
       "to": "res",
-      "y": 764,
+      "y": 575,
       "label": "reservas y mantenimientos",
-      "variant": "default",
-      "note": "Franjas ocupadas del día"
+      "variant": "default"
     },
     {
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 821,
+      "y": 607,
       "label": "200 {horarios, ocupadas}",
       "variant": "return"
     }
@@ -166,25 +157,25 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 827,
+      "to": 613,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 770,
+      "from": 202,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 284,
-      "to": 738,
+      "from": 234,
+      "to": 549,
       "type": "database"
     },
     {
       "participant": "res",
-      "from": 519,
-      "to": 770,
+      "from": 394,
+      "to": 581,
       "type": "database"
     }
   ],
@@ -201,12 +192,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 618,
+      "to": 443,
       "label": "Administrar"
     },
     {
-      "from": 640,
-      "to": 833,
+      "from": 465,
+      "to": 619,
       "label": "Consultar"
     }
   ]

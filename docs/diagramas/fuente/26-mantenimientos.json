@@ -52,41 +52,37 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/mantenimientos",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador. Zona opcional"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "programar(solicitud)",
-      "variant": "default",
-      "note": "Fin posterior al inicio; inicio no en el pasado"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "res",
-      "y": 300,
+      "y": 239,
       "label": "reservas vigentes en la zona",
-      "variant": "default",
-      "note": "Si hay alguna: 409, anúlelas antes"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "est",
-      "y": 357,
+      "y": 271,
       "label": "inicial(MANTENIMIENTO)",
-      "variant": "default",
-      "note": "Estado Programado"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "svc",
       "to": "repo",
-      "y": 403,
+      "y": 303,
       "label": "save(mantenimiento)",
       "variant": "default"
     },
@@ -94,7 +90,7 @@
       "id": "m6",
       "from": "ctrl",
       "to": "cliente",
-      "y": 435,
+      "y": 335,
       "label": "201 MantenimientoResponse",
       "variant": "return"
     },
@@ -102,16 +98,15 @@
       "id": "m7",
       "from": "cliente",
       "to": "ctrl",
-      "y": 467,
+      "y": 367,
       "label": "PUT /{id}",
-      "variant": "emphasis",
-      "note": "Solo mientras esté Programado (422)"
+      "variant": "emphasis"
     },
     {
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 540,
+      "y": 415,
       "label": "PATCH /{id}/iniciar",
       "variant": "emphasis"
     },
@@ -119,7 +114,7 @@
       "id": "m9",
       "from": "svc",
       "to": "est",
-      "y": 572,
+      "y": 447,
       "label": "transicionar(→ En curso)",
       "variant": "default"
     },
@@ -127,34 +122,31 @@
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 604,
+      "y": 479,
       "label": "PATCH /{id}/finalizar",
-      "variant": "emphasis",
-      "note": "Observaciones opcionales"
+      "variant": "emphasis"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "est",
-      "y": 661,
+      "y": 511,
       "label": "transicionar(→ Completado)",
-      "variant": "default",
-      "note": "Periodo abierto: el fin queda en este momento"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "cliente",
       "to": "ctrl",
-      "y": 729,
+      "y": 543,
       "label": "PATCH /{id}/cancelar",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}; Programado o En curso"
+      "variant": "emphasis"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "est",
-      "y": 786,
+      "y": 575,
       "label": "transicionar(→ Cancelado)",
       "variant": "default"
     },
@@ -162,25 +154,23 @@
       "id": "m14",
       "from": "cliente",
       "to": "ctrl",
-      "y": 818,
+      "y": 607,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "Solo en estado Programado"
+      "variant": "emphasis"
     },
     {
       "id": "m15",
       "from": "svc",
       "to": "repo",
-      "y": 875,
+      "y": 639,
       "label": "delete(mantenimiento)",
-      "variant": "default",
-      "note": "Los demás estados: 409, usar cancelar"
+      "variant": "default"
     },
     {
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 932,
+      "y": 671,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -189,31 +179,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 938,
+      "to": 677,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 881,
+      "from": 202,
+      "to": 645,
       "type": "backend"
     },
     {
       "participant": "est",
-      "from": 352,
-      "to": 792,
+      "from": 266,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "res",
-      "from": 295,
-      "to": 306,
+      "from": 234,
+      "to": 245,
       "type": "database"
     },
     {
       "participant": "repo",
-      "from": 398,
-      "to": 881,
+      "from": 298,
+      "to": 645,
       "type": "database"
     }
   ],
@@ -230,12 +220,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 504,
+      "to": 379,
       "label": "Programar y modificar"
     },
     {
-      "from": 526,
-      "to": 944,
+      "from": 401,
+      "to": 683,
       "label": "Ciclo de vida"
     }
   ]

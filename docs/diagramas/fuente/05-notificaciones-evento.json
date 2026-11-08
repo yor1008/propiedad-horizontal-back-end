@@ -58,23 +58,21 @@
       "to": "noti",
       "y": 175,
       "label": "notificar(evento, personas, texto)",
-      "variant": "emphasis",
-      "note": "Solo personas vinculadas reciben notificaciones"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "noti",
       "to": "cfg",
-      "y": 243,
+      "y": 207,
       "label": "findByEvento(evento)",
-      "variant": "default",
-      "note": "Sin fila: activa y sin correo"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "cfg",
       "to": "noti",
-      "y": 300,
+      "y": 239,
       "label": "activa, enviarCorreo",
       "variant": "return"
     },
@@ -82,34 +80,31 @@
       "id": "m4",
       "from": "noti",
       "to": "nrepo",
-      "y": 332,
+      "y": 271,
       "label": "saveAll(generar(...))",
-      "variant": "default",
-      "note": "activa = false: no genera nada"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "noti",
       "to": "tx",
-      "y": 389,
+      "y": 303,
       "label": "registrar afterCommit",
-      "variant": "dashed",
-      "note": "Solo si hay destinatarios con correo"
+      "variant": "dashed"
     },
     {
       "id": "m6",
       "from": "caso",
       "to": "tx",
-      "y": 462,
+      "y": 351,
       "label": "commit",
-      "variant": "default",
-      "note": "Si el caso de uso se revierte, no sale correo"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "tx",
       "to": "corr",
-      "y": 530,
+      "y": 383,
       "label": "afterCommit: enviar(...)",
       "variant": "dashed"
     },
@@ -117,53 +112,52 @@
       "id": "m8",
       "from": "corr",
       "to": "ext",
-      "y": 562,
+      "y": 415,
       "label": "correo al destinatario",
-      "variant": "dashed",
-      "note": "Mejor esfuerzo: si falla, solo queda en el log"
+      "variant": "dashed"
     }
   ],
   "activations": [
     {
       "participant": "caso",
       "from": 170,
-      "to": 468,
+      "to": 357,
       "type": "backend"
     },
     {
       "participant": "noti",
       "from": 170,
-      "to": 395,
+      "to": 309,
       "type": "backend"
     },
     {
       "participant": "cfg",
-      "from": 238,
-      "to": 306,
+      "from": 202,
+      "to": 245,
       "type": "database"
     },
     {
       "participant": "nrepo",
-      "from": 327,
-      "to": 338,
+      "from": 266,
+      "to": 277,
       "type": "database"
     },
     {
       "participant": "tx",
-      "from": 384,
-      "to": 536,
+      "from": 298,
+      "to": 389,
       "type": "messagebus"
     },
     {
       "participant": "corr",
-      "from": 525,
-      "to": 568,
+      "from": 378,
+      "to": 421,
       "type": "messagebus"
     },
     {
       "participant": "ext",
-      "from": 557,
-      "to": 568,
+      "from": 410,
+      "to": 421,
       "type": "external"
     }
   ],
@@ -191,12 +185,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 426,
+      "to": 315,
       "label": "En la transacción"
     },
     {
-      "from": 448,
-      "to": 610,
+      "from": 337,
+      "to": 427,
       "label": "Tras confirmar"
     }
   ]

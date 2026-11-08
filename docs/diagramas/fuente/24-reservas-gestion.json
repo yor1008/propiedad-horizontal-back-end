@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /api/reservas",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "cliente",
-      "y": 221,
+      "y": 207,
       "label": "200 todas las reservas",
       "variant": "return"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "cliente",
       "to": "ctrl",
-      "y": 253,
+      "y": 239,
       "label": "PATCH /{id}/aprobar",
-      "variant": "emphasis",
-      "note": "Condiciones opcionales"
+      "variant": "emphasis"
     },
     {
       "id": "m4",
       "from": "ctrl",
       "to": "svc",
-      "y": 299,
+      "y": 271,
       "label": "aprobar(id, condiciones)",
       "variant": "default"
     },
@@ -84,16 +82,15 @@
       "id": "m5",
       "from": "svc",
       "to": "est",
-      "y": 331,
+      "y": 303,
       "label": "transicionar(→ Aprobada)",
-      "variant": "default",
-      "note": "Transición inválida: 422"
+      "variant": "default"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 388,
+      "y": 335,
       "label": "aprobar(condiciones)",
       "variant": "default"
     },
@@ -101,16 +98,15 @@
       "id": "m7",
       "from": "svc",
       "to": "noti",
-      "y": 420,
+      "y": 367,
       "label": "notificar(...)",
-      "variant": "dashed",
-      "note": "\"Su reserva ... fue aprobada\""
+      "variant": "dashed"
     },
     {
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 477,
+      "y": 399,
       "label": "200 {estado: Aprobada}",
       "variant": "return"
     },
@@ -118,88 +114,79 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 509,
+      "y": 431,
       "label": "PATCH /{id}/rechazar",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo} obligatorio"
+      "variant": "emphasis"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "est",
-      "y": 566,
+      "y": 463,
       "label": "transicionar(→ Rechazada)",
-      "variant": "default",
-      "note": "Desde Pendiente; exige motivo"
+      "variant": "default"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "noti",
-      "y": 623,
+      "y": 495,
       "label": "notificar(...)",
-      "variant": "dashed",
-      "note": "Incluye el motivo"
+      "variant": "dashed"
     },
     {
       "id": "m12",
       "from": "cliente",
       "to": "ctrl",
-      "y": 685,
+      "y": 543,
       "label": "PATCH /{id}/anular",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}; sin límite de horas"
+      "variant": "emphasis"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "est",
-      "y": 742,
+      "y": 575,
       "label": "transicionar(→ Cancelada)",
-      "variant": "default",
-      "note": "Desde Pendiente o Aprobada"
+      "variant": "default"
     },
     {
       "id": "m14",
       "from": "svc",
       "to": "noti",
-      "y": 799,
+      "y": 607,
       "label": "notificar(...)",
-      "variant": "dashed",
-      "note": "Cancelada por la administración"
+      "variant": "dashed"
     },
     {
       "id": "m15",
       "from": "cliente",
       "to": "ctrl",
-      "y": 856,
+      "y": 639,
       "label": "PATCH /{id}/finalizar",
-      "variant": "emphasis",
-      "note": "Aprobada → Finalizada"
+      "variant": "emphasis"
     },
     {
       "id": "m16",
       "from": "cliente",
       "to": "ctrl",
-      "y": 902,
+      "y": 671,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "Solo en estado Pendiente"
+      "variant": "emphasis"
     },
     {
       "id": "m17",
       "from": "svc",
       "to": "repo",
-      "y": 959,
+      "y": 703,
       "label": "delete(reserva)",
-      "variant": "default",
-      "note": "Cualquier otro estado: 409, usar anular"
+      "variant": "default"
     },
     {
       "id": "m18",
       "from": "ctrl",
       "to": "cliente",
-      "y": 1016,
+      "y": 735,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -208,31 +195,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 1022,
+      "to": 741,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 294,
-      "to": 965,
+      "from": 266,
+      "to": 709,
       "type": "backend"
     },
     {
       "participant": "est",
-      "from": 326,
-      "to": 748,
+      "from": 298,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "noti",
-      "from": 415,
-      "to": 805,
+      "from": 362,
+      "to": 613,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 383,
-      "to": 965,
+      "from": 330,
+      "to": 709,
       "type": "database"
     }
   ],
@@ -250,12 +237,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 649,
+      "to": 507,
       "label": "Decidir"
     },
     {
-      "from": 671,
-      "to": 1028,
+      "from": 529,
+      "to": 747,
       "label": "Anular, finalizar y borrar"
     }
   ]

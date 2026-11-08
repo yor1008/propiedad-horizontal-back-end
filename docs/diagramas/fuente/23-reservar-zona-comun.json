@@ -52,68 +52,61 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/reservas",
-      "variant": "emphasis",
-      "note": "@SoloResidente. {zonaId, fecha, horas, asistentes}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "reservar(solicitud)",
-      "variant": "default",
-      "note": "Exige vínculo vigente (422)"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "zona",
-      "y": 300,
+      "y": 239,
       "label": "activa + validarReserva",
-      "variant": "default",
-      "note": "Horario, capacidad, duración, anticipación (422)"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "repo",
-      "y": 368,
+      "y": 271,
       "label": "traslape de reservas",
-      "variant": "default",
-      "note": "Ya hay una en ese horario: 409"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "svc",
       "to": "repo",
-      "y": 425,
+      "y": 303,
       "label": "mantenimiento en ese horario",
-      "variant": "default",
-      "note": "Zona bloqueada: 409"
+      "variant": "default"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 471,
+      "y": 335,
       "label": "límite por inmueble y periodo",
-      "variant": "default",
-      "note": "DIA, SEMANA o MES; si se alcanza: 422"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "svc",
       "to": "est",
-      "y": 528,
+      "y": 367,
       "label": "inicial(RESERVA)",
-      "variant": "default",
-      "note": "Pendiente, o Aprobada si no requiere aprobación"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "svc",
       "to": "repo",
-      "y": 596,
+      "y": 399,
       "label": "save(reserva)",
       "variant": "default"
     },
@@ -121,7 +114,7 @@
       "id": "m9",
       "from": "ctrl",
       "to": "cliente",
-      "y": 628,
+      "y": 431,
       "label": "201 ReservaResponse",
       "variant": "return"
     },
@@ -129,7 +122,7 @@
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 676,
+      "y": 479,
       "label": "GET /mias",
       "variant": "emphasis"
     },
@@ -137,77 +130,72 @@
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 708,
+      "y": 511,
       "label": "200 lista propia",
-      "variant": "return",
-      "note": "Con \"puedeCancelar\""
+      "variant": "return"
     },
     {
       "id": "m12",
       "from": "cliente",
       "to": "ctrl",
-      "y": 754,
+      "y": 543,
       "label": "PATCH /{id}/cancelar",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}"
+      "variant": "emphasis"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "repo",
-      "y": 800,
+      "y": 575,
       "label": "reserva propia",
-      "variant": "default",
-      "note": "Una ajena da 404"
+      "variant": "default"
     },
     {
       "id": "m14",
       "from": "svc",
       "to": "est",
-      "y": 846,
+      "y": 607,
       "label": "transicionar(→ Cancelada)",
-      "variant": "default",
-      "note": "Hasta limiteCancelacionHoras antes (422)"
+      "variant": "default"
     },
     {
       "id": "m15",
       "from": "ctrl",
       "to": "cliente",
-      "y": 903,
+      "y": 639,
       "label": "200 {estado: Cancelada}",
-      "variant": "return",
-      "note": "El horario cancelado queda libre"
+      "variant": "return"
     }
   ],
   "activations": [
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 909,
+      "to": 645,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 852,
+      "from": 202,
+      "to": 613,
       "type": "backend"
     },
     {
       "participant": "zona",
-      "from": 295,
-      "to": 306,
+      "from": 234,
+      "to": 245,
       "type": "database"
     },
     {
       "participant": "repo",
-      "from": 363,
-      "to": 806,
+      "from": 266,
+      "to": 581,
       "type": "database"
     },
     {
       "participant": "est",
-      "from": 523,
-      "to": 852,
+      "from": 362,
+      "to": 613,
       "type": "backend"
     }
   ],
@@ -224,12 +212,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 640,
+      "to": 443,
       "label": "Reservar"
     },
     {
-      "from": 662,
-      "to": 940,
+      "from": 465,
+      "to": 651,
       "label": "Consultar y cancelar"
     }
   ]

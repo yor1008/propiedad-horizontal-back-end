@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/auth/cambiar-contrasena",
-      "variant": "emphasis",
-      "note": "@Autenticado. Cuerpo {actual, nueva} (8 a 72 caracteres)"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "cambiar(actual, nueva)",
       "variant": "default"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "svc",
       "to": "uact",
-      "y": 275,
+      "y": 239,
       "label": "cuentaId()",
-      "variant": "security",
-      "note": "La cuenta sale del token, nunca del cliente"
+      "variant": "security"
     },
     {
       "id": "m4",
       "from": "uact",
       "to": "svc",
-      "y": 332,
+      "y": 271,
       "label": "id de la cuenta",
       "variant": "return"
     },
@@ -84,7 +82,7 @@
       "id": "m5",
       "from": "svc",
       "to": "repo",
-      "y": 364,
+      "y": 303,
       "label": "findById(id)",
       "variant": "default"
     },
@@ -92,7 +90,7 @@
       "id": "m6",
       "from": "repo",
       "to": "svc",
-      "y": 396,
+      "y": 335,
       "label": "cuenta + hash",
       "variant": "return"
     },
@@ -100,25 +98,23 @@
       "id": "m7",
       "from": "svc",
       "to": "enc",
-      "y": 428,
+      "y": 367,
       "label": "matches(actual, hash)",
-      "variant": "security",
-      "note": "Si no coincide: 422 \"La contrasena actual no es correcta\""
+      "variant": "security"
     },
     {
       "id": "m8",
       "from": "svc",
       "to": "enc",
-      "y": 496,
+      "y": 399,
       "label": "matches(nueva, hash)",
-      "variant": "security",
-      "note": "Si es igual a la actual: 422"
+      "variant": "security"
     },
     {
       "id": "m9",
       "from": "svc",
       "to": "enc",
-      "y": 553,
+      "y": 431,
       "label": "encode(nueva)",
       "variant": "security"
     },
@@ -126,16 +122,15 @@
       "id": "m10",
       "from": "svc",
       "to": "repo",
-      "y": 585,
+      "y": 463,
       "label": "actualizarHashContrasena",
-      "variant": "default",
-      "note": "Los tokens ya emitidos siguen vigentes hasta su exp"
+      "variant": "default"
     },
     {
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 653,
+      "y": 495,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -144,31 +139,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 659,
+      "to": 501,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 591,
+      "from": 202,
+      "to": 469,
       "type": "backend"
     },
     {
       "participant": "uact",
-      "from": 270,
-      "to": 338,
+      "from": 234,
+      "to": 277,
       "type": "security"
     },
     {
       "participant": "repo",
-      "from": 359,
-      "to": 591,
+      "from": 298,
+      "to": 469,
       "type": "database"
     },
     {
       "participant": "enc",
-      "from": 423,
-      "to": 559,
+      "from": 362,
+      "to": 437,
       "type": "security"
     }
   ],

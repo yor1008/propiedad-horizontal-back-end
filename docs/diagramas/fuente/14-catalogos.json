@@ -40,14 +40,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /api/catalogos/{tipo}",
-      "variant": "emphasis",
-      "note": "@Autenticado. Solo valores activos"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "listar(tipo, soloActivos)",
       "variant": "default"
     },
@@ -55,7 +54,7 @@
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 264,
+      "y": 239,
       "label": "findByTipo...OrderByNombre",
       "variant": "default"
     },
@@ -63,34 +62,31 @@
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 296,
+      "y": 271,
       "label": "200 lista",
-      "variant": "return",
-      "note": "El administrador usa /{tipo}/todos"
+      "variant": "return"
     },
     {
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 369,
+      "y": 319,
       "label": "POST /api/catalogos",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador. {tipo, nombre}"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "ctrl",
       "to": "svc",
-      "y": 426,
+      "y": 351,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "Nombre repetido en el tipo: 409"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "svc",
       "to": "repo",
-      "y": 483,
+      "y": 383,
       "label": "save(valor)",
       "variant": "default"
     },
@@ -98,7 +94,7 @@
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 515,
+      "y": 415,
       "label": "201 CatalogoResponse",
       "variant": "return"
     },
@@ -106,16 +102,15 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 547,
+      "y": 447,
       "label": "PUT /{id} y PATCH desactivar",
-      "variant": "emphasis",
-      "note": "Renombrar, desactivar o reactivar"
+      "variant": "emphasis"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "repo",
-      "y": 604,
+      "y": 479,
       "label": "modificar() / desactivar()",
       "variant": "default"
     },
@@ -123,7 +118,7 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 636,
+      "y": 511,
       "label": "DELETE /api/catalogos/{id}",
       "variant": "emphasis"
     },
@@ -131,16 +126,15 @@
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 668,
+      "y": 543,
       "label": "delete + flush",
-      "variant": "default",
-      "note": "Si algo lo usa: 409, se desactiva en su lugar"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "ctrl",
       "to": "cliente",
-      "y": 736,
+      "y": 575,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -149,19 +143,19 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 742,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 674,
+      "from": 202,
+      "to": 549,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 259,
-      "to": 674,
+      "from": 234,
+      "to": 549,
       "type": "database"
     }
   ],
@@ -178,12 +172,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 333,
+      "to": 283,
       "label": "Lectura"
     },
     {
-      "from": 355,
-      "to": 748,
+      "from": 305,
+      "to": 587,
       "label": "Escritura (administrador)"
     }
   ]

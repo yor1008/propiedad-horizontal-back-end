@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /olvide-contrasena",
-      "variant": "emphasis",
-      "note": "Público. Cuerpo {correo}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "solicitar(correo)",
       "variant": "default"
     },
@@ -67,25 +66,23 @@
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 264,
+      "y": 239,
       "label": "cuenta activa por correo",
-      "variant": "default",
-      "note": "Si no existe o está inactiva, no hace nada"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "tok",
-      "y": 321,
+      "y": 271,
       "label": "emitir(cuenta)",
-      "variant": "security",
-      "note": "Emisor propio, 30 min y huella del hash actual"
+      "variant": "security"
     },
     {
       "id": "m5",
       "from": "tok",
       "to": "svc",
-      "y": 389,
+      "y": 303,
       "label": "token",
       "variant": "return"
     },
@@ -93,34 +90,31 @@
       "id": "m6",
       "from": "svc",
       "to": "corr",
-      "y": 421,
+      "y": 335,
       "label": "enviar(correo, enlace)",
-      "variant": "dashed",
-      "note": "Asíncrono; el enlace lleva ?token="
+      "variant": "dashed"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "cliente",
-      "y": 478,
+      "y": 367,
       "label": "204 siempre",
-      "variant": "return",
-      "note": "No revela si la cuenta existe"
+      "variant": "return"
     },
     {
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 551,
+      "y": 415,
       "label": "POST /restablecer-contrasena",
-      "variant": "emphasis",
-      "note": "Cuerpo {token, nueva}"
+      "variant": "emphasis"
     },
     {
       "id": "m9",
       "from": "ctrl",
       "to": "svc",
-      "y": 597,
+      "y": 447,
       "label": "restablecer(token, nueva)",
       "variant": "default"
     },
@@ -128,43 +122,39 @@
       "id": "m10",
       "from": "svc",
       "to": "tok",
-      "y": 629,
+      "y": 479,
       "label": "validar(token)",
-      "variant": "security",
-      "note": "Firma, expiración, emisor: si falla, 422"
+      "variant": "security"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "repo",
-      "y": 686,
+      "y": 511,
       "label": "findById(cuenta)",
-      "variant": "default",
-      "note": "Debe estar activa"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "svc",
       "to": "tok",
-      "y": 732,
+      "y": 543,
       "label": "huellaDe(cuenta) = huella",
-      "variant": "security",
-      "note": "Si ya cambió la clave, el token no sirve"
+      "variant": "security"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "repo",
-      "y": 789,
+      "y": 575,
       "label": "actualizarHashContrasena",
-      "variant": "default",
-      "note": "BCrypt de la nueva contraseña"
+      "variant": "default"
     },
     {
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 846,
+      "y": 607,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -173,31 +163,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 852,
+      "to": 613,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 795,
+      "from": 202,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 259,
-      "to": 795,
+      "from": 234,
+      "to": 581,
       "type": "database"
     },
     {
       "participant": "tok",
-      "from": 316,
-      "to": 738,
+      "from": 266,
+      "to": 549,
       "type": "security"
     },
     {
       "participant": "corr",
-      "from": 416,
-      "to": 427,
+      "from": 330,
+      "to": 341,
       "type": "messagebus"
     }
   ],
@@ -222,12 +212,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 515,
+      "to": 379,
       "label": "Solicitar el enlace"
     },
     {
-      "from": 537,
-      "to": 858,
+      "from": 401,
+      "to": 619,
       "label": "Fijar la nueva contraseña"
     }
   ]

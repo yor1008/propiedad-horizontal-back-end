@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/vehiculos",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "crear(solicitud)",
       "variant": "default"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 253,
+      "y": 239,
       "label": "placa en mayúsculas y única",
-      "variant": "default",
-      "note": "Placa repetida: 409"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "rper",
-      "y": 299,
+      "y": 271,
       "label": "persona e inmueble existen",
       "variant": "default"
     },
@@ -84,34 +82,31 @@
       "id": "m5",
       "from": "svc",
       "to": "rper",
-      "y": 331,
+      "y": 303,
       "label": "vínculo vigente con ese inmueble",
-      "variant": "default",
-      "note": "Si no lo tiene: 422"
+      "variant": "default"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "cfg",
-      "y": 377,
+      "y": 335,
       "label": "maxVehiculosPorInmueble",
-      "variant": "default",
-      "note": "0 o sin fila = sin límite; si se alcanza: 422"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "svc",
       "to": "repo",
-      "y": 445,
+      "y": 367,
       "label": "save(vehiculo)",
-      "variant": "default",
-      "note": "Tipo del catálogo TIPO_VEHICULO, activo"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 502,
+      "y": 399,
       "label": "201 VehiculoResponse",
       "variant": "return"
     },
@@ -119,34 +114,31 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 550,
+      "y": 447,
       "label": "PUT /{id}",
-      "variant": "emphasis",
-      "note": "Cambia tipo, marca y color"
+      "variant": "emphasis"
     },
     {
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 607,
+      "y": 479,
       "label": "PATCH /{id}/desactivar",
-      "variant": "emphasis",
-      "note": "Baja lógica con motivo"
+      "variant": "emphasis"
     },
     {
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 653,
+      "y": 511,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "Nada depende de un vehículo"
+      "variant": "emphasis"
     },
     {
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 710,
+      "y": 543,
       "label": "delete(vehiculo)",
       "variant": "default"
     },
@@ -154,7 +146,7 @@
       "id": "m13",
       "from": "ctrl",
       "to": "cliente",
-      "y": 742,
+      "y": 575,
       "label": "204 sin cuerpo",
       "variant": "return"
     },
@@ -162,25 +154,23 @@
       "id": "m14",
       "from": "cliente",
       "to": "ctrl",
-      "y": 790,
+      "y": 623,
       "label": "GET /placa/{placa}",
-      "variant": "emphasis",
-      "note": "@SoloVigilante"
+      "variant": "emphasis"
     },
     {
       "id": "m15",
       "from": "svc",
       "to": "repo",
-      "y": 836,
+      "y": 655,
       "label": "findByPlacaIgnoreCase",
-      "variant": "default",
-      "note": "No existe: 404"
+      "variant": "default"
     },
     {
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 882,
+      "y": 687,
       "label": "200 VehiculoResponse",
       "variant": "return"
     }
@@ -189,31 +179,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 888,
+      "to": 693,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 842,
+      "from": 202,
+      "to": 661,
       "type": "backend"
     },
     {
       "participant": "rper",
-      "from": 294,
-      "to": 337,
+      "from": 266,
+      "to": 309,
       "type": "database"
     },
     {
       "participant": "cfg",
-      "from": 372,
-      "to": 383,
+      "from": 330,
+      "to": 341,
       "type": "database"
     },
     {
       "participant": "repo",
-      "from": 248,
-      "to": 842,
+      "from": 234,
+      "to": 661,
       "type": "database"
     }
   ],
@@ -231,17 +221,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 514,
+      "to": 411,
       "label": "Registrar (administrador)"
     },
     {
-      "from": 536,
-      "to": 754,
+      "from": 433,
+      "to": 587,
       "label": "Mantener y borrar"
     },
     {
-      "from": 776,
-      "to": 894,
+      "from": 609,
+      "to": 699,
       "label": "Consulta en portería"
     }
   ]

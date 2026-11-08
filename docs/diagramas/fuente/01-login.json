@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/auth/login",
-      "variant": "emphasis",
-      "note": "Ruta pública. LoginRequest {correo, contrasena}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "aut",
-      "y": 243,
+      "y": 207,
       "label": "iniciarSesion(correo, clave)",
       "variant": "default"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "aut",
       "to": "mgr",
-      "y": 275,
+      "y": 239,
       "label": "authenticate(correo, clave)",
-      "variant": "security",
-      "note": "Correo en minúsculas y sin espacios"
+      "variant": "security"
     },
     {
       "id": "m4",
       "from": "mgr",
       "to": "repo",
-      "y": 332,
+      "y": 271,
       "label": "buscar cuenta por correo",
       "variant": "default"
     },
@@ -84,7 +82,7 @@
       "id": "m5",
       "from": "repo",
       "to": "mgr",
-      "y": 364,
+      "y": 303,
       "label": "cuenta + hash BCrypt",
       "variant": "return"
     },
@@ -92,16 +90,15 @@
       "id": "m6",
       "from": "mgr",
       "to": "aut",
-      "y": 396,
+      "y": 335,
       "label": "autenticado",
-      "variant": "return",
-      "note": "Clave mala, cuenta inexistente o inactiva: 401 igual"
+      "variant": "return"
     },
     {
       "id": "m7",
       "from": "aut",
       "to": "repo",
-      "y": 480,
+      "y": 383,
       "label": "registrarAcceso(ahora)",
       "variant": "default"
     },
@@ -109,16 +106,15 @@
       "id": "m8",
       "from": "aut",
       "to": "tok",
-      "y": 512,
+      "y": 415,
       "label": "emitir(cuenta)",
-      "variant": "security",
-      "note": "Claims: sub, correo, rol, personaId, autoridades, iss, iat, exp, jti"
+      "variant": "security"
     },
     {
       "id": "m9",
       "from": "tok",
       "to": "aut",
-      "y": 591,
+      "y": 447,
       "label": "TokenEmitido (Bearer)",
       "variant": "return"
     },
@@ -126,7 +122,7 @@
       "id": "m10",
       "from": "aut",
       "to": "ctrl",
-      "y": 623,
+      "y": 479,
       "label": "TokenEmitido",
       "variant": "return"
     },
@@ -134,7 +130,7 @@
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 655,
+      "y": 511,
       "label": "200 {accessToken, tokenType, expiresIn}",
       "variant": "return"
     }
@@ -143,31 +139,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 661,
+      "to": 517,
       "type": "backend"
     },
     {
       "participant": "aut",
-      "from": 238,
-      "to": 629,
+      "from": 202,
+      "to": 485,
       "type": "backend"
     },
     {
       "participant": "mgr",
-      "from": 270,
-      "to": 402,
+      "from": 234,
+      "to": 341,
       "type": "security"
     },
     {
       "participant": "repo",
-      "from": 327,
-      "to": 486,
+      "from": 266,
+      "to": 389,
       "type": "database"
     },
     {
       "participant": "tok",
-      "from": 507,
-      "to": 597,
+      "from": 410,
+      "to": 453,
       "type": "security"
     }
   ],
@@ -193,12 +189,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 444,
+      "to": 347,
       "label": "Verificar credenciales"
     },
     {
-      "from": 466,
-      "to": 667,
+      "from": 369,
+      "to": 523,
       "label": "Emitir el token"
     }
   ]

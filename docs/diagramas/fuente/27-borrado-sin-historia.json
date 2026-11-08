@@ -58,32 +58,29 @@
       "to": "ctrl",
       "y": 175,
       "label": "DELETE /api/{recurso}/{id}",
-      "variant": "emphasis",
-      "note": "Solo administrador; 403 para otros roles"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 232,
+      "y": 207,
       "label": "eliminar(id)",
-      "variant": "default",
-      "note": "No existe: 404"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "bor",
-      "y": 278,
+      "y": 239,
       "label": "fisico(repo, entidad)",
-      "variant": "default",
-      "note": "Catálogos, zonas, parqueaderos, pre-registros"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "bor",
       "to": "repo",
-      "y": 346,
+      "y": 271,
       "label": "delete + flush",
       "variant": "default"
     },
@@ -91,7 +88,7 @@
       "id": "m5",
       "from": "repo",
       "to": "bd",
-      "y": 378,
+      "y": 303,
       "label": "DELETE",
       "variant": "default"
     },
@@ -99,25 +96,23 @@
       "id": "m6",
       "from": "bd",
       "to": "bor",
-      "y": 410,
+      "y": 335,
       "label": "viola una clave foránea",
-      "variant": "dashed",
-      "note": "Alternativa: algo referencia el registro"
+      "variant": "dashed"
     },
     {
       "id": "m7",
       "from": "bor",
       "to": "err",
-      "y": 467,
+      "y": 367,
       "label": "ConflictoException",
-      "variant": "dashed",
-      "note": "Mensaje: usar desactivar en su lugar"
+      "variant": "dashed"
     },
     {
       "id": "m8",
       "from": "err",
       "to": "cliente",
-      "y": 524,
+      "y": 399,
       "label": "409 ErrorApi",
       "variant": "return"
     },
@@ -125,25 +120,23 @@
       "id": "m9",
       "from": "svc",
       "to": "bor",
-      "y": 572,
+      "y": 447,
       "label": "exigirEstadoInicial(estado)",
-      "variant": "default",
-      "note": "Reservas, PQRS, correspondencia, mantenimientos"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "bor",
       "to": "err",
-      "y": 640,
+      "y": 479,
       "label": "ConflictoException",
-      "variant": "dashed",
-      "note": "Si ya tuvo movimiento: usar cancelar o anular"
+      "variant": "dashed"
     },
     {
       "id": "m11",
       "from": "err",
       "to": "cliente",
-      "y": 708,
+      "y": 511,
       "label": "409 ErrorApi",
       "variant": "return"
     },
@@ -151,16 +144,15 @@
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 740,
+      "y": 543,
       "label": "delete(entidad)",
-      "variant": "default",
-      "note": "Sin historia"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "ctrl",
       "to": "cliente",
-      "y": 786,
+      "y": 575,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -169,37 +161,37 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 792,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 227,
-      "to": 746,
+      "from": 202,
+      "to": 549,
       "type": "backend"
     },
     {
       "participant": "bor",
-      "from": 273,
-      "to": 646,
+      "from": 234,
+      "to": 485,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 341,
-      "to": 746,
+      "from": 266,
+      "to": 549,
       "type": "database"
     },
     {
       "participant": "bd",
-      "from": 373,
-      "to": 416,
+      "from": 298,
+      "to": 341,
       "type": "database"
     },
     {
       "participant": "err",
-      "from": 462,
-      "to": 714,
+      "from": 362,
+      "to": 517,
       "type": "backend"
     }
   ],
@@ -217,12 +209,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 536,
+      "to": 411,
       "label": "Maestros"
     },
     {
-      "from": 558,
-      "to": 798,
+      "from": 433,
+      "to": 587,
       "label": "Registros con estados"
     }
   ]

@@ -46,14 +46,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /api/perfil",
-      "variant": "emphasis",
-      "note": "@SoloPersonaVinculada"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "obtener()",
       "variant": "default"
     },
@@ -61,16 +60,15 @@
       "id": "m3",
       "from": "svc",
       "to": "pa",
-      "y": 253,
+      "y": 239,
       "label": "entidad()",
-      "variant": "security",
-      "note": "Siempre la persona del token"
+      "variant": "security"
     },
     {
       "id": "m4",
       "from": "pa",
       "to": "repo",
-      "y": 310,
+      "y": 271,
       "label": "findById(personaId)",
       "variant": "default"
     },
@@ -78,7 +76,7 @@
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 342,
+      "y": 303,
       "label": "200 PersonaResponse",
       "variant": "return"
     },
@@ -86,25 +84,23 @@
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 374,
+      "y": 335,
       "label": "PUT /api/perfil",
-      "variant": "emphasis",
-      "note": "Corrige nombres, apellidos, teléfono y correo"
+      "variant": "emphasis"
     },
     {
       "id": "m7",
       "from": "svc",
       "to": "repo",
-      "y": 442,
+      "y": 367,
       "label": "actualizarDatos(...)",
-      "variant": "default",
-      "note": "El documento no cambia; el correo se normaliza"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 510,
+      "y": 399,
       "label": "200 PersonaResponse",
       "variant": "return"
     },
@@ -112,34 +108,31 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 558,
+      "y": 447,
       "label": "GET /api/mis-inmuebles",
-      "variant": "emphasis",
-      "note": "@SoloPropietario"
+      "variant": "emphasis"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "pa",
-      "y": 604,
+      "y": 479,
       "label": "entidad()",
-      "variant": "security",
-      "note": "Exige vínculo vigente y tipo propietario"
+      "variant": "security"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "repo",
-      "y": 661,
+      "y": 511,
       "label": "parqueaderos del inmueble",
-      "variant": "default",
-      "note": "Sin vínculo vigente devuelve lista vacía"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "ctrl",
       "to": "cliente",
-      "y": 718,
+      "y": 543,
       "label": "200 [inmueble + parqueaderos]",
       "variant": "return"
     }
@@ -148,25 +141,25 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 724,
+      "to": 549,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 667,
+      "from": 202,
+      "to": 517,
       "type": "backend"
     },
     {
       "participant": "pa",
-      "from": 248,
-      "to": 610,
+      "from": 234,
+      "to": 485,
       "type": "security"
     },
     {
       "participant": "repo",
-      "from": 305,
-      "to": 667,
+      "from": 266,
+      "to": 517,
       "type": "database"
     }
   ],
@@ -183,12 +176,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 522,
+      "to": 411,
       "label": "CU-003 Perfil"
     },
     {
-      "from": 544,
-      "to": 730,
+      "from": 433,
+      "to": 555,
       "label": "CU-011 Mis inmuebles"
     }
   ]

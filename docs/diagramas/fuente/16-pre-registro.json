@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/pre-registros",
-      "variant": "emphasis",
-      "note": "@SoloResidente. FECHA_ESPECIFICA o PERMANENTE"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "crear(solicitud)",
       "variant": "default"
     },
@@ -67,43 +66,39 @@
       "id": "m3",
       "from": "svc",
       "to": "pa",
-      "y": 275,
+      "y": 239,
       "label": "entidad()",
-      "variant": "security",
-      "note": "Exige residente con vínculo vigente (422)"
+      "variant": "security"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "vis",
-      "y": 332,
+      "y": 271,
       "label": "obtenerOCrear(nombre, doc)",
-      "variant": "default",
-      "note": "Busca por documento y conserva su nombre"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "svc",
       "to": "repo",
-      "y": 389,
+      "y": 303,
       "label": "duplicados vigentes",
-      "variant": "default",
-      "note": "Ya existe uno igual: 409"
+      "variant": "default"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 446,
+      "y": 335,
       "label": "save(preRegistro)",
-      "variant": "default",
-      "note": "Fecha específica: hoy o futura; el inmueble sale del vínculo"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "cliente",
-      "y": 514,
+      "y": 367,
       "label": "201 PreRegistroResponse",
       "variant": "return"
     },
@@ -111,7 +106,7 @@
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 562,
+      "y": 415,
       "label": "GET /mios",
       "variant": "emphasis"
     },
@@ -119,7 +114,7 @@
       "id": "m9",
       "from": "svc",
       "to": "repo",
-      "y": 594,
+      "y": 447,
       "label": "findByPersonaId...",
       "variant": "default"
     },
@@ -127,7 +122,7 @@
       "id": "m10",
       "from": "ctrl",
       "to": "cliente",
-      "y": 626,
+      "y": 479,
       "label": "200 lista",
       "variant": "return"
     },
@@ -135,7 +130,7 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 658,
+      "y": 511,
       "label": "PATCH /{id}/cancelar",
       "variant": "emphasis"
     },
@@ -143,16 +138,15 @@
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 690,
+      "y": 543,
       "label": "findById de esa persona",
-      "variant": "default",
-      "note": "Ajeno: 404. Cancelado o usado: 422"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "svc",
       "to": "repo",
-      "y": 747,
+      "y": 575,
       "label": "cancelar()",
       "variant": "default"
     },
@@ -160,7 +154,7 @@
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 779,
+      "y": 607,
       "label": "200 {activo: false}",
       "variant": "return"
     },
@@ -168,25 +162,23 @@
       "id": "m15",
       "from": "cliente",
       "to": "ctrl",
-      "y": 827,
+      "y": 655,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m16",
       "from": "svc",
       "to": "repo",
-      "y": 873,
+      "y": 687,
       "label": "delete + flush",
-      "variant": "default",
-      "note": "Con visitas registradas: 409, usar cancelar"
+      "variant": "default"
     },
     {
       "id": "m17",
       "from": "ctrl",
       "to": "cliente",
-      "y": 930,
+      "y": 719,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -195,31 +187,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 936,
+      "to": 725,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 879,
+      "from": 202,
+      "to": 693,
       "type": "backend"
     },
     {
       "participant": "pa",
-      "from": 270,
-      "to": 281,
+      "from": 234,
+      "to": 245,
       "type": "security"
     },
     {
       "participant": "vis",
-      "from": 327,
-      "to": 338,
+      "from": 266,
+      "to": 277,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 384,
-      "to": 879,
+      "from": 298,
+      "to": 693,
       "type": "database"
     }
   ],
@@ -236,17 +228,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 526,
+      "to": 379,
       "label": "Crear"
     },
     {
-      "from": 548,
-      "to": 791,
+      "from": 401,
+      "to": 619,
       "label": "Consultar y cancelar"
     },
     {
-      "from": 813,
-      "to": 942,
+      "from": 641,
+      "to": 731,
       "label": "Borrar (administrador)"
     }
   ]

@@ -52,14 +52,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /parqueaderos-disponibles",
-      "variant": "emphasis",
-      "note": "@SoloVigilante"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "park",
-      "y": 221,
+      "y": 207,
       "label": "disponibles()",
       "variant": "default"
     },
@@ -67,16 +66,15 @@
       "id": "m3",
       "from": "park",
       "to": "reg",
-      "y": 253,
+      "y": 239,
       "label": "visitas dentro con parqueadero",
-      "variant": "default",
-      "note": "La ocupación se deriva, no se guarda"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "park",
       "to": "inm",
-      "y": 310,
+      "y": 271,
       "label": "activos, sin dueño, libres",
       "variant": "default"
     },
@@ -84,7 +82,7 @@
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 342,
+      "y": 303,
       "label": "200 lista",
       "variant": "return"
     },
@@ -92,43 +90,39 @@
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 374,
+      "y": 335,
       "label": "PATCH /{id}/parqueadero",
-      "variant": "emphasis",
-      "note": "Cuerpo {parqueaderoId}"
+      "variant": "emphasis"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "park",
-      "y": 420,
+      "y": 367,
       "label": "asignar(registroId, parqueaderoId)",
-      "variant": "default",
-      "note": "Solo a quien está dentro (422)"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "park",
       "to": "inm",
-      "y": 477,
+      "y": 399,
       "label": "activo y de visitantes",
-      "variant": "default",
-      "note": "Si pertenece a un inmueble: 422"
+      "variant": "default"
     },
     {
       "id": "m9",
       "from": "park",
       "to": "reg",
-      "y": 534,
+      "y": 431,
       "label": "asignarParqueadero()",
-      "variant": "default",
-      "note": "Si lo ocupa otro visitante: 409"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "ctrl",
       "to": "cliente",
-      "y": 591,
+      "y": 463,
       "label": "200 RegistroVisita",
       "variant": "return"
     },
@@ -136,7 +130,7 @@
       "id": "m11",
       "from": "cliente",
       "to": "ctrl",
-      "y": 639,
+      "y": 511,
       "label": "PATCH /{id}/salida",
       "variant": "emphasis"
     },
@@ -144,25 +138,23 @@
       "id": "m12",
       "from": "ctrl",
       "to": "salida",
-      "y": 671,
+      "y": 543,
       "label": "registrarSalida(id)",
-      "variant": "default",
-      "note": "Si no está dentro: 422"
+      "variant": "default"
     },
     {
       "id": "m13",
       "from": "salida",
       "to": "reg",
-      "y": 717,
+      "y": 575,
       "label": "registrarSalida()",
-      "variant": "default",
-      "note": "Libera el parqueadero"
+      "variant": "default"
     },
     {
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 763,
+      "y": 607,
       "label": "200 RegistroVisita",
       "variant": "return"
     },
@@ -170,16 +162,15 @@
       "id": "m15",
       "from": "cliente",
       "to": "ctrl",
-      "y": 795,
+      "y": 639,
       "label": "GET /dentro",
-      "variant": "emphasis",
-      "note": "Visitantes dentro, más recientes primero"
+      "variant": "emphasis"
     },
     {
       "id": "m16",
       "from": "salida",
       "to": "reg",
-      "y": 852,
+      "y": 671,
       "label": "ingreso sin salida",
       "variant": "default"
     },
@@ -187,7 +178,7 @@
       "id": "m17",
       "from": "ctrl",
       "to": "cliente",
-      "y": 884,
+      "y": 703,
       "label": "200 lista",
       "variant": "return"
     }
@@ -196,31 +187,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 890,
+      "to": 709,
       "type": "backend"
     },
     {
       "participant": "park",
-      "from": 216,
-      "to": 540,
+      "from": 202,
+      "to": 437,
       "type": "backend"
     },
     {
       "participant": "salida",
-      "from": 666,
-      "to": 858,
+      "from": 538,
+      "to": 677,
       "type": "backend"
     },
     {
       "participant": "reg",
-      "from": 248,
-      "to": 858,
+      "from": 234,
+      "to": 677,
       "type": "database"
     },
     {
       "participant": "inm",
-      "from": 305,
-      "to": 483,
+      "from": 266,
+      "to": 405,
       "type": "database"
     }
   ],
@@ -237,12 +228,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 603,
+      "to": 475,
       "label": "Asignar parqueadero"
     },
     {
-      "from": 625,
-      "to": 896,
+      "from": 497,
+      "to": 715,
       "label": "Salida y consulta"
     }
   ]

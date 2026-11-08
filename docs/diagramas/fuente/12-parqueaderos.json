@@ -46,32 +46,29 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/parqueaderos",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "torre-número único entre todos los inmuebles"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "cat",
-      "y": 278,
+      "y": 239,
       "label": "tipo activo",
-      "variant": "default",
-      "note": "Tipo de inmueble inexistente o inactivo falla"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "repo",
-      "y": 346,
+      "y": 271,
       "label": "save(PARQUEADERO)",
       "variant": "default"
     },
@@ -79,7 +76,7 @@
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 378,
+      "y": 303,
       "label": "201 ParqueaderoResponse",
       "variant": "return"
     },
@@ -87,34 +84,31 @@
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 426,
+      "y": 351,
       "label": "PATCH /{id}/asignar",
-      "variant": "emphasis",
-      "note": "Cuerpo {inmuebleId}"
+      "variant": "emphasis"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "svc",
-      "y": 472,
+      "y": 383,
       "label": "asignar(id, inmuebleId)",
-      "variant": "default",
-      "note": "Activo y libre; si no: 409"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "svc",
       "to": "repo",
-      "y": 529,
+      "y": 415,
       "label": "asignarParqueadero(...)",
-      "variant": "default",
-      "note": "Solo a una unidad privada activa (422)"
+      "variant": "default"
     },
     {
       "id": "m9",
       "from": "ctrl",
       "to": "cliente",
-      "y": 586,
+      "y": 447,
       "label": "200 {disponible: false}",
       "variant": "return"
     },
@@ -122,7 +116,7 @@
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 618,
+      "y": 479,
       "label": "PATCH /{id}/liberar",
       "variant": "emphasis"
     },
@@ -130,16 +124,15 @@
       "id": "m11",
       "from": "svc",
       "to": "repo",
-      "y": 650,
+      "y": 511,
       "label": "retirarParqueadero(...)",
-      "variant": "default",
-      "note": "Si no estaba asignado: 422"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "ctrl",
       "to": "cliente",
-      "y": 707,
+      "y": 543,
       "label": "200 {disponible: true}",
       "variant": "return"
     },
@@ -147,34 +140,31 @@
       "id": "m13",
       "from": "cliente",
       "to": "ctrl",
-      "y": 755,
+      "y": 591,
       "label": "PATCH /{id}/desactivar",
-      "variant": "emphasis",
-      "note": "Baja lógica con motivo"
+      "variant": "emphasis"
     },
     {
       "id": "m14",
       "from": "cliente",
       "to": "ctrl",
-      "y": 801,
+      "y": 623,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "Asignado: 422. Con visitas: 409"
+      "variant": "emphasis"
     },
     {
       "id": "m15",
       "from": "svc",
       "to": "repo",
-      "y": 858,
+      "y": 655,
       "label": "delete + flush",
-      "variant": "default",
-      "note": "La clave foránea de las visitas da el 409"
+      "variant": "default"
     },
     {
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 915,
+      "y": 687,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -183,25 +173,25 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 921,
+      "to": 693,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 864,
+      "from": 202,
+      "to": 661,
       "type": "backend"
     },
     {
       "participant": "cat",
-      "from": 273,
-      "to": 284,
+      "from": 234,
+      "to": 245,
       "type": "database"
     },
     {
       "participant": "repo",
-      "from": 341,
-      "to": 864,
+      "from": 266,
+      "to": 661,
       "type": "database"
     }
   ],
@@ -218,17 +208,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 390,
+      "to": 315,
       "label": "Crear"
     },
     {
-      "from": 412,
-      "to": 719,
+      "from": 337,
+      "to": 555,
       "label": "Asignar y liberar"
     },
     {
-      "from": 741,
-      "to": 927,
+      "from": 577,
+      "to": 699,
       "label": "Baja y borrado"
     }
   ]

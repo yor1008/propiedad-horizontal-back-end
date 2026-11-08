@@ -46,14 +46,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "GET /mias?soloNoLeidas",
-      "variant": "emphasis",
-      "note": "@SoloPersonaVinculada"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "mias(soloNoLeidas)",
       "variant": "default"
     },
@@ -61,16 +60,15 @@
       "id": "m3",
       "from": "svc",
       "to": "pa",
-      "y": 253,
+      "y": 239,
       "label": "id()",
-      "variant": "security",
-      "note": "Sin persona asociada: 422"
+      "variant": "security"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "repo",
-      "y": 310,
+      "y": 271,
       "label": "findByPersonaId... DESC",
       "variant": "default"
     },
@@ -78,7 +76,7 @@
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 342,
+      "y": 303,
       "label": "200 lista",
       "variant": "return"
     },
@@ -86,7 +84,7 @@
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 374,
+      "y": 335,
       "label": "GET /mias/conteo",
       "variant": "emphasis"
     },
@@ -94,16 +92,15 @@
       "id": "m7",
       "from": "svc",
       "to": "repo",
-      "y": 406,
+      "y": 367,
       "label": "countByPersonaIdAndLeidaFalse",
-      "variant": "default",
-      "note": "Alimenta la campana del front"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "ctrl",
       "to": "cliente",
-      "y": 463,
+      "y": 399,
       "label": "200 {noLeidas}",
       "variant": "return"
     },
@@ -111,7 +108,7 @@
       "id": "m9",
       "from": "cliente",
       "to": "ctrl",
-      "y": 495,
+      "y": 431,
       "label": "PATCH /{id}/leer",
       "variant": "emphasis"
     },
@@ -119,16 +116,15 @@
       "id": "m10",
       "from": "svc",
       "to": "repo",
-      "y": 527,
+      "y": 463,
       "label": "findById(id) de esa persona",
-      "variant": "default",
-      "note": "Una ajena da 404: no revela que existe"
+      "variant": "default"
     },
     {
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 584,
+      "y": 495,
       "label": "200 {leida: true}",
       "variant": "return"
     },
@@ -136,7 +132,7 @@
       "id": "m12",
       "from": "cliente",
       "to": "ctrl",
-      "y": 616,
+      "y": 527,
       "label": "PATCH /leer-todas",
       "variant": "emphasis"
     },
@@ -144,7 +140,7 @@
       "id": "m13",
       "from": "svc",
       "to": "repo",
-      "y": 648,
+      "y": 559,
       "label": "marcarLeida() de cada una",
       "variant": "default"
     },
@@ -152,7 +148,7 @@
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 680,
+      "y": 591,
       "label": "200 {noLeidas: 0}",
       "variant": "return"
     }
@@ -161,25 +157,25 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 686,
+      "to": 597,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 654,
+      "from": 202,
+      "to": 565,
       "type": "backend"
     },
     {
       "participant": "pa",
-      "from": 248,
-      "to": 259,
+      "from": 234,
+      "to": 245,
       "type": "security"
     },
     {
       "participant": "repo",
-      "from": 305,
-      "to": 654,
+      "from": 266,
+      "to": 565,
       "type": "database"
     }
   ],

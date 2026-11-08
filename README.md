@@ -49,106 +49,106 @@ Códigos de error: 400 validación, 401 sin token o credenciales, 403 sin permis
 
 ## Diagramas de secuencia
 
-Cada diagrama muestra quién llama a quién, en qué orden y qué reglas de negocio o errores aparecen en el camino. Las líneas discontinuas rojas son llamadas de seguridad; las grises discontinuas, respuestas; y las notas explican cada regla. Haz clic en una imagen para verla a tamaño completo.
+Cada diagrama muestra quién llama a quién y en qué orden. Las flechas verdes son la solicitud principal; las rojas discontinuas, llamadas de seguridad; y las grises discontinuas, respuestas. Son SVG en modo claro: haz clic en uno para verlo a tamaño completo.
 
 ### Arranque y seguridad
 
 #### Arranque de la aplicación
-![Arranque de la aplicación](docs/diagramas/png/00-arranque.png)
+![Arranque de la aplicación](docs/diagramas/svg/00-arranque.svg)
 
 #### CU-001 Iniciar sesión
-![CU-001 Iniciar sesión](docs/diagramas/png/01-login.png)
+![CU-001 Iniciar sesión](docs/diagramas/svg/01-login.svg)
 
 #### Petición autenticada y autorización por etiqueta
-![Petición autenticada](docs/diagramas/png/02-peticion-autenticada.png)
+![Petición autenticada](docs/diagramas/svg/02-peticion-autenticada.svg)
 
 #### CU-002 Cambiar contraseña
-![CU-002 Cambiar contraseña](docs/diagramas/png/03-cambiar-contrasena.png)
+![CU-002 Cambiar contraseña](docs/diagramas/svg/03-cambiar-contrasena.svg)
 
 #### CU-002 Restablecer contraseña por correo
-![CU-002 Restablecer contraseña](docs/diagramas/png/04-restablecer-contrasena.png)
+![CU-002 Restablecer contraseña](docs/diagramas/svg/04-restablecer-contrasena.svg)
 
 ### Notificaciones y perfil
 
 #### CU-004 Generar notificaciones y correo por evento
-![Notificaciones por evento](docs/diagramas/png/05-notificaciones-evento.png)
+![Notificaciones por evento](docs/diagramas/svg/05-notificaciones-evento.svg)
 
 #### CU-004 Consultar notificaciones propias
-![Consultar notificaciones](docs/diagramas/png/06-notificaciones-consulta.png)
+![Consultar notificaciones](docs/diagramas/svg/06-notificaciones-consulta.svg)
 
 #### CU-003 y CU-011 Datos propios y mis inmuebles
-![Perfil y mis inmuebles](docs/diagramas/png/07-perfil-y-mis-inmuebles.png)
+![Perfil y mis inmuebles](docs/diagramas/svg/07-perfil-y-mis-inmuebles.svg)
 
 ### Administración
 
 #### CU-008 Alta de persona con verificación de correo
-![Alta de persona](docs/diagramas/png/08-alta-persona-verificacion.png)
+![Alta de persona](docs/diagramas/svg/08-alta-persona-verificacion.svg)
 
 #### CU-008 Editar, desactivar y borrar personas
-![Gestión de personas](docs/diagramas/png/09-personas-gestion.png)
+![Gestión de personas](docs/diagramas/svg/09-personas-gestion.svg)
 
 #### CU-009 y CU-010 Inmuebles y vínculos
-![Inmuebles y vínculos](docs/diagramas/png/10-inmuebles-y-vinculos.png)
+![Inmuebles y vínculos](docs/diagramas/svg/10-inmuebles-y-vinculos.svg)
 
 #### CU-012 y CU-013 Vehículos y consulta por placa
-![Vehículos](docs/diagramas/png/11-vehiculos.png)
+![Vehículos](docs/diagramas/svg/11-vehiculos.svg)
 
 #### CU-014 Parqueaderos
-![Parqueaderos](docs/diagramas/png/12-parqueaderos.png)
+![Parqueaderos](docs/diagramas/svg/12-parqueaderos.svg)
 
 #### CU-005 Cuentas de usuario
-![Cuentas](docs/diagramas/png/13-cuentas.png)
+![Cuentas](docs/diagramas/svg/13-cuentas.svg)
 
 #### CU-006 Catálogos
-![Catálogos](docs/diagramas/png/14-catalogos.png)
+![Catálogos](docs/diagramas/svg/14-catalogos.svg)
 
 #### CU-007 Configuración
-![Configuración](docs/diagramas/png/15-configuracion.png)
+![Configuración](docs/diagramas/svg/15-configuracion.svg)
 
 ### Control de accesos
 
 #### CU-015 Pre-registro de visitantes
-![Pre-registro](docs/diagramas/png/16-pre-registro.png)
+![Pre-registro](docs/diagramas/svg/16-pre-registro.svg)
 
 #### CU-016 Ingreso con pre-registro
-![Ingreso con pre-registro](docs/diagramas/png/17-ingreso-con-preregistro.png)
+![Ingreso con pre-registro](docs/diagramas/svg/17-ingreso-con-preregistro.svg)
 
 #### CU-016 y CU-017 Ingreso sin pre-registro
-![Ingreso sin pre-registro](docs/diagramas/png/18-ingreso-sin-preregistro.png)
+![Ingreso sin pre-registro](docs/diagramas/svg/18-ingreso-sin-preregistro.svg)
 
 #### CU-018, CU-019 y CU-020 Parqueadero de visitante y salida
-![Parqueadero de visitante y salida](docs/diagramas/png/19-parqueadero-visitante-y-salida.png)
+![Parqueadero de visitante y salida](docs/diagramas/svg/19-parqueadero-visitante-y-salida.svg)
 
 #### CU-021 Historial de accesos
-![Historial de accesos](docs/diagramas/png/20-historial-accesos.png)
+![Historial de accesos](docs/diagramas/svg/20-historial-accesos.svg)
 
 ### Operaciones del conjunto
 
 #### CU-022 y CU-023 Correspondencia
-![Correspondencia](docs/diagramas/png/21-correspondencia.png)
+![Correspondencia](docs/diagramas/svg/21-correspondencia.svg)
 
 #### CU-029, CU-030 y CU-031 PQRS
-![PQRS](docs/diagramas/png/22-pqrs.png)
+![PQRS](docs/diagramas/svg/22-pqrs.svg)
 
 #### CU-024 Zonas comunes
-![Zonas comunes](docs/diagramas/png/25-zonas-comunes.png)
+![Zonas comunes](docs/diagramas/svg/25-zonas-comunes.svg)
 
 #### CU-025 y CU-026 Reservar una zona común
-![Reservar zona común](docs/diagramas/png/23-reservar-zona-comun.png)
+![Reservar zona común](docs/diagramas/svg/23-reservar-zona-comun.svg)
 
 #### CU-027 Gestionar reservas
-![Gestionar reservas](docs/diagramas/png/24-reservas-gestion.png)
+![Gestionar reservas](docs/diagramas/svg/24-reservas-gestion.svg)
 
 #### CU-028 Mantenimientos
-![Mantenimientos](docs/diagramas/png/26-mantenimientos.png)
+![Mantenimientos](docs/diagramas/svg/26-mantenimientos.svg)
 
 ### Mecanismos compartidos
 
 #### Borrado físico solo sin historia
-![Borrado](docs/diagramas/png/27-borrado-sin-historia.png)
+![Borrado](docs/diagramas/svg/27-borrado-sin-historia.svg)
 
 #### Máquina de estados por datos
-![Máquina de estados](docs/diagramas/png/28-maquina-de-estados.png)
+![Máquina de estados](docs/diagramas/svg/28-maquina-de-estados.svg)
 
 ## Casos de uso y diagramas
 
@@ -206,4 +206,4 @@ Las fuentes están en [`docs/diagramas/fuente`](docs/diagramas/fuente) (una por 
 node <ruta-de-archify>/bin/archify.mjs finalize sequence docs/diagramas/fuente/01-login.json docs/diagramas/01-login.html --quality showcase
 ```
 
-Los HTML y sus recibos no se versionan (pesan unos 800 KB cada uno); las imágenes de `docs/diagramas/png` sí.
+Los HTML y sus recibos no se versionan (pesan unos 800 KB cada uno); los SVG de `docs/diagramas/svg` sí. Cada SVG sale del HTML con la opción **Exportar → SVG (claro)** del visor.

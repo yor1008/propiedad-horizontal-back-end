@@ -46,23 +46,21 @@
       "to": "est",
       "y": 175,
       "label": "inicial(proceso)",
-      "variant": "emphasis",
-      "note": "Al crear la reserva, PQRS, correo o mantenimiento"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "est",
       "to": "erepo",
-      "y": 243,
+      "y": 207,
       "label": "es_inicial = true",
-      "variant": "default",
-      "note": "Si no hay: 422"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "est",
       "to": "caso",
-      "y": 289,
+      "y": 239,
       "label": "Estado inicial",
       "variant": "return"
     },
@@ -70,43 +68,39 @@
       "id": "m4",
       "from": "caso",
       "to": "est",
-      "y": 337,
+      "y": 287,
       "label": "transicionar(actual, destino, motivo)",
-      "variant": "emphasis",
-      "note": "La valida un servicio, no la entidad"
+      "variant": "emphasis"
     },
     {
       "id": "m5",
       "from": "est",
       "to": "erepo",
-      "y": 394,
+      "y": 319,
       "label": "porNombre(proceso, destino)",
-      "variant": "default",
-      "note": "Estado no configurado: 422"
+      "variant": "default"
     },
     {
       "id": "m6",
       "from": "est",
       "to": "trepo",
-      "y": 451,
+      "y": 351,
       "label": "origen → destino",
-      "variant": "default",
-      "note": "No hay transición: 422"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "est",
       "to": "caso",
-      "y": 497,
+      "y": 383,
       "label": "exige motivo?",
-      "variant": "dashed",
-      "note": "Si requiere motivo y falta: 422"
+      "variant": "dashed"
     },
     {
       "id": "m8",
       "from": "est",
       "to": "caso",
-      "y": 554,
+      "y": 415,
       "label": "Estado destino",
       "variant": "return"
     },
@@ -114,41 +108,40 @@
       "id": "m9",
       "from": "caso",
       "to": "ent",
-      "y": 586,
+      "y": 447,
       "label": "cambiarEstado(destino)",
-      "variant": "default",
-      "note": "Guarda el nuevo estado"
+      "variant": "default"
     }
   ],
   "activations": [
     {
       "participant": "caso",
       "from": 170,
-      "to": 592,
+      "to": 453,
       "type": "backend"
     },
     {
       "participant": "est",
       "from": 170,
-      "to": 560,
+      "to": 421,
       "type": "backend"
     },
     {
       "participant": "erepo",
-      "from": 238,
-      "to": 400,
+      "from": 202,
+      "to": 325,
       "type": "database"
     },
     {
       "participant": "trepo",
-      "from": 446,
-      "to": 457,
+      "from": 346,
+      "to": 357,
       "type": "database"
     },
     {
       "participant": "ent",
-      "from": 581,
-      "to": 592,
+      "from": 442,
+      "to": 453,
       "type": "database"
     }
   ],
@@ -165,12 +158,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 301,
+      "to": 251,
       "label": "Estado inicial"
     },
     {
-      "from": 323,
-      "to": 612,
+      "from": 273,
+      "to": 459,
       "label": "Cambio de estado"
     }
   ]

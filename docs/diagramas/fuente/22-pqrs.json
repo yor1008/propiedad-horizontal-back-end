@@ -52,41 +52,37 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/pqrs",
-      "variant": "emphasis",
-      "note": "@SoloPersonaVinculada. {tipoId, asunto, descripcion}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 243,
+      "y": 207,
       "label": "radicar(solicitud)",
-      "variant": "default",
-      "note": "Exige vínculo vigente (422)"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "est",
-      "y": 300,
+      "y": 239,
       "label": "inicial(PQRS)",
-      "variant": "default",
-      "note": "Estado Radicada"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "svc",
       "to": "repo",
-      "y": 346,
+      "y": 271,
       "label": "save(pqrs)",
-      "variant": "default",
-      "note": "El inmueble sale del vínculo de la persona"
+      "variant": "default"
     },
     {
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 403,
+      "y": 303,
       "label": "201 PqrsResponse",
       "variant": "return"
     },
@@ -94,7 +90,7 @@
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 435,
+      "y": 335,
       "label": "GET /mias",
       "variant": "emphasis"
     },
@@ -102,7 +98,7 @@
       "id": "m7",
       "from": "ctrl",
       "to": "cliente",
-      "y": 467,
+      "y": 367,
       "label": "200 lista propia",
       "variant": "return"
     },
@@ -110,16 +106,15 @@
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 515,
+      "y": 415,
       "label": "GET /api/pqrs",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m9",
       "from": "ctrl",
       "to": "cliente",
-      "y": 561,
+      "y": 447,
       "label": "200 todas las PQRS",
       "variant": "return"
     },
@@ -127,25 +122,23 @@
       "id": "m10",
       "from": "cliente",
       "to": "ctrl",
-      "y": 593,
+      "y": 479,
       "label": "PATCH /{id}/atender",
-      "variant": "emphasis",
-      "note": "Cuerpo {respuesta}"
+      "variant": "emphasis"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "est",
-      "y": 639,
+      "y": 511,
       "label": "transicionar(→ Respondida)",
-      "variant": "default",
-      "note": "Una segunda respuesta: 422"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 696,
+      "y": 543,
       "label": "responder(respuesta)",
       "variant": "default"
     },
@@ -153,16 +146,15 @@
       "id": "m13",
       "from": "svc",
       "to": "noti",
-      "y": 728,
+      "y": 575,
       "label": "notificar(RESPUESTA_PQRS)",
-      "variant": "dashed",
-      "note": "Avisa a quien la radicó"
+      "variant": "dashed"
     },
     {
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 785,
+      "y": 607,
       "label": "200 {estado: Respondida}",
       "variant": "return"
     },
@@ -170,16 +162,15 @@
       "id": "m15",
       "from": "cliente",
       "to": "ctrl",
-      "y": 817,
+      "y": 639,
       "label": "DELETE /{id}",
-      "variant": "emphasis",
-      "note": "Solo en estado Radicada; atendida: 409"
+      "variant": "emphasis"
     },
     {
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 874,
+      "y": 671,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -188,31 +179,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 880,
+      "to": 677,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 238,
-      "to": 734,
+      "from": 202,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "est",
-      "from": 295,
-      "to": 645,
+      "from": 234,
+      "to": 517,
       "type": "backend"
     },
     {
       "participant": "noti",
-      "from": 723,
-      "to": 734,
+      "from": 570,
+      "to": 581,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 341,
-      "to": 702,
+      "from": 266,
+      "to": 549,
       "type": "database"
     }
   ],
@@ -230,12 +221,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 479,
+      "to": 379,
       "label": "Radicar y consultar"
     },
     {
-      "from": 501,
-      "to": 886,
+      "from": 401,
+      "to": 683,
       "label": "Atender"
     }
   ]

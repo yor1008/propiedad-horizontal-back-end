@@ -52,23 +52,21 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /api/inmuebles",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "svc",
-      "y": 221,
+      "y": 207,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "torre-número único: 409 si se repite"
+      "variant": "default"
     },
     {
       "id": "m3",
       "from": "svc",
       "to": "repo",
-      "y": 278,
+      "y": 239,
       "label": "save(inmueble)",
       "variant": "default"
     },
@@ -76,7 +74,7 @@
       "id": "m4",
       "from": "ctrl",
       "to": "cliente",
-      "y": 310,
+      "y": 271,
       "label": "201 InmuebleResponse",
       "variant": "return"
     },
@@ -84,25 +82,23 @@
       "id": "m5",
       "from": "cliente",
       "to": "ctrl",
-      "y": 342,
+      "y": 303,
       "label": "PATCH /{id}/desactivar",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}"
+      "variant": "emphasis"
     },
     {
       "id": "m6",
       "from": "svc",
       "to": "repo",
-      "y": 388,
+      "y": 335,
       "label": "personas con vínculo vigente",
-      "variant": "default",
-      "note": "Si hay alguna: 422, finalice los vínculos primero"
+      "variant": "default"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "cliente",
-      "y": 456,
+      "y": 367,
       "label": "200 {activo: false}",
       "variant": "return"
     },
@@ -110,43 +106,39 @@
       "id": "m8",
       "from": "cliente",
       "to": "ctrl",
-      "y": 504,
+      "y": 415,
       "label": "POST /{id}/vinculos",
-      "variant": "emphasis",
-      "note": "Cuerpo {personaId, tipoPersonaId}"
+      "variant": "emphasis"
     },
     {
       "id": "m9",
       "from": "ctrl",
       "to": "svc",
-      "y": 561,
+      "y": 447,
       "label": "vincular(inmuebleId, datos)",
-      "variant": "default",
-      "note": "Inmueble activo y unidad privada; persona activa"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "svc",
       "to": "repo",
-      "y": 629,
+      "y": 479,
       "label": "persona.vincularInmueble",
-      "variant": "default",
-      "note": "Una persona tiene un solo vínculo vigente (409)"
+      "variant": "default"
     },
     {
       "id": "m11",
       "from": "svc",
       "to": "ocup",
-      "y": 697,
+      "y": 511,
       "label": "recalcular(inmueble)",
-      "variant": "default",
-      "note": "ocupado = hay algún residente vigente"
+      "variant": "default"
     },
     {
       "id": "m12",
       "from": "ctrl",
       "to": "cliente",
-      "y": 754,
+      "y": 543,
       "label": "201 PersonaResponse",
       "variant": "return"
     },
@@ -154,25 +146,23 @@
       "id": "m13",
       "from": "cliente",
       "to": "ctrl",
-      "y": 786,
+      "y": 575,
       "label": "PATCH /personas/{id}/finalizar-vinculo",
-      "variant": "emphasis",
-      "note": "Cuerpo {motivo}"
+      "variant": "emphasis"
     },
     {
       "id": "m14",
       "from": "svc",
       "to": "repo",
-      "y": 832,
+      "y": 607,
       "label": "finalizarVinculo(ayer, motivo)",
-      "variant": "default",
-      "note": "Sin vínculo vigente: 422"
+      "variant": "default"
     },
     {
       "id": "m15",
       "from": "svc",
       "to": "ocup",
-      "y": 889,
+      "y": 639,
       "label": "recalcular(inmueble)",
       "variant": "default"
     },
@@ -180,7 +170,7 @@
       "id": "m16",
       "from": "cliente",
       "to": "ctrl",
-      "y": 937,
+      "y": 687,
       "label": "DELETE /api/inmuebles/{id}",
       "variant": "emphasis"
     },
@@ -188,16 +178,15 @@
       "id": "m17",
       "from": "svc",
       "to": "hist",
-      "y": 969,
+      "y": 719,
       "label": "tieneHistorial(inmueble)",
-      "variant": "default",
-      "note": "Con historia responde 409"
+      "variant": "default"
     },
     {
       "id": "m18",
       "from": "svc",
       "to": "repo",
-      "y": 1026,
+      "y": 751,
       "label": "delete(inmueble)",
       "variant": "default"
     },
@@ -205,7 +194,7 @@
       "id": "m19",
       "from": "ctrl",
       "to": "cliente",
-      "y": 1058,
+      "y": 783,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -214,31 +203,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 1064,
+      "to": 789,
       "type": "backend"
     },
     {
       "participant": "svc",
-      "from": 216,
-      "to": 1032,
+      "from": 202,
+      "to": 757,
       "type": "backend"
     },
     {
       "participant": "ocup",
-      "from": 692,
-      "to": 895,
+      "from": 506,
+      "to": 645,
       "type": "backend"
     },
     {
       "participant": "hist",
-      "from": 964,
-      "to": 975,
+      "from": 714,
+      "to": 725,
       "type": "backend"
     },
     {
       "participant": "repo",
-      "from": 273,
-      "to": 1032,
+      "from": 234,
+      "to": 757,
       "type": "database"
     }
   ],
@@ -256,17 +245,17 @@
   "segments": [
     {
       "from": 161,
-      "to": 468,
+      "to": 379,
       "label": "Crear y desactivar"
     },
     {
-      "from": 490,
-      "to": 901,
+      "from": 401,
+      "to": 651,
       "label": "Vincular y finalizar"
     },
     {
-      "from": 923,
-      "to": 1070,
+      "from": 673,
+      "to": 795,
       "label": "Borrado físico"
     }
   ]

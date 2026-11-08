@@ -58,14 +58,13 @@
       "to": "ctrl",
       "y": 175,
       "label": "POST /verificar-correo",
-      "variant": "emphasis",
-      "note": "@SoloAdministrador. Cuerpo {correo}"
+      "variant": "emphasis"
     },
     {
       "id": "m2",
       "from": "ctrl",
       "to": "ver",
-      "y": 232,
+      "y": 207,
       "label": "enviarCodigo(correo)",
       "variant": "default"
     },
@@ -73,70 +72,63 @@
       "id": "m3",
       "from": "ver",
       "to": "vrepo",
-      "y": 264,
+      "y": 239,
       "label": "guarda huella (vence 10 min)",
-      "variant": "default",
-      "note": "Un código nuevo reemplaza al anterior"
+      "variant": "default"
     },
     {
       "id": "m4",
       "from": "ver",
       "to": "corr",
-      "y": 321,
+      "y": 271,
       "label": "enviar(correo, código)",
-      "variant": "dashed",
-      "note": "Asíncrono: el correo puede no llegar"
+      "variant": "dashed"
     },
     {
       "id": "m5",
       "from": "ctrl",
       "to": "cliente",
-      "y": 378,
+      "y": 303,
       "label": "204 sin cuerpo",
-      "variant": "return",
-      "note": "La persona se lo dicta al administrador"
+      "variant": "return"
     },
     {
       "id": "m6",
       "from": "cliente",
       "to": "ctrl",
-      "y": 451,
+      "y": 351,
       "label": "POST /api/personas",
-      "variant": "emphasis",
-      "note": "Con codigoVerificacion si lleva correo"
+      "variant": "emphasis"
     },
     {
       "id": "m7",
       "from": "ctrl",
       "to": "psvc",
-      "y": 508,
+      "y": 383,
       "label": "crear(solicitud)",
-      "variant": "default",
-      "note": "Valida tipo, documento único y catálogo"
+      "variant": "default"
     },
     {
       "id": "m8",
       "from": "psvc",
       "to": "ver",
-      "y": 565,
+      "y": 415,
       "label": "confirmar(correo, código)",
-      "variant": "security",
-      "note": "Máx. 5 intentos; si falla: 422"
+      "variant": "security"
     },
     {
       "id": "m9",
       "from": "ver",
       "to": "vrepo",
-      "y": 622,
+      "y": 447,
       "label": "consume la fila",
-      "variant": "default",
-      "note": "Los intentos fallidos se conservan"
+      "variant": "default"
     },
     {
       "id": "m10",
       "from": "psvc",
       "to": "prepo",
-      "y": 679,
+      "y": 479,
       "label": "save(persona)",
       "variant": "default"
     },
@@ -144,7 +136,7 @@
       "id": "m11",
       "from": "ctrl",
       "to": "cliente",
-      "y": 711,
+      "y": 511,
       "label": "201 PersonaResponse",
       "variant": "return"
     }
@@ -153,37 +145,37 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 717,
+      "to": 517,
       "type": "backend"
     },
     {
       "participant": "ver",
-      "from": 227,
-      "to": 628,
+      "from": 202,
+      "to": 453,
       "type": "backend"
     },
     {
       "participant": "vrepo",
-      "from": 259,
-      "to": 628,
+      "from": 234,
+      "to": 453,
       "type": "database"
     },
     {
       "participant": "corr",
-      "from": 316,
-      "to": 327,
+      "from": 266,
+      "to": 277,
       "type": "messagebus"
     },
     {
       "participant": "psvc",
-      "from": 503,
-      "to": 685,
+      "from": 378,
+      "to": 485,
       "type": "backend"
     },
     {
       "participant": "prepo",
-      "from": 674,
-      "to": 685,
+      "from": 474,
+      "to": 485,
       "type": "database"
     }
   ],
@@ -201,12 +193,12 @@
   "segments": [
     {
       "from": 161,
-      "to": 415,
+      "to": 315,
       "label": "Enviar el código"
     },
     {
-      "from": 437,
-      "to": 723,
+      "from": 337,
+      "to": 523,
       "label": "Crear la persona"
     }
   ]
