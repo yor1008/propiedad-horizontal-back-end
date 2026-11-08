@@ -16,7 +16,7 @@ import unisimon.apipropiedadhorizontal.service.EnviadorCorreo;
  */
 @Slf4j
 @Component
-@ConditionalOnExpression("'${app.mail.brevo.api-key:}'.isEmpty()")
+@ConditionalOnExpression("'${app.mail.gmail.refresh-token:}'.isEmpty()")
 public class EnviadorCorreoSmtp implements EnviadorCorreo {
 
     private final ObjectProvider<JavaMailSender> emisor;
