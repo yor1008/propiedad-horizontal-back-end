@@ -32,8 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
-### Documentacion UML (irrelevante para el repositorio) ###
-diagramas_uml/
+### Documentacion UML local (no se versiona) ###
+docs/uml/
 
 ### Secretos (nunca versionar) ###
 .env
@@ -41,7 +41,12 @@ diagramas_uml/
 !.env.example
 
 ### Diagramas generados con Archify (se versionan las fuentes JSON y los SVG) ###
-docs/diagramas/*.html
-docs/diagramas/*.finalize*.json
-docs/diagramas/*.browser-check.json
-docs/diagramas/*.delivery.json
+docs/diagramas/html/
+
+### Notas internas y herramientas de IA (solo locales) ###
+CLAUDE.md
+CONTEXTO.md
+CAMBIOS_DIAGRAMA.md
+.claude/
+.agents/
+skills-lock.json
