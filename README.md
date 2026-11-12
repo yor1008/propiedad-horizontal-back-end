@@ -16,7 +16,7 @@ El contrato de endpoints (rutas, DTOs y códigos de error) vive en el repositori
 ## Contenido
 
 1. [Inicio rápido](#inicio-rápido)
-2. [Arquitectura](#arquitectura) (incluye el [diagrama de componentes](#diagrama-de-componentes))
+2. [Arquitectura](#arquitectura) (incluye los diagramas de [componentes](#diagrama-de-componentes) y de [paquetes](#diagrama-de-paquetes))
 3. [Seguridad](#seguridad)
 4. [Casos de uso](#casos-de-uso)
 5. [Diagramas de secuencia](#diagramas-de-secuencia)
@@ -52,7 +52,15 @@ Diagrama de componentes UML con conectores de ensamblaje (bola = interfaz provis
 
 ![Diagrama de componentes](docs/diagramas/svg/29-componentes.svg)
 
-La fuente editable está en [`docs/diagramas/fuente/29-componentes.drawio.xml`](docs/diagramas/fuente/29-componentes.drawio.xml): ábrela en [draw.io](https://app.diagrams.net) y, después de editarla, exporta de nuevo el SVG con **Archivo → Exportar como → SVG**.
+Fuente editable: [`docs/diagramas/fuente/29-componentes.drawio.xml`](docs/diagramas/fuente/29-componentes.drawio.xml). Los `.drawio.xml` se abren en [draw.io](https://app.diagrams.net); después de editarlos, exporta de nuevo el SVG con **Archivo → Exportar como → SVG**.
+
+### Diagrama de paquetes
+
+Muestra los paquetes Java (`unisimon.apipropiedadhorizontal`) y qué paquete usa a cuál: la flecha punteada `- - ->` significa "importa clases de". `service.impl` implementa las interfaces de `service` (flecha con triángulo hueco), y los conectores bola-socket marcan las dos interfaces que separan las capas: `web.controller` solo conoce las interfaces `*Service` y `service.impl` solo conoce las interfaces `*Repository`. `domain` va abajo como base porque casi todos los paquetes lo usan; esas flechas se resumen en una nota. Las dependencias salen de los `import` del código.
+
+![Diagrama de paquetes](docs/diagramas/svg/30-paquetes.svg)
+
+Fuente editable: [`docs/diagramas/fuente/30-paquetes.drawio.xml`](docs/diagramas/fuente/30-paquetes.drawio.xml).
 
 ### Capas
 
