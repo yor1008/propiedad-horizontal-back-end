@@ -16,7 +16,7 @@ El contrato de endpoints (rutas, DTOs y códigos de error) vive en el repositori
 ## Contenido
 
 1. [Inicio rápido](#inicio-rápido)
-2. [Arquitectura](#arquitectura) (incluye el [diagrama de cableado](#diagrama-de-cableado))
+2. [Arquitectura](#arquitectura) (incluye el [diagrama de componentes](#diagrama-de-componentes))
 3. [Seguridad](#seguridad)
 4. [Casos de uso](#casos-de-uso)
 5. [Diagramas de secuencia](#diagramas-de-secuencia)
@@ -46,13 +46,13 @@ El primer administrador se crea al arrancar si defines `BOOTSTRAP_ADMIN_CORREO` 
 
 ## Arquitectura
 
-### Diagrama de cableado
+### Diagrama de componentes
 
-Diagrama de componentes UML con conectores de ensamblaje (bola = interfaz provista, socket = interfaz requerida). Muestra cómo se cablean los componentes: el front consume la API REST, los filtros JWT entregan la petición autenticada a los controladores, estos usan las interfaces `*Service`, los servicios usan `*Repository`, `TokenService`, `Notificador` y `EnviadorCorreo`, y los repositorios y Flyway usan JDBC contra PostgreSQL.
+Diagrama de componentes UML con conectores de ensamblaje (bola = interfaz provista, socket = interfaz requerida). Muestra cómo se conectan los componentes: el front consume la API REST, los filtros JWT entregan la petición autenticada a los controladores, estos usan las interfaces `*Service`, los servicios usan `*Repository`, `TokenService`, `Notificador` y `EnviadorCorreo`, y los repositorios y Flyway usan JDBC contra PostgreSQL.
 
-![Diagrama de cableado](docs/diagramas/svg/29-cableado.svg)
+![Diagrama de componentes](docs/diagramas/svg/29-componentes.svg)
 
-La fuente editable está en [`docs/diagramas/fuente/29-cableado.drawio.xml`](docs/diagramas/fuente/29-cableado.drawio.xml): ábrela en [draw.io](https://app.diagrams.net) y, después de editarla, exporta de nuevo el SVG con **Archivo → Exportar como → SVG**.
+La fuente editable está en [`docs/diagramas/fuente/29-componentes.drawio.xml`](docs/diagramas/fuente/29-componentes.drawio.xml): ábrela en [draw.io](https://app.diagrams.net) y, después de editarla, exporta de nuevo el SVG con **Archivo → Exportar como → SVG**.
 
 ### Capas
 
