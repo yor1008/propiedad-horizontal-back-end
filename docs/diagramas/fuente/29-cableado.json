@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Diagrama de cableado del sistema",
+    "locale": "es",
+    "output": "docs/diagramas/html/29-cableado.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/yor1008/propiedad-horizontal-back-end.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "4db05f6b7aa4ff69c39a2b3219d86e067d9d9750"
+    }
+  },
+  "components": [
+    { "id": "navegador", "type": "external", "label": "Navegador", "sublabel": "admin, vigilante, residente", "pos": [40, 40], "size": [150, 62] },
+    { "id": "front", "type": "frontend", "label": "Front Next.js", "sublabel": "proxy /api con respaldo", "pos": [300, 40], "size": [160, 62] },
+    { "id": "filtros", "type": "security", "label": "Filtros de seguridad", "sublabel": "JWT HS256, sin sesión", "pos": [580, 40], "size": [170, 62],
+      "sources": [{ "path": "src/main/java/unisimon/apipropiedadhorizontal/security/SecurityConfig.java", "line": 48, "end_line": 70, "label": "cadena de filtros" }] },
+    { "id": "controladores", "type": "backend", "label": "Controladores REST", "sublabel": "etiqueta @Solo… por método", "pos": [870, 40], "size": [170, 62],
+      "sources": [
+        { "path": "src/main/java/unisimon/apipropiedadhorizontal/web/controller/PersonaController.java", "line": 27, "end_line": 50, "label": "ejemplo con etiqueta" },
+        { "path": "src/main/java/unisimon/apipropiedadhorizontal/web/controller/AuthController.java", "line": 25, "end_line": 55, "label": "login público" }
+      ] },
+    { "id": "servicios", "type": "backend", "label": "Servicios", "sublabel": "interfaz + impl, @Transactional", "pos": [870, 230], "size": [170, 62],
+      "sources": [{ "path": "src/main/java/unisimon/apipropiedadhorizontal/service/impl/PersonaServiceImpl.java", "line": 29, "end_line": 40, "label": "inyecta repositorios" }] },
+    { "id": "repositorios", "type": "backend", "label": "Repositorios", "sublabel": "Spring Data JPA", "pos": [580, 230], "size": [170, 62],
+      "sources": [{ "path": "src/main/java/unisimon/apipropiedadhorizontal/repository/PersonaRepository.java", "line": 9, "label": "JpaRepository" }] },
+    { "id": "postgres", "type": "database", "label": "PostgreSQL", "sublabel": "compose.yaml o variables", "pos": [300, 230], "size": [160, 62],
+      "sources": [
+        { "path": "compose.yaml", "line": 1, "end_line": 3, "label": "base de desarrollo" },
+        { "path": "src/main/resources/application.properties", "line": 6, "end_line": 18, "label": "conexión y validate" }
+      ] },
+    { "id": "flyway", "type": "backend", "label": "Migraciones Flyway", "sublabel": "V1, V2 al arrancar", "pos": [580, 420], "size": [170, 62],
+      "sources": [
+        { "path": "src/main/resources/application.properties", "line": 12, "end_line": 17, "label": "flyway + validate" },
+        { "path": "src/main/resources/db/migration/V1__esquema_inicial.sql", "line": 1, "label": "esquema inicial" }
+      ] },
+    { "id": "notificador", "type": "backend", "label": "Notificador", "sublabel": "envía tras el commit", "pos": [870, 420], "size": [170, 62],
+      "sources": [{ "path": "src/main/java/unisimon/apipropiedadhorizontal/service/impl/NotificadorImpl.java", "line": 55, "end_line": 71, "label": "afterCommit" }] },
+    { "id": "enviador", "type": "backend", "label": "EnviadorCorreo", "sublabel": "Gmail API o SMTP, @Async", "pos": [1150, 420], "size": [170, 62],
+      "sources": [
+        { "path": "src/main/java/unisimon/apipropiedadhorizontal/service/impl/EnviadorCorreoGmail.java", "line": 40, "end_line": 41, "label": "si hay refresh token" },
+        { "path": "src/main/java/unisimon/apipropiedadhorizontal/service/impl/EnviadorCorreoSmtp.java", "line": 19, "end_line": 20, "label": "si no hay refresh token" }
+      ] },
+    { "id": "correo", "type": "external", "label": "Gmail API / SMTP", "sublabel": "googleapis.com o MAIL_HOST", "pos": [1150, 630], "size": [170, 62],
+      "sources": [{ "path": "src/main/resources/application.properties", "line": 30, "end_line": 45, "label": "SMTP y Gmail API" }] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Contenedor Docker · Spring Boot (Render)", "wraps": ["filtros", "controladores", "servicios", "repositorios", "flyway", "notificador", "enviador"], "pad": 22 }
+  ],
+  "connections": [
+    { "from": "navegador", "to": "front", "label": "HTTPS", "variant": "emphasis" },
+    { "from": "front", "to": "filtros", "label": "fetch /api/*", "variant": "emphasis" },
+    { "from": "filtros", "to": "controladores", "label": "JWT válido", "variant": "security" },
+    { "from": "controladores", "to": "servicios", "label": "DTO validado", "variant": "emphasis" },
+    { "from": "servicios", "to": "repositorios", "label": "consultas", "variant": "emphasis" },
+    { "from": "repositorios", "to": "postgres", "label": "SQL (JDBC)", "variant": "emphasis" },
+    { "from": "flyway", "to": "postgres", "label": "migra", "fromSide": "left", "toSide": "bottom" },
+    { "from": "servicios", "to": "notificador", "label": "evento" },
+    { "from": "notificador", "to": "enviador", "label": "tras commit", "variant": "dashed" },
+    { "from": "enviador", "to": "correo", "label": "HTTPS 443 / SMTP", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "rose", "title": "Seguridad", "items": [
+      "Solo login, olvidé y restablecer contraseña son públicos; todo lo demás exige Bearer JWT",
+      "Sin sesión en el servidor: cada petición se valida solo con el token",
+      "Cada método de controlador lleva su etiqueta de rol; SeguridadPorEtiquetaTest lo exige"
+    ] },
+    { "dot": "cyan", "title": "Al arrancar", "items": [
+      "Flyway aplica las migraciones y Hibernate solo valida el esquema (ddl-auto=validate)",
+      "Los ApplicationRunner de config/ siembran estados, catálogos, tipos de persona y el admin inicial",
+      "Sin JWT_SECRET la aplicación no arranca"
+    ] },
+    { "dot": "amber", "title": "Correo y front", "items": [
+      "Un solo adaptador de EnviadorCorreo se activa: Gmail API si existe GMAIL_REFRESH_TOKEN, si no SMTP",
+      "Si la transacción se revierte, no sale ningún correo",
+      "El front vive en su propio repositorio; su proxy prueba el back local y luego Render"
+    ] }
+  ]
+}

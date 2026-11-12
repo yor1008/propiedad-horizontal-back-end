@@ -16,7 +16,7 @@ El contrato de endpoints (rutas, DTOs y códigos de error) vive en el repositori
 ## Contenido
 
 1. [Inicio rápido](#inicio-rápido)
-2. [Arquitectura](#arquitectura)
+2. [Arquitectura](#arquitectura) (incluye el [diagrama de cableado](#diagrama-de-cableado))
 3. [Seguridad](#seguridad)
 4. [Casos de uso](#casos-de-uso)
 5. [Diagramas de secuencia](#diagramas-de-secuencia)
@@ -45,6 +45,14 @@ Para probarla a mano:
 El primer administrador se crea al arrancar si defines `BOOTSTRAP_ADMIN_CORREO` y `BOOTSTRAP_ADMIN_CONTRASENA` y aún no existe ninguno.
 
 ## Arquitectura
+
+### Diagrama de cableado
+
+Cómo se conectan las piezas en ejecución: el navegador entra por el proxy `/api` del front, la petición pasa por los filtros JWT, los controladores, los servicios y los repositorios hasta PostgreSQL, y los correos salen después del commit por la Gmail API o por SMTP.
+
+![Diagrama de cableado](docs/diagramas/svg/29-cableado.svg)
+
+### Capas
 
 ```
 web/controller   endpoints REST delgados: validan, delegan y devuelven DTO
@@ -237,10 +245,11 @@ El workflow de GitHub Actions (`.github/workflows/ci.yml`) corre las pruebas y v
 
 ## Cómo regenerar los diagramas
 
-Las fuentes están en [`docs/diagramas/fuente`](docs/diagramas/fuente), una por diagrama, en el formato JSON de [Archify](https://github.com/tt-a1i/archify). Cada una genera un HTML interactivo:
+Las fuentes están en [`docs/diagramas/fuente`](docs/diagramas/fuente), una por diagrama, en el formato JSON de [Archify](https://github.com/tt-a1i/archify). Cada una genera un HTML interactivo; las de secuencia usan el tipo `sequence` y el cableado (`29-cableado.json`) el tipo `architecture`:
 
 ```bash
 node <ruta-de-archify>/bin/archify.mjs finalize sequence docs/diagramas/fuente/01-login.json docs/diagramas/html/01-login.html --quality showcase
+node <ruta-de-archify>/bin/archify.mjs finalize architecture docs/diagramas/fuente/29-cableado.json docs/diagramas/html/29-cableado.html --repo-root . --quality showcase
 ```
 
 Los HTML y sus recibos van a `docs/diagramas/html` y no se versionan (pesan unos 800 KB cada uno); los SVG de [`docs/diagramas/svg`](docs/diagramas/svg) sí. Cada SVG sale del visor con **Exportar → SVG (claro)** y después se le quitan los fondos de las etiquetas, que tapaban parte de las flechas:
