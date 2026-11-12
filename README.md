@@ -48,9 +48,11 @@ El primer administrador se crea al arrancar si defines `BOOTSTRAP_ADMIN_CORREO` 
 
 ### Diagrama de cableado
 
-Cómo se conectan las piezas en ejecución: el navegador entra por el proxy `/api` del front, la petición pasa por los filtros JWT, los controladores, los servicios y los repositorios hasta PostgreSQL, y los correos salen después del commit por la Gmail API o por SMTP.
+Diagrama de componentes UML con conectores de ensamblaje (bola = interfaz provista, socket = interfaz requerida). Muestra cómo se cablean los componentes: el front consume la API REST, los filtros JWT entregan la petición autenticada a los controladores, estos usan las interfaces `*Service`, los servicios usan `*Repository`, `TokenService`, `Notificador` y `EnviadorCorreo`, y los repositorios y Flyway usan JDBC contra PostgreSQL.
 
 ![Diagrama de cableado](docs/diagramas/svg/29-cableado.svg)
+
+La fuente editable está en [`docs/diagramas/fuente/29-cableado.drawio.xml`](docs/diagramas/fuente/29-cableado.drawio.xml): ábrela en [draw.io](https://app.diagrams.net) y, después de editarla, exporta de nuevo el SVG con **Archivo → Exportar como → SVG**.
 
 ### Capas
 
@@ -245,11 +247,10 @@ El workflow de GitHub Actions (`.github/workflows/ci.yml`) corre las pruebas y v
 
 ## Cómo regenerar los diagramas
 
-Las fuentes están en [`docs/diagramas/fuente`](docs/diagramas/fuente), una por diagrama, en el formato JSON de [Archify](https://github.com/tt-a1i/archify). Cada una genera un HTML interactivo; las de secuencia usan el tipo `sequence` y el cableado (`29-cableado.json`) el tipo `architecture`:
+Las fuentes de los diagramas de secuencia están en [`docs/diagramas/fuente`](docs/diagramas/fuente), una por diagrama, en el formato JSON de [Archify](https://github.com/tt-a1i/archify). Cada una genera un HTML interactivo:
 
 ```bash
 node <ruta-de-archify>/bin/archify.mjs finalize sequence docs/diagramas/fuente/01-login.json docs/diagramas/html/01-login.html --quality showcase
-node <ruta-de-archify>/bin/archify.mjs finalize architecture docs/diagramas/fuente/29-cableado.json docs/diagramas/html/29-cableado.html --repo-root . --quality showcase
 ```
 
 Los HTML y sus recibos van a `docs/diagramas/html` y no se versionan (pesan unos 800 KB cada uno); los SVG de [`docs/diagramas/svg`](docs/diagramas/svg) sí. Cada SVG sale del visor con **Exportar → SVG (claro)** y después se le quitan los fondos de las etiquetas, que tapaban parte de las flechas:
