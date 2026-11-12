@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mxfile host="app.diagrams.net">
   <diagram name="Paquetes" id="paquetes-backend">
-    <mxGraphModel dx="1300" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="920" math="0" shadow="0">
+    <mxGraphModel dx="1300" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="880" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -41,9 +41,6 @@
         <mxCell id="e_cfg_util" value="" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=8;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="config" target="util"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
         <mxCell id="e_repo_dom" value="" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=8;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.28571428571428575;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="repository" target="domain"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
         <mxCell id="e_model_enums" value="" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=8;fontSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="model" target="enums"><mxGeometry relative="1" as="geometry"></mxGeometry></mxCell>
-        <mxCell id="n_dom" value="Casi todos los paquetes usan &lt;b&gt;domain&lt;/b&gt; (entidades y enums): config, security, service, service.impl, web.dto y web.controller. Solo se dibuja la flecha desde repository para no saturar el diagrama." style="shape=note;whiteSpace=wrap;html=1;size=12;align=left;spacingLeft=6;fontSize=10;fillColor=#ffffff;strokeColor=#666666;verticalAlign=top;" vertex="1" parent="1"><mxGeometry x="1000" y="610" width="240" height="80" as="geometry"/></mxCell>
-        <mxCell id="n_omit" value="Tampoco se dibuja web.dto → security (2 usos de UsuarioActual en respuestas)." style="shape=note;whiteSpace=wrap;html=1;size=12;align=left;spacingLeft=6;fontSize=10;fillColor=#ffffff;strokeColor=#666666;verticalAlign=top;" vertex="1" parent="1"><mxGeometry x="560" y="106" width="190" height="50" as="geometry"/></mxCell>
-        <mxCell id="ley" value="- - -&amp;gt; depende de (import) · - - -▷ implementa" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1"><mxGeometry x="40" y="880" width="700" height="20" as="geometry"/></mxCell>
       </root>
     </mxGraphModel>
   </diagram>

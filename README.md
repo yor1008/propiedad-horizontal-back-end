@@ -56,7 +56,7 @@ Fuente editable: [`docs/diagramas/fuente/29-componentes.drawio.xml`](docs/diagra
 
 ### Diagrama de paquetes
 
-Muestra los paquetes Java (`unisimon.apipropiedadhorizontal`) y qué paquete usa a cuál: la flecha punteada `- - ->` significa "importa clases de". `service.impl` implementa las interfaces de `service` (flecha con triángulo hueco). Las capas solo se conocen por interfaces: `web.controller` depende de `service` (no de `service.impl`) y `service.impl` depende de las interfaces de `repository`. `domain` va abajo como base porque casi todos los paquetes lo usan; esas flechas se resumen en una nota. Las dependencias salen de los `import` del código.
+Muestra los paquetes Java (`unisimon.apipropiedadhorizontal`) y qué paquete usa a cuál: la flecha punteada `- - ->` significa "importa clases de". `service.impl` implementa las interfaces de `service` (flecha con triángulo hueco). Las capas solo se conocen por interfaces: `web.controller` depende de `service` (no de `service.impl`) y `service.impl` depende de las interfaces de `repository`. `domain` va abajo como base porque casi todos los paquetes lo usan; para no saturar el diagrama solo se dibuja la flecha desde `repository`. Las dependencias salen de los `import` del código.
 
 ![Diagrama de paquetes](docs/diagramas/svg/30-paquetes.svg)
 
