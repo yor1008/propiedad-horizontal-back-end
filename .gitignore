@@ -50,3 +50,10 @@ CAMBIOS_DIAGRAMA.md
 .claude/
 .agents/
 skills-lock.json
+
+### Markdown: todos locales salvo el README (lo que se ve en GitHub) ###
+*.md
+!/README.md
+
+### Backups locales (solo lo que el usuario decide guardar) ###
+/backup/

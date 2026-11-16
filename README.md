@@ -46,6 +46,15 @@ Errores: **400** validación · **401** sin token · **403** sin permiso · **40
 
 Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, se desactivan, cancelan o anulan.
 
+### Diagrama de clases
+
+<details>
+<summary><b>Modelo de dominio</b> (25 entidades y 10 enums)</summary>
+
+![Diagrama de clases](docs/diagramas/svg/31-diagrama-clases.svg)
+
+</details>
+
 ### Diagramas de secuencia
 
 <details>
@@ -222,6 +231,7 @@ Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, s
 <summary>Editar los diagramas</summary>
 
 - Componentes y paquetes: abre los `.drawio.xml` de [`docs/diagramas/fuente`](docs/diagramas/fuente) en [draw.io](https://app.diagrams.net) y exporta el SVG a `docs/diagramas/svg`.
+- Clases: abre [`docs/diagramas/Clases/DIAGRAMA DE CLASE.mejorado.xml`](docs/diagramas/Clases/DIAGRAMA%20DE%20CLASE.mejorado.xml) en draw.io y exporta el SVG a `docs/diagramas/svg/31-diagrama-clases.svg` (fondo claro).
 - Secuencia: los `.json` de la misma carpeta se generan con [Archify](https://github.com/tt-a1i/archify) (`archify finalize sequence <json> docs/diagramas/html/<nombre>.html`), se exportan como **SVG (claro)** y se limpian con `python docs/diagramas/fuente/quitar-fondos-etiquetas.py`.
 
 </details>
