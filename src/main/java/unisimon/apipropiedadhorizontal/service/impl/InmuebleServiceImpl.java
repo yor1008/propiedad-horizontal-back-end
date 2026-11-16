@@ -60,8 +60,9 @@ public class InmuebleServiceImpl implements InmuebleService {
         if (inmuebles.existsByTorreBloqueAndNumero(torre, numero)) {
             throw new ConflictoException("Ya existe el inmueble " + torre + "-" + numero);
         }
-        Inmueble inmueble = inmuebles.save(Inmueble.builder()
-                .torreBloque(torre).numero(numero).piso(s.piso()).tipo(tipoInmueble(s.tipoId())).build());
+        Inmueble nuevo = Inmueble.builder().build();
+        nuevo.registrar(torre, numero, s.piso(), tipoInmueble(s.tipoId()));
+        Inmueble inmueble = inmuebles.save(nuevo);
         return InmuebleResponse.de(inmueble, null);
     }
 
@@ -196,10 +197,8 @@ public class InmuebleServiceImpl implements InmuebleService {
     }
 
     private InmuebleResponse aRespuesta(Inmueble inmueble) {
-        String propietario = personas.findByInmuebleId(inmueble.getId()).stream()
-                .filter(p -> p.vinculoEstaVigente() && p.getTipoPersona().isEsPropietario())
-                .map(p -> p.getNombres() + " " + p.getApellidos())
-                .findFirst().orElse(null);
-        return InmuebleResponse.de(inmueble, propietario);
+        Persona propietario = inmueble.obtenerPropietarioVigente();
+        return InmuebleResponse.de(inmueble,
+                propietario == null ? null : propietario.getNombres() + " " + propietario.getApellidos());
     }
 }

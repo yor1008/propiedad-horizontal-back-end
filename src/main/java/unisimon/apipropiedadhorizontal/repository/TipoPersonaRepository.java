@@ -8,5 +8,10 @@ import unisimon.apipropiedadhorizontal.domain.model.TipoPersona;
 public interface TipoPersonaRepository extends JpaRepository<TipoPersona, Long> {
 
     List<TipoPersona> findByActivoTrueOrderByNombre();
+
+    /** Operacion de clase del diagrama (TipoPersona.listarActivos); vive en el repositorio porque una entidad no consulta la base. */
+    default List<TipoPersona> listarActivos() {
+        return findByActivoTrueOrderByNombre();
+    }
     boolean existsByNombreIgnoreCase(String nombre);
 }

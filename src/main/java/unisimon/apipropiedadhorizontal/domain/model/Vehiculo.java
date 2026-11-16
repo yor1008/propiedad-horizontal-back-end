@@ -49,6 +49,16 @@ public class Vehiculo extends EntidadBase {
     @Column(name = "motivo_desactivacion", length = 255)
     private String motivoDesactivacion;
 
+    /** Fija los datos del vehiculo al darlo de alta: placa sin espacios y en mayusculas, activo. */
+    public void registrar(String placa, ValorCatalogo tipo, String marca, String color) {
+        this.placa = placa.trim().toUpperCase();
+        this.tipo = tipo;
+        this.marca = marca;
+        this.color = color;
+        this.activo = true;
+        this.motivoDesactivacion = null;
+    }
+
     public void modificarDatos(ValorCatalogo tipo, String marca, String color) {
         this.tipo = tipo;
         this.marca = marca;

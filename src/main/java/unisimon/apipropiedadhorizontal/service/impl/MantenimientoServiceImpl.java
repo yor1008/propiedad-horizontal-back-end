@@ -65,11 +65,11 @@ public class MantenimientoServiceImpl implements MantenimientoService {
         if (zona != null) {
             verificarSinReservas(zona.getId(), s.fechaHoraInicio(), s.fechaHoraFin());
         }
-        Mantenimiento m = mantenimientos.save(Mantenimiento.builder()
-                .zonaComun(zona).tipo(tipo).elementoArea(s.elementoArea().trim()).descripcion(s.descripcion())
-                .fechaHoraInicio(s.fechaHoraInicio()).fechaHoraFin(s.fechaHoraFin()).responsable(s.responsable())
-                .estado(estados.inicial(EProcesoEstado.MANTENIMIENTO)).build());
-        return MantenimientoResponse.de(m);
+        Mantenimiento m = Mantenimiento.builder().zonaComun(zona)
+                .estado(estados.inicial(EProcesoEstado.MANTENIMIENTO)).build();
+        m.registrar(tipo, s.elementoArea().trim(), s.descripcion(), s.fechaHoraInicio(), s.fechaHoraFin(),
+                s.responsable());
+        return MantenimientoResponse.de(mantenimientos.save(m));
     }
 
     @Override
@@ -102,6 +102,7 @@ public class MantenimientoServiceImpl implements MantenimientoService {
     public MantenimientoResponse iniciar(Long id) {
         Mantenimiento m = buscar(id);
         m.cambiarEstado(estados.transicionar(m.getEstado(), NombresEstado.MANTENIMIENTO_EN_CURSO, null));
+        m.iniciar();
         return MantenimientoResponse.de(m);
     }
 

@@ -70,10 +70,10 @@ public class CorrespondenciaServiceImpl implements CorrespondenciaService {
         if (!tipo.isActivo()) {
             throw new ReglaNegocioException("El tipo de correspondencia esta inactivo");
         }
-        Correspondencia c = correspondencias.save(Correspondencia.builder()
-                .inmueble(inmueble).persona(persona).tipo(tipo)
-                .remitente(s.remitente()).descripcion(s.descripcion())
-                .estado(estados.inicial(EProcesoEstado.CORRESPONDENCIA)).build());
+        Correspondencia nueva = Correspondencia.builder().inmueble(inmueble).persona(persona)
+                .estado(estados.inicial(EProcesoEstado.CORRESPONDENCIA)).build();
+        nueva.registrarRecepcion(tipo, s.remitente(), s.descripcion());
+        Correspondencia c = correspondencias.save(nueva);
         List<Persona> destinatarios = persona != null ? List.of(persona)
                 : personas.findByInmuebleId(inmueble.getId()).stream().filter(Persona::vinculoEstaVigente).toList();
         String deQuien = s.remitente() == null || s.remitente().isBlank() ? "" : " de " + s.remitente().trim();

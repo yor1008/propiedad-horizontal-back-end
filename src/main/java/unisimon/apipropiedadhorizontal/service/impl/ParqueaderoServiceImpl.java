@@ -42,9 +42,9 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
         if (!tipo.isActivo()) {
             throw new ReglaNegocioException("El tipo de inmueble esta inactivo");
         }
-        return ParqueaderoResponse.de(inmuebles.save(Inmueble.builder()
-                .torreBloque(torre).numero(numero).piso(s.piso()).tipo(tipo)
-                .categoria(ECategoriaInmueble.PARQUEADERO).build()));
+        Inmueble parqueadero = Inmueble.builder().categoria(ECategoriaInmueble.PARQUEADERO).build();
+        parqueadero.registrar(torre, numero, s.piso(), tipo);
+        return ParqueaderoResponse.de(inmuebles.save(parqueadero));
     }
 
     @Override

@@ -72,7 +72,7 @@ public class IngresoVisitanteServiceImpl implements IngresoVisitanteService {
     @Transactional(readOnly = true)
     public List<PreRegistroResponse> preRegistrosVigentes(String numeroDocumento) {
         LocalDate hoy = RelojLocal.hoy(reloj);
-        return visitantesRepo.findByNumeroDocumento(numeroDocumento.trim())
+        return visitantesRepo.buscarPorDocumento(numeroDocumento)
                 .map(v -> preRegistros.findByVisitanteIdAndActivoTrue(v.getId()).stream()
                         .filter(p -> p.estaVigente(hoy))
                         .map(p -> PreRegistroResponse.de(p, hoy))

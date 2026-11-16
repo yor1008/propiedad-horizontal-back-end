@@ -3,7 +3,7 @@
   "diagram_type": "sequence",
   "meta": {
     "title": "CU-005 Gestionar cuentas de usuario",
-    "output": "docs/diagramas/13-cuentas.html",
+    "output": "docs/diagramas/html/13-cuentas.html",
     "locale": "es",
     "quality_profile": "showcase"
   },
@@ -67,7 +67,7 @@
       "from": "svc",
       "to": "repo",
       "y": 239,
-      "label": "persona existe y sin cuenta",
+      "label": "rol ↔ persona; persona sin cuenta",
       "variant": "default"
     },
     {
@@ -205,7 +205,8 @@
       "title": "Seguridad",
       "items": [
         "Solo el administrador gestiona cuentas",
-        "El correo se guarda en minúsculas y la clave como hash BCrypt"
+        "El correo se guarda en minúsculas y la clave como hash BCrypt",
+        "Administrador y vigilante sin persona (422 si llega personaId); persona vinculada exige persona"
       ]
     }
   ],

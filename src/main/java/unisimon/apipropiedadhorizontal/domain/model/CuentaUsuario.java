@@ -19,9 +19,13 @@ import unisimon.apipropiedadhorizontal.domain.enums.ERolCuenta;
 import java.time.LocalDateTime;
 
 /**
- * Credenciales de acceso. Administradores y vigilantes pueden no tener {@link Persona};
- * las cuentas PERSONA_VINCULADA siempre la tienen (regla validada en el servicio).
- * La contrasena solo se guarda como hash BCrypt.
+ * Credenciales de acceso. La contrasena solo se guarda como hash BCrypt.
+ * <p>
+ * Restriccion del diagrama de clases (nota sobre {@code CuentaUsuario}):
+ * {@code rol = ADMINISTRADOR o VIGILANTE -> persona = null} y
+ * {@code rol = PERSONA_VINCULADA -> persona <> null y persona.tipoPersona <> null}.
+ * Las cuentas nuevas se crean con {@link #crearCuentaPersonal} o {@link #crearCuentaPersonaVinculada},
+ * que la hacen cumplir.
  */
 @Entity
 @Table(name = "cuenta_usuario")
@@ -50,6 +54,43 @@ public class CuentaUsuario extends EntidadBase {
 
     @Column(name = "fecha_ultimo_acceso")
     private LocalDateTime fechaUltimoAcceso;
+
+    /**
+     * Crea la cuenta de un miembro del personal (administrador o vigilante), que no tiene persona.
+     *
+     * @param contrasena la contrasena <b>ya cifrada</b> con BCrypt: la entidad no conoce el codificador
+     *                   (lo aplica el servicio), asi el hash nunca se calcula ni se guarda en claro aqui.
+     * @throws IllegalArgumentException si el rol no es de personal
+     */
+    public static CuentaUsuario crearCuentaPersonal(String correo, String contrasena, ERolCuenta rol) {
+        if (!esRolPersonal(rol)) {
+            throw new IllegalArgumentException("Una cuenta personal debe ser de administrador o vigilante");
+        }
+        return CuentaUsuario.builder().correoAcceso(correo).hashContrasena(contrasena).rol(rol).build();
+    }
+
+    /**
+     * Crea la cuenta de acceso de una persona vinculada (propietario o residente).
+     *
+     * @param contrasena la contrasena <b>ya cifrada</b> con BCrypt (ver {@link #crearCuentaPersonal}).
+     * @throws IllegalArgumentException si falta la persona o su tipo de persona
+     */
+    public static CuentaUsuario crearCuentaPersonaVinculada(String correo, String contrasena, Persona persona) {
+        if (persona == null || persona.getTipoPersona() == null) {
+            throw new IllegalArgumentException("Una cuenta de persona vinculada requiere una persona con tipo de persona");
+        }
+        return CuentaUsuario.builder().correoAcceso(correo).hashContrasena(contrasena)
+                .rol(ERolCuenta.PERSONA_VINCULADA).persona(persona).build();
+    }
+
+    /** Verdadero si la cuenta es de administrador o vigilante (personal del conjunto, sin persona). */
+    public boolean esPersonal() {
+        return esRolPersonal(rol);
+    }
+
+    private static boolean esRolPersonal(ERolCuenta rol) {
+        return rol == ERolCuenta.ADMINISTRADOR || rol == ERolCuenta.VIGILANTE;
+    }
 
     public void actualizarHashContrasena(String nuevoHash) {
         this.hashContrasena = nuevoHash;

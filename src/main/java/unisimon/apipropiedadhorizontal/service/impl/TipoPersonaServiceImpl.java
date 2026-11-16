@@ -20,6 +20,6 @@ public class TipoPersonaServiceImpl implements TipoPersonaService {
 
     @Override
     public List<TipoPersonaResponse> listarActivos() {
-        return tipos.findByActivoTrueOrderByNombre().stream().map(TipoPersonaResponse::de).toList();
+        return tipos.listarActivos().stream().map(TipoPersonaResponse::de).toList();
     }
 }

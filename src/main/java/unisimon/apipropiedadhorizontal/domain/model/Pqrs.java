@@ -61,6 +61,25 @@ public class Pqrs extends EntidadBase {
     @JoinColumn(name = "estado_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pqrs_estado"))
     private Estado estado;
 
+    /** Fija los datos de la solicitud y la fecha de radicacion. El estado inicial lo asigna el servicio. */
+    public void radicar(ValorCatalogo tipo, String asunto, String descripcion) {
+        this.tipo = tipo;
+        this.asunto = asunto;
+        this.descripcion = descripcion;
+        this.fechaHoraRadicacion = LocalDateTime.now();
+    }
+
+    /**
+     * La PQRS pasa a tramite (estado "En tramite"; la transicion la valida {@code GestorEstados}).
+     *
+     * @throws IllegalStateException si ya fue respondida
+     */
+    public void ponerEnGestion() {
+        if (fechaHoraRespuesta != null) {
+            throw new IllegalStateException("La PQRS ya fue respondida");
+        }
+    }
+
     public void cambiarEstado(Estado nuevo) {
         this.estado = nuevo;
     }

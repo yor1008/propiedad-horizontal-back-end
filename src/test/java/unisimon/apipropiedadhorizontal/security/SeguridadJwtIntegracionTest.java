@@ -242,6 +242,10 @@ class SeguridadJwtIntegracionTest {
         mvc.perform(post("/api/cuentas").header("Authorization", admin).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"correo\":\"p@ph.com\",\"contrasena\":\"" + CLAVE + "\",\"rol\":\"PERSONA_VINCULADA\"}"))
                 .andExpect(status().isUnprocessableContent());
+        // administrador o vigilante con persona (nota del diagrama: persona = null)
+        mvc.perform(post("/api/cuentas").header("Authorization", admin).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"correo\":\"v2@ph.com\",\"contrasena\":\"" + CLAVE + "\",\"rol\":\"VIGILANTE\",\"personaId\":1}"))
+                .andExpect(status().isUnprocessableContent());
         // contrasena corta
         mvc.perform(post("/api/cuentas").header("Authorization", admin).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"correo\":\"x@ph.com\",\"contrasena\":\"corta\",\"rol\":\"VIGILANTE\"}"))

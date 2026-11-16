@@ -76,6 +76,14 @@ public class ZonaComun extends EntidadBase {
     @Builder.Default
     private List<HorarioDisponibilidad> horarios = new ArrayList<>();
 
+    /** Fija los datos basicos de la zona al darla de alta; las reglas van con {@link #configurarReglas}. */
+    public void registrar(String nombre, String descripcion, int capacidad, ETipoUsoZona tipoUso,
+                          boolean requiereAprobacion) {
+        modificarDatos(nombre, descripcion, capacidad, tipoUso, requiereAprobacion);
+        this.activa = true;
+        this.motivoDesactivacion = null;
+    }
+
     public void configurarReglas(int duracionMax, int antMin, int antMax, int limiteCancel, int maxReservas,
                                  EPeriodoLimite periodo) {
         this.duracionMaximaMinutos = duracionMax;
@@ -101,8 +109,9 @@ public class ZonaComun extends EntidadBase {
     }
 
     public void agregarHorario(EDiaSemana dia, java.time.LocalTime inicio, java.time.LocalTime fin) {
-        horarios.add(HorarioDisponibilidad.builder().zonaComun(this).diaSemana(dia)
-                .horaInicio(inicio).horaFin(fin).build());
+        HorarioDisponibilidad horario = HorarioDisponibilidad.builder().zonaComun(this).build();
+        horario.registrar(dia, inicio, fin);
+        horarios.add(horario);
     }
 
     public List<HorarioDisponibilidad> consultarDisponibilidad(LocalDate fecha) {

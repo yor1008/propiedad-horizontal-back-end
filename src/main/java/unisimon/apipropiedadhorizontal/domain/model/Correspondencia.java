@@ -59,6 +59,14 @@ public class Correspondencia extends EntidadBase {
     @JoinColumn(name = "estado_id", nullable = false, foreignKey = @ForeignKey(name = "fk_correspondencia_estado"))
     private Estado estado;
 
+    /** Fija los datos de lo que llego y la hora de recepcion. El estado inicial lo asigna el servicio. */
+    public void registrarRecepcion(ValorCatalogo tipo, String remitente, String descripcion) {
+        this.tipo = tipo;
+        this.remitente = remitente;
+        this.descripcion = descripcion;
+        this.fechaHoraRecepcion = LocalDateTime.now();
+    }
+
     public void registrarEntrega(String nombreRecibe, String documentoRecibe) {
         this.nombreRecibe = nombreRecibe;
         this.documentoRecibe = documentoRecibe;

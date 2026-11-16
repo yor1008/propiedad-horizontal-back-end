@@ -61,11 +61,8 @@ public class AdministradorInicial implements ApplicationRunner {
         if (cuentas.count() == 0) {
             reiniciarIdentidad();
         }
-        cuentas.save(CuentaUsuario.builder()
-                .correoAcceso(correo)
-                .hashContrasena(codificador.encode(propiedades.contrasena()))
-                .rol(ERolCuenta.ADMINISTRADOR)
-                .build());
+        cuentas.save(CuentaUsuario.crearCuentaPersonal(correo, codificador.encode(propiedades.contrasena()),
+                ERolCuenta.ADMINISTRADOR));
         log.info("Administrador inicial creado: {}", correo);
     }
 

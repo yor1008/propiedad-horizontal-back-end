@@ -43,24 +43,28 @@ public class CuentaUsuarioServiceImpl implements CuentaUsuarioService {
             throw new ConflictoException("Ya existe una cuenta con ese correo");
         }
 
-        Persona persona = null;
-        if (solicitud.personaId() != null) {
-            persona = personas.findById(solicitud.personaId())
-                    .orElseThrow(() -> new RecursoNoEncontradoException("Persona", solicitud.personaId()));
-            if (cuentas.existsByPersonaId(persona.getId())) {
-                throw new ConflictoException("La persona ya tiene una cuenta de acceso");
+        String hash = codificador.encode(solicitud.contrasena());
+        if (solicitud.rol() != ERolCuenta.PERSONA_VINCULADA) {
+            // Nota del diagrama: rol = ADMINISTRADOR o VIGILANTE -> persona = null.
+            if (solicitud.personaId() != null) {
+                throw new ReglaNegocioException("Una cuenta de administrador o vigilante no puede tener persona");
             }
-        } else if (solicitud.rol() == ERolCuenta.PERSONA_VINCULADA) {
-            throw new ReglaNegocioException("Una cuenta de persona vinculada requiere personaId");
+            return CuentaResponse.de(cuentas.save(CuentaUsuario.crearCuentaPersonal(correo, hash, solicitud.rol())));
         }
 
-        CuentaUsuario cuenta = CuentaUsuario.builder()
-                .correoAcceso(correo)
-                .hashContrasena(codificador.encode(solicitud.contrasena()))
-                .rol(solicitud.rol())
-                .persona(persona)
-                .build();
-        return CuentaResponse.de(cuentas.save(cuenta));
+        // Nota del diagrama: rol = PERSONA_VINCULADA -> persona <> null y persona.tipoPersona <> null.
+        if (solicitud.personaId() == null) {
+            throw new ReglaNegocioException("Una cuenta de persona vinculada requiere personaId");
+        }
+        Persona persona = personas.findById(solicitud.personaId())
+                .orElseThrow(() -> new RecursoNoEncontradoException("Persona", solicitud.personaId()));
+        if (cuentas.existsByPersonaId(persona.getId())) {
+            throw new ConflictoException("La persona ya tiene una cuenta de acceso");
+        }
+        if (persona.getTipoPersona() == null) {
+            throw new ReglaNegocioException("La persona no tiene tipo de persona");
+        }
+        return CuentaResponse.de(cuentas.save(CuentaUsuario.crearCuentaPersonaVinculada(correo, hash, persona)));
     }
 
     @Override

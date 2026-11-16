@@ -29,8 +29,9 @@ public class TiposPersonaIniciales implements ApplicationRunner {
 
     private void sembrar(String nombre, String descripcion, boolean propietario, boolean residente) {
         if (!tipos.existsByNombreIgnoreCase(nombre)) {
-            tipos.save(TipoPersona.builder().nombre(nombre).descripcion(descripcion)
-                    .esPropietario(propietario).esResidente(residente).build());
+            TipoPersona tipo = TipoPersona.builder().build();
+            tipo.registrar(nombre, descripcion, propietario, residente);
+            tipos.save(tipo);
         }
     }
 }

@@ -56,6 +56,16 @@ public class Mantenimiento extends EntidadBase {
     @JoinColumn(name = "estado_id", nullable = false, foreignKey = @ForeignKey(name = "fk_mantenimiento_estado"))
     private Estado estado;
 
+    public void registrar(ValorCatalogo tipo, String elementoArea, String descripcion, LocalDateTime inicio,
+                          LocalDateTime fin, String responsable) {
+        this.tipo = tipo;
+        this.elementoArea = elementoArea;
+        this.descripcion = descripcion;
+        this.fechaHoraInicio = inicio;
+        this.fechaHoraFin = fin;
+        this.responsable = responsable;
+    }
+
     public void modificarDatos(String descripcion, LocalDateTime inicio, LocalDateTime fin, String responsable) {
         this.descripcion = descripcion;
         this.fechaHoraInicio = inicio;
@@ -65,6 +75,17 @@ public class Mantenimiento extends EntidadBase {
 
     public void cambiarEstado(Estado nuevo) {
         this.estado = nuevo;
+    }
+
+    /**
+     * El mantenimiento empieza (estado "En curso"; la transicion la valida {@code GestorEstados}).
+     *
+     * @throws IllegalStateException si ya tiene observaciones de cierre o motivo de cancelacion
+     */
+    public void iniciar() {
+        if (observaciones != null || motivoCancelacion != null) {
+            throw new IllegalStateException("El mantenimiento ya fue finalizado o cancelado");
+        }
     }
 
     public void finalizar(String observaciones) {

@@ -24,7 +24,7 @@ public class GestorEstadosImpl implements GestorEstados {
 
     @Override
     public Estado inicial(EProcesoEstado proceso) {
-        return estados.findByProcesoAndEsInicialTrue(proceso)
+        return estados.obtenerInicial(proceso)
                 .orElseThrow(() -> new ReglaNegocioException("No hay estado inicial configurado para " + proceso));
     }
 
@@ -37,6 +37,10 @@ public class GestorEstadosImpl implements GestorEstados {
     @Override
     public Estado transicionar(Estado actual, String nombreDestino, String motivo) {
         Estado destino = porNombre(actual.getProceso(), nombreDestino);
+        if (!actual.puedeCambiarA(destino)) {
+            throw new ReglaNegocioException(
+                    "No se puede pasar de '" + actual.getNombre() + "' a '" + destino.getNombre() + "'");
+        }
         TransicionEstado transicion = transiciones
                 .findByEstadoOrigenIdAndEstadoDestinoId(actual.getId(), destino.getId())
                 .orElseThrow(() -> new ReglaNegocioException(

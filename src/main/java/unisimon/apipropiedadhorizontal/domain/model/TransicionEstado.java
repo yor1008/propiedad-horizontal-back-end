@@ -33,4 +33,9 @@ public class TransicionEstado extends EntidadBase {
 
     @Column(name = "requiere_motivo", nullable = false)
     private boolean requiereMotivo;
+
+    /** Verdadero si esta transicion lleva de {@code origen} a {@code destino}. */
+    public boolean esPermitida(Estado origen, Estado destino) {
+        return estadoOrigen.equals(origen) && estadoDestino.equals(destino);
+    }
 }

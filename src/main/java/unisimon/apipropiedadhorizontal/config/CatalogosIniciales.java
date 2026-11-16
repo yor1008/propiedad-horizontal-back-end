@@ -38,7 +38,9 @@ public class CatalogosIniciales implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         VALORES.forEach((tipo, nombres) -> nombres.forEach(nombre -> {
             if (!catalogos.existsByTipoAndNombreIgnoreCase(tipo, nombre)) {
-                catalogos.save(ValorCatalogo.builder().tipo(tipo).nombre(nombre).build());
+                ValorCatalogo valor = ValorCatalogo.builder().build();
+                valor.registrar(tipo, nombre);
+                catalogos.save(valor);
             }
         }));
     }

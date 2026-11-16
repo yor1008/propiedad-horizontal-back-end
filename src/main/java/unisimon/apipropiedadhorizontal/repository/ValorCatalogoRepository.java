@@ -10,5 +10,10 @@ public interface ValorCatalogoRepository extends JpaRepository<ValorCatalogo, Lo
 
     List<ValorCatalogo> findByTipoOrderByNombre(ETipoCatalogo tipo);
     List<ValorCatalogo> findByTipoAndActivoTrueOrderByNombre(ETipoCatalogo tipo);
+
+    /** Operacion de clase del diagrama (ValorCatalogo.listarActivos); vive en el repositorio porque una entidad no consulta la base. */
+    default List<ValorCatalogo> listarActivos(ETipoCatalogo tipo) {
+        return findByTipoAndActivoTrueOrderByNombre(tipo);
+    }
     boolean existsByTipoAndNombreIgnoreCase(ETipoCatalogo tipo, String nombre);
 }

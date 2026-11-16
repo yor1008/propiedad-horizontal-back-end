@@ -64,11 +64,10 @@ public class PqrsServiceImpl implements PqrsService {
             throw new ReglaNegocioException("El tipo de PQRS esta inactivo");
         }
         String adjunto = s.adjunto() == null || s.adjunto().isBlank() ? null : s.adjunto().trim();
-        Pqrs nueva = pqrs.save(Pqrs.builder()
-                .persona(persona).inmueble(persona.getInmueble()).tipo(tipo)
-                .asunto(s.asunto().trim()).descripcion(s.descripcion().trim()).adjunto(adjunto)
-                .estado(estados.inicial(EProcesoEstado.PQRS)).build());
-        return aRespuesta(nueva);
+        Pqrs nueva = Pqrs.builder().persona(persona).inmueble(persona.getInmueble()).adjunto(adjunto)
+                .estado(estados.inicial(EProcesoEstado.PQRS)).build();
+        nueva.radicar(tipo, s.asunto().trim(), s.descripcion().trim());
+        return aRespuesta(pqrs.save(nueva));
     }
 
     @Override
@@ -83,6 +82,14 @@ public class PqrsServiceImpl implements PqrsService {
     @Transactional(readOnly = true)
     public List<PqrsResponse> listar() {
         return pqrs.findAllByOrderByFechaHoraRadicacionDesc().stream().map(this::aRespuesta).toList();
+    }
+
+    @Override
+    public PqrsResponse ponerEnGestion(Long id) {
+        Pqrs p = pqrs.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("PQRS", id));
+        p.cambiarEstado(estados.transicionar(p.getEstado(), NombresEstado.PQRS_EN_TRAMITE, null));
+        p.ponerEnGestion();
+        return aRespuesta(p);
     }
 
     @Override

@@ -76,6 +76,24 @@ public class Persona extends EntidadBase {
     @Column(name = "motivo_desactivacion", length = 255)
     private String motivoDesactivacion;
 
+    /**
+     * Fija los datos personales al darla de alta. Si autoriza el tratamiento de datos, guarda la fecha de hoy
+     * (fecha del sistema, igual que {@link #vinculoEstaVigente()}). Queda activa y sin vinculo.
+     */
+    public void registrar(ValorCatalogo tipoDoc, String numeroDoc, String nombres, String apellidos, String telefono,
+                          String correo, boolean autorizaDatos) {
+        this.tipoDocumento = tipoDoc;
+        this.numeroDocumento = numeroDoc;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.autorizaTratamientoDatos = autorizaDatos;
+        this.fechaAutorizacionDatos = autorizaDatos ? LocalDate.now() : null;
+        this.activa = true;
+        this.motivoDesactivacion = null;
+    }
+
     /** Corrige los datos personales; el documento no cambia porque identifica a la persona. */
     public void actualizarDatos(String nombres, String apellidos, String telefono, String correo) {
         this.nombres = nombres;

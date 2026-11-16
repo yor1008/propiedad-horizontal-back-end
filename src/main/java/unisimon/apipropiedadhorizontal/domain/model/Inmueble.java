@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AccessLevel;
@@ -17,6 +18,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Unidad inmobiliaria: apartamento, local, parqueadero, etc. (el tipo lo define un {@link ValorCatalogo}).
@@ -65,6 +69,33 @@ public class Inmueble extends EntidadBase {
     @Column(name = "motivo_desactivacion", length = 255)
     private String motivoDesactivacion;
 
+    /** Parqueaderos asignados a este inmueble: lado inverso de {@code inmuebleAsociado} (no agrega columnas). */
+    @OneToMany(mappedBy = "inmuebleAsociado")
+    @Getter(AccessLevel.NONE)
+    @Builder.Default
+    private List<Inmueble> parqueaderos = new ArrayList<>();
+
+    /**
+     * Personas cuyo vinculo (vigente o pasado) apunta a este inmueble: lado inverso de {@code Persona.inmueble}.
+     * Se lee de la base al primer acceso; un servicio que acabe de cambiar un vinculo en la misma transaccion debe
+     * consultar el repositorio (ver {@code OcupacionInmuebles}).
+     */
+    @OneToMany(mappedBy = "inmueble")
+    @Getter(AccessLevel.NONE)
+    @Builder.Default
+    private List<Persona> personas = new ArrayList<>();
+
+    /** Fija los datos del inmueble al darlo de alta; la categoria queda como se construyo (unidad privada por defecto). */
+    public void registrar(String torre, String numero, int piso, ValorCatalogo tipo) {
+        this.torreBloque = torre;
+        this.numero = numero;
+        this.piso = piso;
+        this.tipo = tipo;
+        this.ocupado = false;
+        this.activo = true;
+        this.motivoDesactivacion = null;
+    }
+
     public void modificarDatos(String torreBloque, String numero, int piso, ValorCatalogo tipo) {
         this.torreBloque = torreBloque;
         this.numero = numero;
@@ -74,12 +105,29 @@ public class Inmueble extends EntidadBase {
 
     public void asignarParqueadero(Inmueble parqueadero) {
         parqueadero.inmuebleAsociado = this;
+        parqueaderos.add(parqueadero);
     }
 
     public void retirarParqueadero(Inmueble parqueadero) {
         if (this.equals(parqueadero.inmuebleAsociado)) {
             parqueadero.inmuebleAsociado = null;
+            parqueaderos.remove(parqueadero);
         }
+    }
+
+    /** Parqueaderos asignados a este inmueble (copia de solo lectura). */
+    public List<Inmueble> obtenerParqueaderos() {
+        return List.copyOf(parqueaderos);
+    }
+
+    /** Personas con vinculo vigente y tipo de persona residente. */
+    public List<Persona> obtenerResidentesVigentes() {
+        return personas.stream().filter(p -> p.esResidenteDe(this)).toList();
+    }
+
+    /** Primer propietario con vinculo vigente, o {@code null} si no hay. */
+    public Persona obtenerPropietarioVigente() {
+        return personas.stream().filter(p -> p.esPropietarioDe(this)).findFirst().orElse(null);
     }
 
     public boolean estaOcupado() {

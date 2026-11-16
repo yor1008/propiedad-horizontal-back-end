@@ -15,6 +15,9 @@ public interface PqrsService {
 
     List<PqrsResponse> listar();
 
+    /** CU-031: el administrador pone la PQRS en tramite (Radicada -> En tramite). */
+    PqrsResponse ponerEnGestion(Long id);
+
     PqrsResponse atender(Long id, AtenderPqrsRequest solicitud);
 
     /** Borrado fisico solo de una PQRS sin atender; despues, 409. */

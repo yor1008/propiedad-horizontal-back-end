@@ -51,6 +51,12 @@ public class PqrsController {
     }
 
     @SoloAdministrador
+    @PatchMapping("/{id}/en-gestion")
+    public PqrsResponse ponerEnGestion(@PathVariable Long id) {
+        return pqrs.ponerEnGestion(id);
+    }
+
+    @SoloAdministrador
     @PatchMapping("/{id}/atender")
     public PqrsResponse atender(@PathVariable Long id, @Valid @RequestBody AtenderPqrsRequest solicitud) {
         return pqrs.atender(id, solicitud);

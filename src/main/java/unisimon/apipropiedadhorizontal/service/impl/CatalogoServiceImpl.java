@@ -27,7 +27,7 @@ public class CatalogoServiceImpl implements CatalogoService {
     @Transactional(readOnly = true)
     public List<CatalogoResponse> listar(ETipoCatalogo tipo, boolean soloActivos) {
         List<ValorCatalogo> valores = soloActivos
-                ? catalogos.findByTipoAndActivoTrueOrderByNombre(tipo)
+                ? catalogos.listarActivos(tipo)
                 : catalogos.findByTipoOrderByNombre(tipo);
         return valores.stream().map(CatalogoResponse::de).toList();
     }
@@ -38,7 +38,8 @@ public class CatalogoServiceImpl implements CatalogoService {
         if (catalogos.existsByTipoAndNombreIgnoreCase(solicitud.tipo(), nombre)) {
             throw new ConflictoException("Ya existe un valor '" + nombre + "' en " + solicitud.tipo());
         }
-        ValorCatalogo valor = ValorCatalogo.builder().tipo(solicitud.tipo()).nombre(nombre).build();
+        ValorCatalogo valor = ValorCatalogo.builder().build();
+        valor.registrar(solicitud.tipo(), nombre);
         return CatalogoResponse.de(catalogos.save(valor));
     }
 

@@ -165,6 +165,25 @@ class OperacionesIntegracionTest {
     }
 
     @Test
+    void pqrsSePoneEnGestionYDespuesSeResponde() throws Exception {
+        Long id = id(enviar("post", "/api/pqrs", residente, "{\"tipoId\":" + tipoPqrs
+                + ",\"asunto\":\"Ruido\",\"descripcion\":\"Fiesta\"}").andExpect(status().isCreated()));
+        String ruta = "/api/pqrs/" + id + "/en-gestion";
+
+        mvc.perform(patch(ruta)).andExpect(status().isUnauthorized());
+        enviar("patch", ruta, residente, "{}").andExpect(status().isForbidden());
+        enviar("patch", ruta, admin, "{}")
+                .andExpect(status().isOk()).andExpect(jsonPath("$.estado").value("En tramite"))
+                .andExpect(jsonPath("$.respuesta").isEmpty());
+        // ya esta en tramite: no hay transicion En tramite -> En tramite
+        enviar("patch", ruta, admin, "{}").andExpect(status().isUnprocessableContent());
+        enviar("patch", "/api/pqrs/" + id + "/atender", admin, "{\"respuesta\":\"Listo\"}")
+                .andExpect(status().isOk()).andExpect(jsonPath("$.estado").value("Respondida"));
+        enviar("patch", ruta, admin, "{}").andExpect(status().isUnprocessableContent());
+        enviar("patch", "/api/pqrs/999999/en-gestion", admin, "{}").andExpect(status().isNotFound());
+    }
+
+    @Test
     void parqueaderoSeCreaAsignaYLiberaSinMezclarseConInmuebles() throws Exception {
         Long id = id(enviar("post", "/api/parqueaderos", admin,
                 "{\"torreBloque\":\"P\",\"numero\":\"1\",\"piso\":0,\"tipoId\":" + tipoInmueble + "}")

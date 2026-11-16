@@ -44,9 +44,8 @@ public class ZonaComunServiceImpl implements ZonaComunService {
         if (zonas.existsByNombreIgnoreCase(nombre)) {
             throw new ConflictoException("Ya existe una zona comun llamada " + nombre);
         }
-        ZonaComun zona = ZonaComun.builder()
-                .nombre(nombre).descripcion(s.descripcion()).capacidadMaxima(s.capacidadMaxima())
-                .tipoUso(s.tipoUso()).requiereAprobacion(s.requiereAprobacion()).build();
+        ZonaComun zona = ZonaComun.builder().build();
+        zona.registrar(nombre, s.descripcion(), s.capacidadMaxima(), s.tipoUso(), s.requiereAprobacion());
         aplicarReglasYHorarios(zona, s);
         return ZonaComunResponse.de(zonas.save(zona));
     }

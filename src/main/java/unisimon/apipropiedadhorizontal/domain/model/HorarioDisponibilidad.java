@@ -40,6 +40,11 @@ public class HorarioDisponibilidad extends EntidadBase {
     @Column(name = "hora_fin", nullable = false)
     private LocalTime horaFin;
 
+    public void registrar(EDiaSemana dia, LocalTime inicio, LocalTime fin) {
+        this.diaSemana = dia;
+        modificarHorario(inicio, fin);
+    }
+
     public void modificarHorario(LocalTime inicio, LocalTime fin) {
         this.horaInicio = inicio;
         this.horaFin = fin;

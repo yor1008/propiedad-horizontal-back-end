@@ -63,9 +63,8 @@ public class ReservaServiceImpl implements ReservaService {
         }
         Reserva reserva = Reserva.builder()
                 .persona(persona).inmueble(persona.getInmueble()).zonaComun(zona)
-                .fecha(s.fecha()).horaInicio(s.horaInicio()).horaFin(s.horaFin())
-                .numeroAsistentes(s.numeroAsistentes()).motivo(s.motivo())
                 .estado(estados.inicial(EProcesoEstado.RESERVA)).build();
+        reserva.registrar(s.fecha(), s.horaInicio(), s.horaFin(), s.numeroAsistentes(), s.motivo());
         if (!zona.validarReserva(reserva)) {
             throw new ReglaNegocioException("La reserva incumple las reglas de la zona "
                     + "(horario disponible, capacidad de " + zona.getCapacidadMaxima() + ", duracion o anticipacion)");

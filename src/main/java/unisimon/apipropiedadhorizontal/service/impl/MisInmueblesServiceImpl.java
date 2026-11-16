@@ -3,7 +3,6 @@ package unisimon.apipropiedadhorizontal.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import unisimon.apipropiedadhorizontal.domain.model.Persona;
-import unisimon.apipropiedadhorizontal.repository.InmuebleRepository;
 import unisimon.apipropiedadhorizontal.service.MisInmueblesService;
 import unisimon.apipropiedadhorizontal.service.PersonaAutenticada;
 import unisimon.apipropiedadhorizontal.web.dto.MiInmuebleResponse;
@@ -16,11 +15,9 @@ import java.util.List;
 public class MisInmueblesServiceImpl implements MisInmueblesService {
 
     private final PersonaAutenticada personaAutenticada;
-    private final InmuebleRepository inmuebles;
 
-    public MisInmueblesServiceImpl(PersonaAutenticada personaAutenticada, InmuebleRepository inmuebles) {
+    public MisInmueblesServiceImpl(PersonaAutenticada personaAutenticada) {
         this.personaAutenticada = personaAutenticada;
-        this.inmuebles = inmuebles;
     }
 
     @Override
@@ -30,7 +27,7 @@ public class MisInmueblesServiceImpl implements MisInmueblesService {
             return List.of();
         }
         var inmueble = persona.getInmueble();
-        List<ParqueaderoResponse> parqueaderos = inmuebles.findByInmuebleAsociadoId(inmueble.getId()).stream()
+        List<ParqueaderoResponse> parqueaderos = inmueble.obtenerParqueaderos().stream()
                 .map(ParqueaderoResponse::de).toList();
         return List.of(MiInmuebleResponse.de(inmueble, parqueaderos));
     }

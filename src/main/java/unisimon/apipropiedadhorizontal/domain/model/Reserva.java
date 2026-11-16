@@ -67,6 +67,16 @@ public class Reserva extends EntidadBase {
     @JoinColumn(name = "estado_id", nullable = false, foreignKey = @ForeignKey(name = "fk_reserva_estado"))
     private Estado estado;
 
+    /** Fija la fecha, la franja y los asistentes, y la hora de registro. El estado inicial lo asigna el servicio. */
+    public void registrar(LocalDate fecha, LocalTime inicio, LocalTime fin, int asistentes, String motivo) {
+        this.fecha = fecha;
+        this.horaInicio = inicio;
+        this.horaFin = fin;
+        this.numeroAsistentes = asistentes;
+        this.motivo = motivo;
+        this.fechaHoraRegistro = LocalDateTime.now();
+    }
+
     public void cambiarEstado(Estado nuevo) {
         this.estado = nuevo;
     }

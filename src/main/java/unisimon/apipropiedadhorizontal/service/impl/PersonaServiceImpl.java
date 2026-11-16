@@ -21,8 +21,6 @@ import unisimon.apipropiedadhorizontal.web.dto.ActualizarPersonaRequest;
 import unisimon.apipropiedadhorizontal.web.dto.CrearPersonaRequest;
 import unisimon.apipropiedadhorizontal.web.dto.PersonaResponse;
 
-import java.time.Clock;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,19 +30,17 @@ public class PersonaServiceImpl implements PersonaService {
     private final PersonaRepository personas;
     private final TipoPersonaRepository tiposPersona;
     private final ValorCatalogoRepository catalogos;
-    private final Clock reloj;
     private final HistorialPersona historial;
     private final OcupacionInmuebles ocupacion;
     private final VerificacionCorreoService verificacionCorreo;
 
     public PersonaServiceImpl(PersonaRepository personas, TipoPersonaRepository tiposPersona,
-                              ValorCatalogoRepository catalogos, Clock reloj,
+                              ValorCatalogoRepository catalogos,
                               HistorialPersona historial, OcupacionInmuebles ocupacion,
                               VerificacionCorreoService verificacionCorreo) {
         this.personas = personas;
         this.tiposPersona = tiposPersona;
         this.catalogos = catalogos;
-        this.reloj = reloj;
         this.historial = historial;
         this.ocupacion = ocupacion;
         this.verificacionCorreo = verificacionCorreo;
@@ -73,17 +69,9 @@ public class PersonaServiceImpl implements PersonaService {
         if (correo != null) {
             verificacionCorreo.confirmar(correo, s.codigoVerificacion());
         }
-        Persona persona = Persona.builder()
-                .tipoPersona(tipo)
-                .tipoDocumento(tipoDocumento)
-                .numeroDocumento(numero)
-                .nombres(s.nombres().trim())
-                .apellidos(s.apellidos().trim())
-                .telefono(s.telefono())
-                .correo(correo)
-                .autorizaTratamientoDatos(s.autorizaTratamientoDatos())
-                .fechaAutorizacionDatos(s.autorizaTratamientoDatos() ? LocalDate.now(reloj) : null)
-                .build();
+        Persona persona = Persona.builder().tipoPersona(tipo).build();
+        persona.registrar(tipoDocumento, numero, s.nombres().trim(), s.apellidos().trim(), s.telefono(), correo,
+                s.autorizaTratamientoDatos());
         return PersonaResponse.de(personas.save(persona));
     }
 

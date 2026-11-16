@@ -33,6 +33,14 @@ public class TipoPersona extends EntidadBase {
     @Builder.Default
     private boolean activo = true;
 
+    public void registrar(String nombre, String descripcion, boolean esPropietario, boolean esResidente) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.esPropietario = esPropietario;
+        this.esResidente = esResidente;
+        this.activo = true;
+    }
+
     public void modificar(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

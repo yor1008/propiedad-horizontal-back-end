@@ -18,8 +18,10 @@ public class VisitantesImpl implements Visitantes {
     @Override
     @Transactional
     public Visitante obtenerOCrear(String nombreCompleto, String numeroDocumento) {
-        String documento = numeroDocumento.trim();
-        return visitantes.findByNumeroDocumento(documento).orElseGet(() -> visitantes.save(
-                Visitante.builder().nombreCompleto(nombreCompleto.trim()).numeroDocumento(documento).build()));
+        return visitantes.buscarPorDocumento(numeroDocumento).orElseGet(() -> {
+            Visitante nuevo = Visitante.builder().build();
+            nuevo.registrar(nombreCompleto.trim(), numeroDocumento.trim());
+            return visitantes.save(nuevo);
+        });
     }
 }

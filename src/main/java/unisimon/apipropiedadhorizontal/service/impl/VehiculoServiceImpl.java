@@ -46,7 +46,7 @@ public class VehiculoServiceImpl implements VehiculoService {
     @Override
     public VehiculoResponse crear(CrearVehiculoRequest s) {
         String placa = normalizarPlaca(s.placa());
-        if (vehiculos.findByPlacaIgnoreCase(placa).isPresent()) {
+        if (vehiculos.buscarPorPlaca(placa).isPresent()) {
             throw new ConflictoException("Ya existe un vehiculo con la placa " + placa);
         }
         Persona persona = personas.findById(s.personaId())
@@ -61,10 +61,9 @@ public class VehiculoServiceImpl implements VehiculoService {
         if (maximo > 0 && vehiculos.countByInmuebleIdAndActivoTrue(inmueble.getId()) >= maximo) {
             throw new ReglaNegocioException("El inmueble ya alcanzo el maximo de vehiculos (" + maximo + ")");
         }
-        Vehiculo vehiculo = vehiculos.save(Vehiculo.builder()
-                .persona(persona).inmueble(inmueble).placa(placa)
-                .tipo(tipoVehiculo(s.tipoId())).marca(s.marca()).color(s.color()).build());
-        return VehiculoResponse.de(vehiculo);
+        Vehiculo vehiculo = Vehiculo.builder().persona(persona).inmueble(inmueble).build();
+        vehiculo.registrar(placa, tipoVehiculo(s.tipoId()), s.marca(), s.color());
+        return VehiculoResponse.de(vehiculos.save(vehiculo));
     }
 
     @Override
@@ -96,7 +95,7 @@ public class VehiculoServiceImpl implements VehiculoService {
     @Override
     @Transactional(readOnly = true)
     public VehiculoResponse consultarPorPlaca(String placa) {
-        Vehiculo vehiculo = vehiculos.findByPlacaIgnoreCase(normalizarPlaca(placa))
+        Vehiculo vehiculo = vehiculos.buscarPorPlaca(normalizarPlaca(placa))
                 .orElseThrow(() -> new RecursoNoEncontradoException("Vehiculo con placa", placa));
         return VehiculoResponse.de(vehiculo);
     }

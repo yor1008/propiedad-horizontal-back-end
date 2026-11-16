@@ -33,6 +33,12 @@ public class ValorCatalogo extends EntidadBase {
     @Builder.Default
     private boolean activo = true;
 
+    public void registrar(ETipoCatalogo tipo, String nombre) {
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.activo = true;
+    }
+
     public void modificar(String nombre) {
         this.nombre = nombre;
     }

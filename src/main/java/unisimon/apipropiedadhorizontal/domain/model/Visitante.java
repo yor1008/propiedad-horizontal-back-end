@@ -20,4 +20,9 @@ public class Visitante extends EntidadBase {
 
     @Column(name = "numero_documento", nullable = false, unique = true, length = 30)
     private String numeroDocumento;
+
+    public void registrar(String nombre, String documento) {
+        this.nombreCompleto = nombre;
+        this.numeroDocumento = documento;
+    }
 }

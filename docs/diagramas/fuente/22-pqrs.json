@@ -3,7 +3,7 @@
   "diagram_type": "sequence",
   "meta": {
     "title": "CU-029, CU-030 y CU-031 PQRS",
-    "output": "docs/diagramas/22-pqrs.html",
+    "output": "docs/diagramas/html/22-pqrs.html",
     "locale": "es",
     "quality_profile": "showcase"
   },
@@ -119,10 +119,42 @@
       "variant": "return"
     },
     {
-      "id": "m10",
+      "id": "g1",
       "from": "cliente",
       "to": "ctrl",
       "y": 479,
+      "label": "PATCH /{id}/en-gestion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "g2",
+      "from": "svc",
+      "to": "est",
+      "y": 511,
+      "label": "transicionar(→ En tramite)",
+      "variant": "default"
+    },
+    {
+      "id": "g3",
+      "from": "svc",
+      "to": "repo",
+      "y": 543,
+      "label": "ponerEnGestion()",
+      "variant": "default"
+    },
+    {
+      "id": "g4",
+      "from": "ctrl",
+      "to": "cliente",
+      "y": 575,
+      "label": "200 {estado: En tramite}",
+      "variant": "return"
+    },
+    {
+      "id": "m10",
+      "from": "cliente",
+      "to": "ctrl",
+      "y": 607,
       "label": "PATCH /{id}/atender",
       "variant": "emphasis"
     },
@@ -130,7 +162,7 @@
       "id": "m11",
       "from": "svc",
       "to": "est",
-      "y": 511,
+      "y": 639,
       "label": "transicionar(→ Respondida)",
       "variant": "default"
     },
@@ -138,7 +170,7 @@
       "id": "m12",
       "from": "svc",
       "to": "repo",
-      "y": 543,
+      "y": 671,
       "label": "responder(respuesta)",
       "variant": "default"
     },
@@ -146,7 +178,7 @@
       "id": "m13",
       "from": "svc",
       "to": "noti",
-      "y": 575,
+      "y": 703,
       "label": "notificar(RESPUESTA_PQRS)",
       "variant": "dashed"
     },
@@ -154,7 +186,7 @@
       "id": "m14",
       "from": "ctrl",
       "to": "cliente",
-      "y": 607,
+      "y": 735,
       "label": "200 {estado: Respondida}",
       "variant": "return"
     },
@@ -162,7 +194,7 @@
       "id": "m15",
       "from": "cliente",
       "to": "ctrl",
-      "y": 639,
+      "y": 767,
       "label": "DELETE /{id}",
       "variant": "emphasis"
     },
@@ -170,7 +202,7 @@
       "id": "m16",
       "from": "ctrl",
       "to": "cliente",
-      "y": 671,
+      "y": 799,
       "label": "204 sin cuerpo",
       "variant": "return"
     }
@@ -179,31 +211,31 @@
     {
       "participant": "ctrl",
       "from": 170,
-      "to": 677,
+      "to": 805,
       "type": "backend"
     },
     {
       "participant": "svc",
       "from": 202,
-      "to": 581,
+      "to": 709,
       "type": "backend"
     },
     {
       "participant": "est",
       "from": 234,
-      "to": 517,
+      "to": 645,
       "type": "backend"
     },
     {
       "participant": "noti",
-      "from": 570,
-      "to": 581,
+      "from": 698,
+      "to": 709,
       "type": "backend"
     },
     {
       "participant": "repo",
       "from": 266,
-      "to": 549,
+      "to": 677,
       "type": "database"
     }
   ],
@@ -226,7 +258,7 @@
     },
     {
       "from": 401,
-      "to": 683,
+      "to": 811,
       "label": "Atender"
     }
   ]
