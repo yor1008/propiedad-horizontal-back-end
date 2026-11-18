@@ -8,7 +8,7 @@
         <mxCell id="sd" value="sd CU-001 Gestionar sesión" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=216;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="354" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Usuario&lt;br&gt;registrado" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Usuario&lt;br&gt;registrado" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="284" as="geometry" />
         </mxCell>
         <mxCell id="L-cta" value=":CuentaUsuario" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -46,7 +46,7 @@
         <mxCell id="sd" value="sd CU-002 Gestionar contraseña" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=246;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="468" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Usuario&lt;br&gt;registrado" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Usuario&lt;br&gt;registrado" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="398" as="geometry" />
         </mxCell>
         <mxCell id="L-cta" value=":CuentaUsuario" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -108,7 +108,7 @@
         <mxCell id="sd" value="sd CU-003 Gestionar datos propios" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=268;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="633" height="367" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="297" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -156,7 +156,7 @@
         <mxCell id="sd" value="sd CU-004 Consultar notificaciones" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=275;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="354" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="284" as="geometry" />
         </mxCell>
         <mxCell id="L-not" value=":Notificacion" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -194,7 +194,7 @@
         <mxCell id="sd" value="sd CU-005 Gestionar cuentas de usuario" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=305;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="756" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="686" as="geometry" />
         </mxCell>
         <mxCell id="L-cta" value=":CuentaUsuario" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -301,7 +301,7 @@
         <mxCell id="sd" value="sd CU-006 Administrar catálogos" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=253;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="770" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="700" as="geometry" />
         </mxCell>
         <mxCell id="L-val" value=":ValorCatalogo" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -426,7 +426,7 @@
         <mxCell id="sd" value="sd CU-007 Configurar parámetros y notificaciones" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=379;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="780" height="572" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="502" as="geometry" />
         </mxCell>
         <mxCell id="L-gen" value=":ConfiguracionGeneral" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -503,7 +503,7 @@
         <mxCell id="sd" value="sd CU-008 Gestionar personas" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=231;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="1842.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1772" as="geometry" />
         </mxCell>
         <mxCell id="L-ver" value=":VerificacionCorreo" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -788,7 +788,7 @@
         <mxCell id="sd" value="sd CU-009 Gestionar inmuebles" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=238;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="902" height="1437" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1367" as="geometry" />
         </mxCell>
         <mxCell id="L-inm" value=":Inmueble" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1023,7 +1023,7 @@
         <mxCell id="sd" value="sd CU-010 Gestionar vinculaciones" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=268;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="908" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="838" as="geometry" />
         </mxCell>
         <mxCell id="L-tip" value=":TipoPersona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1172,7 +1172,7 @@
         <mxCell id="sd" value="sd CU-011 Consultar inmuebles propios" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=297;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="780" height="428" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Propietario" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Propietario" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="358" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1228,7 +1228,7 @@
         <mxCell id="sd" value="sd CU-012 Gestionar vehículos" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=238;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="780" height="730" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="660" as="geometry" />
         </mxCell>
         <mxCell id="L-veh" value=":Vehiculo" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1347,7 +1347,7 @@
         <mxCell id="sd" value="sd CU-013 Consultar vehículo por placa" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=305;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="284" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="214" as="geometry" />
         </mxCell>
         <mxCell id="L-veh" value=":Vehiculo" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1379,7 +1379,7 @@
         <mxCell id="sd" value="sd CU-014 Gestionar parqueaderos" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=260;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="780" height="696" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="626" as="geometry" />
         </mxCell>
         <mxCell id="L-par" value="parqueadero:Inmueble" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1492,7 +1492,7 @@
         <mxCell id="sd" value="sd CU-015 Gestionar pre-registros de visitantes" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=371;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="741.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="671" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1602,7 +1602,7 @@
         <mxCell id="sd" value="sd CU-016 Autorizar ingreso de visitante" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=320;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1590" height="1259.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1189" as="geometry" />
         </mxCell>
         <mxCell id="L-vis" value=":Visitante" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1787,7 +1787,7 @@
         <mxCell id="sd" value="sd CU-017 Autorizar ingreso sin pre-registro" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=349;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1320" height="1021.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="951" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value="residente:Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -1961,7 +1961,7 @@
         <mxCell id="sd" value="sd CU-018 Asignar parqueadero de visitante" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=334;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="428" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="358" as="geometry" />
         </mxCell>
         <mxCell id="L-reg" value=":RegistroVisita" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2014,7 +2014,7 @@
         <mxCell id="sd" value="sd CU-019 Registrar salida de visitante" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=312;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="565" height="486" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="416" as="geometry" />
         </mxCell>
         <mxCell id="L-reg" value=":RegistroVisita" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2083,7 +2083,7 @@
         <mxCell id="sd" value="sd CU-020 Consultar visitantes dentro del conjunto" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=394;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="354" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="284" as="geometry" />
         </mxCell>
         <mxCell id="L-reg" value=":RegistroVisita" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2121,7 +2121,7 @@
         <mxCell id="sd" value="sd CU-021 Consultar historial de accesos" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=320;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="354" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante o&lt;br&gt;Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante o&lt;br&gt;Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="284" as="geometry" />
         </mxCell>
         <mxCell id="L-reg" value=":RegistroVisita" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2159,7 +2159,7 @@
         <mxCell id="sd" value="sd CU-022 Gestionar correspondencia" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=283;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1590" height="1321.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Vigilante" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1251" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2368,7 +2368,7 @@
         <mxCell id="sd" value="sd CU-023 Consultar correspondencia" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=283;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="284" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="214" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2400,7 +2400,7 @@
         <mxCell id="sd" value="sd CU-024 Gestionar zonas comunes" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=268;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="912" height="1388.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1318" as="geometry" />
         </mxCell>
         <mxCell id="L-zon" value=":ZonaComun" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2614,7 +2614,7 @@
         <mxCell id="sd" value="sd CU-025 Reservar zona común" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=238;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="2400" height="1577.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1507" as="geometry" />
         </mxCell>
         <mxCell id="L-zon" value=":ZonaComun" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2883,7 +2883,7 @@
         <mxCell id="sd" value="sd CU-026 Gestionar reservas propias" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=290;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="720" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Residente" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="650" as="geometry" />
         </mxCell>
         <mxCell id="L-res" value=":Reserva" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -2993,7 +2993,7 @@
         <mxCell id="sd" value="sd CU-027 Gestionar reservas" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=231;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1320" height="1058" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="988" as="geometry" />
         </mxCell>
         <mxCell id="L-res" value=":Reserva" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -3169,7 +3169,7 @@
         <mxCell id="sd" value="sd CU-028 Gestionar mantenimientos" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=275;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="1959.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1889" as="geometry" />
         </mxCell>
         <mxCell id="L-est" value=":Estado" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -3504,7 +3504,7 @@
         <mxCell id="sd" value="sd CU-029 Radicar PQRS" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=186;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1050" height="487.0" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="417" as="geometry" />
         </mxCell>
         <mxCell id="L-per" value=":Persona" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -3578,7 +3578,7 @@
         <mxCell id="sd" value="sd CU-030 Consultar PQRS propias" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=260;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="510" height="424" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Persona&lt;br&gt;vinculada" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="354" as="geometry" />
         </mxCell>
         <mxCell id="L-pqr" value=":Pqrs" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
@@ -3622,7 +3622,7 @@
         <mxCell id="sd" value="sd CU-031 Atender PQRS" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=12;align=left;spacingLeft=6;width=186;height=26;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1320" height="1270" as="geometry" />
         </mxCell>
-        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="L-act" value="Administrador" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=nowrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;size=56;verticalAlign=top;spacingTop=58;labelBackgroundColor=#ffffff;fontStyle=1;fontSize=11;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="96" y="60" width="28" height="1200" as="geometry" />
         </mxCell>
         <mxCell id="L-est" value=":Estado" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;size=40;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">

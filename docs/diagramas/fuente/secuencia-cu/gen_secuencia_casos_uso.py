@@ -45,7 +45,7 @@ CHAR = 6.4             # ancho aproximado de un caracter (px) a 11 px
 CABEZA_RELLENO = "#d5e8d4"   # verde: paleta propia de este proyecto (otros proyectos usan azul/naranja)
 CABEZA_BORDE = "#82b366"
 ACTOR_RELLENO = "#ffffff"
-ACTOR_BORDE = "#d6b656"
+ACTOR_BORDE = "#000000"
 BORDE = "#36393d"
 
 
