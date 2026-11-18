@@ -61,12 +61,9 @@ Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, s
 
 ### Diagrama de clases
 
-<details>
-<summary><b>Modelo de dominio</b> (25 entidades y 10 enums)</summary>
+**Modelo de dominio** (25 entidades y 10 enums)
 
 ![Diagrama de clases](docs/diagramas/svg/31-diagrama-clases.svg)
-
-</details>
 
 ### Diagramas de secuencia por caso de uso
 
