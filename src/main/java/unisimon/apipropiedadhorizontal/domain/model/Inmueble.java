@@ -130,10 +130,6 @@ public class Inmueble extends EntidadBase {
         return personas.stream().filter(p -> p.esPropietarioDe(this)).findFirst().orElse(null);
     }
 
-    public boolean estaOcupado() {
-        return ocupado;
-    }
-
     public void marcarOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }

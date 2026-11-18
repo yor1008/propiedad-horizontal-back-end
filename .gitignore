@@ -57,3 +57,9 @@ skills-lock.json
 
 ### Backups locales (solo lo que el usuario decide guardar) ###
 /backup/
+
+### Grafo de conocimiento graphify (local, regenerable) ###
+graphify-out/
+
+### Referencia local de diseño UML (no se versiona) ###
+docs/diagramas/uml/

@@ -13,11 +13,11 @@
         <mxCell id="Persona-linea" parent="Persona" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
           <mxGeometry height="8" width="450" y="270" as="geometry" />
         </mxCell>
-        <mxCell id="Persona-operaciones" parent="Persona" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(tipoDoc: ValorCatalogo, numeroDoc: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nombres: String, apellidos: String, telefono: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;correo: String, autorizaDatos: boolean)&lt;br&gt;+ actualizarDatos(nombres: String, apellidos: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;telefono: String, correo: String)&lt;br&gt;+ actualizarContacto(telefono: String, correo: String)&lt;br&gt;+ vincularInmueble(inmueble: Inmueble, tipo: TipoPersona,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fechaInicio: Date)&lt;br&gt;+ finalizarVinculo(fechaFin: Date, motivo: String)&lt;br&gt;+ vinculoEstaVigente(): boolean&lt;br&gt;+ esPropietarioDe(inmueble: Inmueble): boolean&lt;br&gt;+ esResidenteDe(inmueble: Inmueble): boolean&lt;br&gt;+ desactivar(motivo: String)&lt;br&gt;+ reactivar()" vertex="1">
+        <mxCell id="Persona-operaciones" parent="Persona" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(tipoDoc: ValorCatalogo, numeroDoc: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nombres: String, apellidos: String, telefono: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;correo: String, autorizaDatos: boolean)&lt;br&gt;+ actualizarDatos(nombres: String, apellidos: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;telefono: String, correo: String)&lt;br&gt;+ actualizarContacto(telefono: String, correo: String)&lt;br&gt;+ vincularInmueble(inmueble: Inmueble, tipo: TipoPersona,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fechaInicio: Date)&lt;br&gt;+ finalizarVinculo(fechaFin: Date, motivo: String)&lt;br&gt;+ vinculoEstaVigente(): boolean&lt;br&gt;+ esPropietarioDe(otro: Inmueble): boolean&lt;br&gt;+ esResidenteDe(otro: Inmueble): boolean&lt;br&gt;+ desactivar(motivo: String)&lt;br&gt;+ reactivar()" vertex="1">
           <mxGeometry height="214" width="450" y="278" as="geometry" />
         </mxCell>
         <mxCell id="Inmueble" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="Inmueble" vertex="1">
-          <mxGeometry height="421" width="490" x="2120" y="1387" as="geometry" />
+          <mxGeometry height="406" width="490" x="2120" y="1387" as="geometry" />
         </mxCell>
         <mxCell id="Inmueble-atributos" parent="Inmueble" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="- id: Long&lt;br&gt;- torreBloque: String&lt;br&gt;- numero: String&lt;br&gt;- piso: int&lt;br&gt;- tipo: ValorCatalogo&lt;br&gt;- inmuebleAsociado: Inmueble&lt;br&gt;- parqueaderos: List&amp;lt;Inmueble&amp;gt;&lt;br&gt;- personas: List&amp;lt;Persona&amp;gt;&lt;br&gt;- ocupado: boolean&lt;br&gt;- activo: boolean&lt;br&gt;- motivoDesactivacion: String&lt;br&gt;- categoria: ECategoriaInmueble" vertex="1">
           <mxGeometry height="185" width="490" y="28" as="geometry" />
@@ -25,8 +25,8 @@
         <mxCell id="Inmueble-linea" parent="Inmueble" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
           <mxGeometry height="8" width="490" y="213" as="geometry" />
         </mxCell>
-        <mxCell id="Inmueble-operaciones" parent="Inmueble" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(torre: String, numero: String, piso: int,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tipo: ValorCatalogo)&lt;br&gt;+ modificarDatos(torre: String, numero: String, piso: int,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tipo: ValorCatalogo)&lt;br&gt;+ asignarParqueadero(parqueadero: Inmueble)&lt;br&gt;+ retirarParqueadero(parqueadero: Inmueble)&lt;br&gt;+ obtenerParqueaderos(): List&amp;lt;Inmueble&amp;gt;&lt;br&gt;+ obtenerResidentesVigentes(): List&amp;lt;Persona&amp;gt;&lt;br&gt;+ obtenerPropietarioVigente(): Persona&lt;br&gt;+ estaOcupado(): boolean&lt;br&gt;+ marcarOcupado(ocupado: boolean)&lt;br&gt;+ desactivar(motivo: String)&lt;br&gt;+ reactivar()" vertex="1">
-          <mxGeometry height="200" width="490" y="221" as="geometry" />
+        <mxCell id="Inmueble-operaciones" parent="Inmueble" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(torre: String, numero: String, piso: int,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tipo: ValorCatalogo)&lt;br&gt;+ modificarDatos(torreBloque: String, numero: String, piso: int,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;tipo: ValorCatalogo)&lt;br&gt;+ asignarParqueadero(parqueadero: Inmueble)&lt;br&gt;+ retirarParqueadero(parqueadero: Inmueble)&lt;br&gt;+ obtenerParqueaderos(): List&amp;lt;Inmueble&amp;gt;&lt;br&gt;+ obtenerResidentesVigentes(): List&amp;lt;Persona&amp;gt;&lt;br&gt;+ obtenerPropietarioVigente(): Persona&lt;br&gt;+ marcarOcupado(ocupado: boolean)&lt;br&gt;+ desactivar(motivo: String)&lt;br&gt;+ reactivar()" vertex="1">
+          <mxGeometry height="185" width="490" y="221" as="geometry" />
         </mxCell>
         <mxCell id="ValorCatalogo" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="ValorCatalogo" vertex="1">
           <mxGeometry height="190" width="450" x="3160" y="1495" as="geometry" />
@@ -65,7 +65,7 @@
           <mxGeometry height="113" width="380" y="235" as="geometry" />
         </mxCell>
         <mxCell id="PreRegistro" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="PreRegistro" vertex="1">
-          <mxGeometry height="291" width="290" x="2125" y="508" as="geometry" />
+          <mxGeometry height="276" width="290" x="2125" y="508" as="geometry" />
         </mxCell>
         <mxCell id="PreRegistro-atributos" parent="PreRegistro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="- id: Long&lt;br&gt;- persona: Persona&lt;br&gt;- visitante: Visitante&lt;br&gt;- inmueble: Inmueble&lt;br&gt;- tipoVigencia: ETipoVigencia&lt;br&gt;- fechaPrevista: Date&lt;br&gt;- motivo: String&lt;br&gt;- placaVehiculo: String&lt;br&gt;- tipoVehiculo: ValorCatalogo&lt;br&gt;- activo: boolean&lt;br&gt;- usado: boolean&lt;br&gt;- fechaHoraRegistro: DateTime" vertex="1">
           <mxGeometry height="185" width="290" y="28" as="geometry" />
@@ -73,8 +73,8 @@
         <mxCell id="PreRegistro-linea" parent="PreRegistro" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
           <mxGeometry height="8" width="290" y="213" as="geometry" />
         </mxCell>
-        <mxCell id="PreRegistro-operaciones" parent="PreRegistro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ estaVigente(fecha: Date): boolean&lt;br&gt;+ marcarUsado()&lt;br&gt;+ cancelar()&lt;br&gt;+ desactivar()" vertex="1">
-          <mxGeometry height="70" width="290" y="221" as="geometry" />
+        <mxCell id="PreRegistro-operaciones" parent="PreRegistro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ estaVigente(fecha: Date): boolean&lt;br&gt;+ marcarUsado()&lt;br&gt;+ cancelar()" vertex="1">
+          <mxGeometry height="55" width="290" y="221" as="geometry" />
         </mxCell>
         <mxCell id="Vehiculo" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="Vehiculo" vertex="1">
           <mxGeometry height="276" width="410" x="2065" y="132" as="geometry" />
@@ -137,7 +137,7 @@
           <mxGeometry height="26" width="230" y="149" as="geometry" />
         </mxCell>
         <mxCell id="CuentaUsuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="CuentaUsuario" vertex="1">
-          <mxGeometry height="423" width="470" x="780" y="1745" as="geometry" />
+          <mxGeometry height="306" width="470" x="780" y="1745" as="geometry" />
         </mxCell>
         <mxCell id="CuentaUsuario-atributos" parent="CuentaUsuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="- id: Long&lt;br&gt;- persona: Persona&lt;br&gt;- correoAcceso: String&lt;br&gt;- hashContrasena: String&lt;br&gt;- rol: ERolCuenta&lt;br&gt;- activa: boolean&lt;br&gt;- fechaUltimoAcceso: DateTime" vertex="1">
           <mxGeometry height="113" width="470" y="28" as="geometry" />
@@ -145,8 +145,8 @@
         <mxCell id="CuentaUsuario-linea" parent="CuentaUsuario" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
           <mxGeometry height="8" width="470" y="141" as="geometry" />
         </mxCell>
-        <mxCell id="CuentaUsuario-operaciones" parent="CuentaUsuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&lt;u&gt;+ crearCuentaPersonal(correo: String,&lt;/u&gt;&lt;u&gt;hashContrasena:String,&lt;/u&gt;&lt;br&gt;&lt;u&gt;rol: ERolCuenta): CuentaUsuario&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ crearCuentaPersonaVinculada(correo: String&amp;nbsp;&lt;/u&gt;&lt;u&gt;hashContrasena: String,&amp;nbsp;&lt;/u&gt;&lt;u&gt;persona: Persona): CuentaUsuario&lt;/u&gt;&lt;br&gt;+ iniciarSesion(correo: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;contrasena: String): boolean&lt;br&gt;+ cerrarSesion()&lt;br&gt;+ cambiarContrasena(actual: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;nueva: String): boolean&lt;br&gt;+ solicitarRestablecimiento()&lt;br&gt;+ restablecerContrasena(token: String, nueva: String)&lt;br&gt;+ esPersonal(): boolean&lt;br&gt;+ actualizarHashContrasena(nuevoHash: String)&lt;br&gt;+ registrarAcceso(momento: DateTime)&lt;br&gt;+ desactivar()&lt;br&gt;+ reactivar()" vertex="1">
-          <mxGeometry height="274" width="470" y="149" as="geometry" />
+        <mxCell id="CuentaUsuario-operaciones" parent="CuentaUsuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&lt;u&gt;+ crearCuentaPersonal(correo: String,&amp;nbsp;&lt;/u&gt;&lt;u&gt;contrasena: String,&lt;/u&gt;&lt;br&gt;&lt;u&gt;rol: ERolCuenta): CuentaUsuario&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ crearCuentaPersonaVinculada(correo: String,&amp;nbsp;&lt;/u&gt;&lt;u&gt;contrasena: String,&amp;nbsp;&lt;/u&gt;&lt;u&gt;persona: Persona): CuentaUsuario&lt;/u&gt;&lt;br&gt;+ actualizarHashContrasena(nuevoHash: String)&lt;br&gt;+ registrarAcceso(momento: DateTime)&lt;br&gt;+ desactivar()&lt;br&gt;+ reactivar()" vertex="1">
+          <mxGeometry height="157" width="470" y="149" as="geometry" />
         </mxCell>
         <mxCell id="ETipoEvento" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#FFF8DC;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&amp;laquo;enumeration&amp;raquo;&lt;br&gt;&lt;b&gt;ETipoEvento&lt;/b&gt;" vertex="1">
           <mxGeometry height="110" width="230" x="680" y="1535" as="geometry" />
@@ -200,7 +200,7 @@
           <mxGeometry height="70" width="400" x="290" y="2000" as="geometry" />
         </mxCell>
         <mxCell id="Reserva" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="Reserva" vertex="1">
-          <mxGeometry height="362" width="450" x="1750" y="1990" as="geometry" />
+          <mxGeometry height="347" width="450" x="1750" y="1990" as="geometry" />
         </mxCell>
         <mxCell id="Reserva-atributos" parent="Reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="- id: Long&lt;br&gt;- persona: Persona&lt;br&gt;- inmueble: Inmueble&lt;br&gt;- zonaComun: ZonaComun&lt;br&gt;- fecha: Date&lt;br&gt;- horaInicio: Time&lt;br&gt;- horaFin: Time&lt;br&gt;- numeroAsistentes: int&lt;br&gt;- motivo: String&lt;br&gt;- condicionesUso: String&lt;br&gt;- motivoRechazoCancelacion: String&lt;br&gt;- fechaHoraRegistro: DateTime&lt;br&gt;- estado: Estado" vertex="1">
           <mxGeometry height="199" width="450" y="28" as="geometry" />
@@ -208,8 +208,8 @@
         <mxCell id="Reserva-linea" parent="Reserva" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
           <mxGeometry height="8" width="450" y="227" as="geometry" />
         </mxCell>
-        <mxCell id="Reserva-operaciones" parent="Reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(fecha: Date, inicio: Time, fin: Time,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;asistentes: int, motivo: String)&lt;br&gt;+ aprobar(condiciones: String)&lt;br&gt;+ rechazar(motivo: String)&lt;br&gt;+ cancelar(motivo: String)&lt;br&gt;+ cambiarEstado(nuevo: Estado)&lt;br&gt;+ puedeCancelarResidente(): boolean&lt;br&gt;+ seTraslapaCon(otra: Reserva): boolean" vertex="1">
-          <mxGeometry height="127" width="450" y="235" as="geometry" />
+        <mxCell id="Reserva-operaciones" parent="Reserva" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ registrar(fecha: Date, inicio: Time, fin: Time,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;asistentes: int, motivo: String)&lt;br&gt;+ aprobar(condiciones: String)&lt;br&gt;+ rechazar(motivo: String)&lt;br&gt;+ cancelar(motivo: String)&lt;br&gt;+ cambiarEstado(nuevo: Estado)&lt;br&gt;+ puedeCancelarResidente(): boolean" vertex="1">
+          <mxGeometry height="112" width="450" y="235" as="geometry" />
         </mxCell>
         <mxCell id="ZonaComun" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="ZonaComun" vertex="1">
           <mxGeometry height="494" width="520" x="2350" y="1945" as="geometry" />
@@ -260,10 +260,16 @@
           <mxGeometry height="55" width="450" y="120" as="geometry" />
         </mxCell>
         <mxCell id="EDiaSemana" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#FFF8DC;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&amp;laquo;enumeration&amp;raquo;&lt;br&gt;&lt;b&gt;EDiaSemana&lt;/b&gt;" vertex="1">
-          <mxGeometry height="153" width="150" x="2925" y="2675" as="geometry" />
+          <mxGeometry height="202" width="205" x="2925" y="2675" as="geometry" />
         </mxCell>
         <mxCell id="EDiaSemana-literales" parent="EDiaSemana" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="LUNES&lt;br&gt;MARTES&lt;br&gt;MIERCOLES&lt;br&gt;JUEVES&lt;br&gt;VIERNES&lt;br&gt;SABADO&lt;br&gt;DOMINGO" vertex="1">
-          <mxGeometry height="113" width="150" y="40" as="geometry" />
+          <mxGeometry height="113" width="205" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EDiaSemana-linea" parent="EDiaSemana" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rounded=1;roundedPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="8" width="205" y="153" as="geometry" />
+        </mxCell>
+        <mxCell id="EDiaSemana-operaciones" parent="EDiaSemana" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&lt;u&gt;+ desde(dia: DayOfWeek):&lt;/u&gt;&lt;br&gt;&lt;u&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;EDiaSemana&lt;/u&gt;" vertex="1">
+          <mxGeometry height="41" width="205" y="161" as="geometry" />
         </mxCell>
         <mxCell id="Estado" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="Estado" vertex="1">
           <mxGeometry height="175" width="390" x="2415" y="2970" as="geometry" />
@@ -362,11 +368,6 @@
             <Array as="points">
               <mxPoint x="3220" y="1030" />
             </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="RegistroVisita-tipoVehiculo-etq1" connectable="0" parent="RegistroVisita-tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="23.2" y="12" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="RegistroVisita-tipoVehiculo-etq2" connectable="0" parent="RegistroVisita-tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
@@ -511,6 +512,11 @@
             <mxPoint x="-23.2" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="Inmueble-personas-mult2" connectable="0" parent="Inmueble-personas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="23.8" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="Inmueble-tipo" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4822;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -580,7 +586,7 @@
             <mxPoint x="-13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CuentaUsuario-persona" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.0946;exitDx=0;exitDy=0;entryX=0;entryY=0.8963;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="CuentaUsuario-persona" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.1247;exitDx=0;exitDy=0;entryX=0;entryY=0.8963;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CuentaUsuario-persona-etq2" connectable="0" parent="CuentaUsuario-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
@@ -604,7 +610,7 @@
             <mxPoint x="-13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="CuentaUsuario-rol" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.331;exitDx=0;exitDy=0;entryX=1;entryY=0.4947;entryDx=0;entryDy=0;" target="ERolCuenta">
+        <mxCell id="CuentaUsuario-rol" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4362;exitDx=0;exitDy=0;entryX=1;entryY=0.4947;entryDx=0;entryDy=0;" target="ERolCuenta">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="CuentaUsuario-rol-etq2" connectable="0" parent="CuentaUsuario-rol" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
@@ -612,7 +618,7 @@
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Nota-CuentaUsuario" edge="1" parent="1" source="Nota" style="html=1;rounded=1;strokeColor=#000000;startArrow=none;endArrow=none;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6856;entryDx=0;entryDy=0;" target="CuentaUsuario">
+        <mxCell id="Nota-CuentaUsuario" edge="1" parent="1" source="Nota" style="html=1;rounded=1;strokeColor=#000000;startArrow=none;endArrow=none;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.9035;entryDx=0;entryDy=0;" target="CuentaUsuario">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Reserva-persona" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0889;exitY=0;exitDx=0;exitDy=0;entryX=0.9111;entryY=1;entryDx=0;entryDy=0;" target="Persona">
@@ -710,7 +716,7 @@
             <mxPoint x="-24.2" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HorarioDisponibilidad-diaSemana" edge="1" parent="1" source="HorarioDisponibilidad" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4914;exitDx=0;exitDy=0;entryX=0;entryY=0.4902;entryDx=0;entryDy=0;" target="EDiaSemana">
+        <mxCell id="HorarioDisponibilidad-diaSemana" edge="1" parent="1" source="HorarioDisponibilidad" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4914;exitDx=0;exitDy=0;entryX=0;entryY=0.3713;entryDx=0;entryDy=0;" target="EDiaSemana">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HorarioDisponibilidad-diaSemana-etq2" connectable="0" parent="HorarioDisponibilidad-diaSemana" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
@@ -737,6 +743,11 @@
         <mxCell id="Estado-transiciones-etq3" connectable="0" parent="Estado-transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="estadoOrigen" vertex="1">
           <mxGeometry relative="1" x="-1" as="geometry">
             <mxPoint x="49.6" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Estado-transiciones-mult2" connectable="0" parent="Estado-transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-23.8" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TransicionEstado-estadoDestino" edge="1" parent="1" source="TransicionEstado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.6818;exitDx=0;exitDy=0;entryX=1;entryY=0.8286;entryDx=0;entryDy=0;" target="Estado">

@@ -98,11 +98,4 @@ public class Reserva extends EntidadBase {
         LocalDateTime inicio = LocalDateTime.of(fecha, horaInicio);
         return LocalDateTime.now().isBefore(inicio.minusHours(zonaComun.getLimiteCancelacionHoras()));
     }
-
-    public boolean seTraslapaCon(Reserva otra) {
-        return zonaComun.equals(otra.zonaComun)
-                && fecha.equals(otra.fecha)
-                && horaInicio.isBefore(otra.horaFin)
-                && otra.horaInicio.isBefore(horaFin);
-    }
 }

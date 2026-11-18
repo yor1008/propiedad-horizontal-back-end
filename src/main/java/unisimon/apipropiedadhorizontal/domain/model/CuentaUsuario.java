@@ -83,11 +83,6 @@ public class CuentaUsuario extends EntidadBase {
                 .rol(ERolCuenta.PERSONA_VINCULADA).persona(persona).build();
     }
 
-    /** Verdadero si la cuenta es de administrador o vigilante (personal del conjunto, sin persona). */
-    public boolean esPersonal() {
-        return esRolPersonal(rol);
-    }
-
     private static boolean esRolPersonal(ERolCuenta rol) {
         return rol == ERolCuenta.ADMINISTRADOR || rol == ERolCuenta.VIGILANTE;
     }

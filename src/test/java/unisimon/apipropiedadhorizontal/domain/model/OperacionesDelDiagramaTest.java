@@ -25,9 +25,8 @@ class OperacionesDelDiagramaTest {
         CuentaUsuario vigilante = CuentaUsuario.crearCuentaPersonal("v@ph.com", "hash", ERolCuenta.VIGILANTE);
         assertThat(vigilante.getPersona()).isNull();
         assertThat(vigilante.getRol()).isEqualTo(ERolCuenta.VIGILANTE);
-        assertThat(vigilante.esPersonal()).isTrue();
         assertThat(vigilante.isActiva()).isTrue();
-        assertThat(CuentaUsuario.crearCuentaPersonal("a@ph.com", "hash", ERolCuenta.ADMINISTRADOR).esPersonal()).isTrue();
+        assertThat(CuentaUsuario.crearCuentaPersonal("a@ph.com", "hash", ERolCuenta.ADMINISTRADOR).getPersona()).isNull();
 
         assertThatThrownBy(() -> CuentaUsuario.crearCuentaPersonal("p@ph.com", "hash", ERolCuenta.PERSONA_VINCULADA))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -41,7 +40,6 @@ class OperacionesDelDiagramaTest {
         CuentaUsuario cuenta = CuentaUsuario.crearCuentaPersonaVinculada("ana@ph.com", "hash", persona);
         assertThat(cuenta.getRol()).isEqualTo(ERolCuenta.PERSONA_VINCULADA);
         assertThat(cuenta.getPersona()).isSameAs(persona);
-        assertThat(cuenta.esPersonal()).isFalse();
 
         assertThatThrownBy(() -> CuentaUsuario.crearCuentaPersonaVinculada("x@ph.com", "hash", null))
                 .isInstanceOf(IllegalArgumentException.class);

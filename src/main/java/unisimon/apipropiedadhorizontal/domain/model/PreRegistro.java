@@ -82,8 +82,4 @@ public class PreRegistro extends EntidadBase {
     public void cancelar() {
         this.activo = false;
     }
-
-    public void desactivar() {
-        this.activo = false;
-    }
 }

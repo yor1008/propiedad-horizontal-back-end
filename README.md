@@ -23,9 +23,9 @@ Flujo: `Controller → Service (interfaz) → Repository → Entidad`, sin salta
 
 ![Diagrama de componentes](docs/diagramas/svg/29-componentes.svg)
 
-### Diagrama de paquetes
+### Diagrama de despliegue
 
-![Diagrama de paquetes](docs/diagramas/svg/30-diagrama-paquetes.svg)
+![Diagrama de despliegue](docs/diagramas/svg/32-despliegue.svg)
 
 Errores: **400** validación · **401** sin token · **403** sin permiso · **404** no existe · **409** duplicado o con historia · **422** regla de negocio.
 
@@ -44,6 +44,19 @@ Errores: **400** validación · **401** sin token · **403** sin permiso · **40
 | Seguridad | CU-015 pre-registro · 016–017 ingreso de visitantes · 018 parqueadero de visitante · 019 salida · 020 visitantes dentro · 021 historial |
 | Operaciones | CU-022–023 correspondencia · 024 zonas comunes · 025–027 reservas · 028 mantenimientos · 029–031 PQRS |
 
+<details>
+<summary><b>Diagramas de casos de uso</b> (uno por módulo)</summary>
+
+![Casos de uso: módulo Transversal](docs/diagramas/Casos%20de%20uso/CU_Modulo_Transversal.drawio.svg)
+
+![Casos de uso: módulo Administración](docs/diagramas/Casos%20de%20uso/CU_Modulo_Administracion.drawio.svg)
+
+![Casos de uso: módulo Seguridad](docs/diagramas/Casos%20de%20uso/CU_Modulo_Seguridad.drawio.svg)
+
+![Casos de uso: módulo Operaciones](docs/diagramas/Casos%20de%20uso/CU_Modulo_Operaciones.drawio.svg)
+
+</details>
+
 Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, se desactivan, cancelan o anulan.
 
 ### Diagrama de clases
@@ -55,151 +68,89 @@ Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, s
 
 </details>
 
-### Diagramas de secuencia
+### Diagramas de secuencia por caso de uso
+
+Uno por cada caso de uso del diagrama de casos de uso. Los participantes son clases del diagrama de clases y los mensajes son sus operaciones (UML 2.5.1, cláusula 17).
 
 <details>
-<summary><b>Arranque y seguridad</b> (5)</summary>
+<summary><b>Módulo Transversal</b> (7)</summary>
 
-**Arranque de la aplicación**
+![CU-001 Gestionar sesión](docs/diagramas/Secuencia/cu-001-gestionar-sesion.svg)
 
-![Arranque de la aplicación](docs/diagramas/svg/00-arranque.svg)
+![CU-002 Gestionar contraseña](docs/diagramas/Secuencia/cu-002-gestionar-contrasena.svg)
 
-**CU-001 Iniciar sesión**
+![CU-003 Gestionar datos propios](docs/diagramas/Secuencia/cu-003-gestionar-datos-propios.svg)
 
-![CU-001 Iniciar sesión](docs/diagramas/svg/01-login.svg)
+![CU-004 Consultar notificaciones](docs/diagramas/Secuencia/cu-004-consultar-notificaciones.svg)
 
-**Petición autenticada y autorización por etiqueta**
+![CU-005 Gestionar cuentas de usuario](docs/diagramas/Secuencia/cu-005-gestionar-cuentas-de-usuario.svg)
 
-![Petición autenticada y autorización por etiqueta](docs/diagramas/svg/02-peticion-autenticada.svg)
+![CU-006 Administrar catálogos](docs/diagramas/Secuencia/cu-006-administrar-catalogos.svg)
 
-**CU-002 Cambiar contraseña**
-
-![CU-002 Cambiar contraseña](docs/diagramas/svg/03-cambiar-contrasena.svg)
-
-**CU-002 Restablecer contraseña por correo**
-
-![CU-002 Restablecer contraseña por correo](docs/diagramas/svg/04-restablecer-contrasena.svg)
+![CU-007 Configurar parámetros y notificaciones](docs/diagramas/Secuencia/cu-007-configurar-parametros-y-notificaciones.svg)
 
 </details>
 
 <details>
-<summary><b>Notificaciones y perfil</b> (3)</summary>
+<summary><b>Módulo Administración</b> (7)</summary>
 
-**CU-004 Generar notificaciones y correo por evento**
+![CU-008 Gestionar personas](docs/diagramas/Secuencia/cu-008-gestionar-personas.svg)
 
-![CU-004 Generar notificaciones y correo por evento](docs/diagramas/svg/05-notificaciones-evento.svg)
+![CU-009 Gestionar inmuebles](docs/diagramas/Secuencia/cu-009-gestionar-inmuebles.svg)
 
-**CU-004 Consultar notificaciones propias**
+![CU-010 Gestionar vinculaciones](docs/diagramas/Secuencia/cu-010-gestionar-vinculaciones.svg)
 
-![CU-004 Consultar notificaciones propias](docs/diagramas/svg/06-notificaciones-consulta.svg)
+![CU-011 Consultar inmuebles propios](docs/diagramas/Secuencia/cu-011-consultar-inmuebles-propios.svg)
 
-**CU-003 y CU-011 Datos propios y mis inmuebles**
+![CU-012 Gestionar vehículos](docs/diagramas/Secuencia/cu-012-gestionar-vehiculos.svg)
 
-![CU-003 y CU-011 Datos propios y mis inmuebles](docs/diagramas/svg/07-perfil-y-mis-inmuebles.svg)
+![CU-013 Consultar vehículo por placa](docs/diagramas/Secuencia/cu-013-consultar-vehiculo-por-placa.svg)
 
-</details>
-
-<details>
-<summary><b>Administración</b> (8)</summary>
-
-**CU-008 Alta de persona con verificación de correo**
-
-![CU-008 Alta de persona con verificación de correo](docs/diagramas/svg/08-alta-persona-verificacion.svg)
-
-**CU-008 Editar, desactivar y borrar personas**
-
-![CU-008 Editar, desactivar y borrar personas](docs/diagramas/svg/09-personas-gestion.svg)
-
-**CU-009 y CU-010 Inmuebles y vínculos**
-
-![CU-009 y CU-010 Inmuebles y vínculos](docs/diagramas/svg/10-inmuebles-y-vinculos.svg)
-
-**CU-012 y CU-013 Vehículos y consulta por placa**
-
-![CU-012 y CU-013 Vehículos y consulta por placa](docs/diagramas/svg/11-vehiculos.svg)
-
-**CU-014 Parqueaderos**
-
-![CU-014 Parqueaderos](docs/diagramas/svg/12-parqueaderos.svg)
-
-**CU-005 Cuentas de usuario**
-
-![CU-005 Cuentas de usuario](docs/diagramas/svg/13-cuentas.svg)
-
-**CU-006 Catálogos**
-
-![CU-006 Catálogos](docs/diagramas/svg/14-catalogos.svg)
-
-**CU-007 Configuración**
-
-![CU-007 Configuración](docs/diagramas/svg/15-configuracion.svg)
+![CU-014 Gestionar parqueaderos](docs/diagramas/Secuencia/cu-014-gestionar-parqueaderos.svg)
 
 </details>
 
 <details>
-<summary><b>Control de accesos</b> (5)</summary>
+<summary><b>Módulo Seguridad</b> (7)</summary>
 
-**CU-015 Pre-registro de visitantes**
+![CU-015 Gestionar pre-registros de visitantes](docs/diagramas/Secuencia/cu-015-gestionar-pre-registros-de-visitantes.svg)
 
-![CU-015 Pre-registro de visitantes](docs/diagramas/svg/16-pre-registro.svg)
+![CU-016 Autorizar ingreso de visitante](docs/diagramas/Secuencia/cu-016-autorizar-ingreso-de-visitante.svg)
 
-**CU-016 Ingreso con pre-registro**
+![CU-017 Autorizar ingreso sin pre-registro](docs/diagramas/Secuencia/cu-017-autorizar-ingreso-sin-pre-registro.svg)
 
-![CU-016 Ingreso con pre-registro](docs/diagramas/svg/17-ingreso-con-preregistro.svg)
+![CU-018 Asignar parqueadero de visitante](docs/diagramas/Secuencia/cu-018-asignar-parqueadero-de-visitante.svg)
 
-**CU-016 y CU-017 Ingreso sin pre-registro**
+![CU-019 Registrar salida de visitante](docs/diagramas/Secuencia/cu-019-registrar-salida-de-visitante.svg)
 
-![CU-016 y CU-017 Ingreso sin pre-registro](docs/diagramas/svg/18-ingreso-sin-preregistro.svg)
+![CU-020 Consultar visitantes dentro del conjunto](docs/diagramas/Secuencia/cu-020-consultar-visitantes-dentro-del-conjunto.svg)
 
-**CU-018, CU-019 y CU-020 Parqueadero de visitante y salida**
-
-![CU-018, CU-019 y CU-020 Parqueadero de visitante y salida](docs/diagramas/svg/19-parqueadero-visitante-y-salida.svg)
-
-**CU-021 Historial de accesos**
-
-![CU-021 Historial de accesos](docs/diagramas/svg/20-historial-accesos.svg)
+![CU-021 Consultar historial de accesos](docs/diagramas/Secuencia/cu-021-consultar-historial-de-accesos.svg)
 
 </details>
 
 <details>
-<summary><b>Operaciones del conjunto</b> (6)</summary>
+<summary><b>Módulo Operaciones</b> (10)</summary>
 
-**CU-022 y CU-023 Correspondencia**
+![CU-022 Gestionar correspondencia](docs/diagramas/Secuencia/cu-022-gestionar-correspondencia.svg)
 
-![CU-022 y CU-023 Correspondencia](docs/diagramas/svg/21-correspondencia.svg)
+![CU-023 Consultar correspondencia](docs/diagramas/Secuencia/cu-023-consultar-correspondencia.svg)
 
-**CU-029, CU-030 y CU-031 PQRS**
+![CU-024 Gestionar zonas comunes](docs/diagramas/Secuencia/cu-024-gestionar-zonas-comunes.svg)
 
-![CU-029, CU-030 y CU-031 PQRS](docs/diagramas/svg/22-pqrs.svg)
+![CU-025 Reservar zona común](docs/diagramas/Secuencia/cu-025-reservar-zona-comun.svg)
 
-**CU-024 Zonas comunes**
+![CU-026 Gestionar reservas propias](docs/diagramas/Secuencia/cu-026-gestionar-reservas-propias.svg)
 
-![CU-024 Zonas comunes](docs/diagramas/svg/25-zonas-comunes.svg)
+![CU-027 Gestionar reservas](docs/diagramas/Secuencia/cu-027-gestionar-reservas.svg)
 
-**CU-025 y CU-026 Reservar una zona común**
+![CU-028 Gestionar mantenimientos](docs/diagramas/Secuencia/cu-028-gestionar-mantenimientos.svg)
 
-![CU-025 y CU-026 Reservar una zona común](docs/diagramas/svg/23-reservar-zona-comun.svg)
+![CU-029 Radicar PQRS](docs/diagramas/Secuencia/cu-029-radicar-pqrs.svg)
 
-**CU-027 Gestionar reservas**
+![CU-030 Consultar PQRS propias](docs/diagramas/Secuencia/cu-030-consultar-pqrs-propias.svg)
 
-![CU-027 Gestionar reservas](docs/diagramas/svg/24-reservas-gestion.svg)
-
-**CU-028 Mantenimientos**
-
-![CU-028 Mantenimientos](docs/diagramas/svg/26-mantenimientos.svg)
-
-</details>
-
-<details>
-<summary><b>Mecanismos compartidos</b> (2)</summary>
-
-**Borrado físico solo sin historia**
-
-![Borrado físico solo sin historia](docs/diagramas/svg/27-borrado-sin-historia.svg)
-
-**Máquina de estados por datos**
-
-![Máquina de estados por datos](docs/diagramas/svg/28-maquina-de-estados.svg)
+![CU-031 Atender PQRS](docs/diagramas/Secuencia/cu-031-atender-pqrs.svg)
 
 </details>
 
@@ -230,8 +181,10 @@ Todas las entidades se pueden borrar solo si no tienen historia; si la tienen, s
 <details>
 <summary>Editar los diagramas</summary>
 
-- Componentes y paquetes: abre los `.drawio.xml` de [`docs/diagramas/fuente`](docs/diagramas/fuente) en [draw.io](https://app.diagrams.net) y exporta el SVG a `docs/diagramas/svg`.
+- Componentes: abre el `.drawio.xml` de [`docs/diagramas/fuente`](docs/diagramas/fuente) en [draw.io](https://app.diagrams.net) y exporta el SVG a `docs/diagramas/svg`.
 - Clases: abre [`docs/diagramas/Clases/DIAGRAMA DE CLASE.mejorado.xml`](docs/diagramas/Clases/DIAGRAMA%20DE%20CLASE.mejorado.xml) en draw.io y exporta el SVG a `docs/diagramas/svg/31-diagrama-clases.svg` (fondo claro).
-- Secuencia: los `.json` de la misma carpeta se generan con [Archify](https://github.com/tt-a1i/archify) (`archify finalize sequence <json> docs/diagramas/html/<nombre>.html`), se exportan como **SVG (claro)** y se limpian con `python docs/diagramas/fuente/quitar-fondos-etiquetas.py`.
+- Secuencia: `python docs/diagramas/fuente/secuencia-cu/gen_secuencia_casos_uso.py` exporta los SVG de [`docs/diagramas/Secuencia`](docs/diagramas/Secuencia) desde `secuencia-casos-de-uso.xml` (editable en draw.io; `--regenerar-xml` lo reescribe y descarta retoques).
+- Despliegue: `python docs/diagramas/fuente/gen_despliegue.py` escribe `docs/diagramas/fuente/32-despliegue.drawio.xml`; luego `python docs/diagramas/fuente/secuencia-cu/exportar_drawio_svg.py docs/diagramas/fuente/32-despliegue.drawio.xml docs/diagramas/svg/32-despliegue.svg`.
+- Casos de uso: edita los `.drawio` de [`docs/diagramas/Casos de uso`](docs/diagramas/Casos%20de%20uso) y expórtalos con `exportar_drawio_svg.py` al `.drawio.svg` del mismo nombre.
 
 </details>
