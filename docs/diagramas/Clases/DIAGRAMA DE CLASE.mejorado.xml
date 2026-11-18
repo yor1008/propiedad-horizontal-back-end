@@ -196,9 +196,6 @@
         <mxCell id="ConfiguracionGeneral-operaciones" parent="ConfiguracionGeneral" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="+ actualizar(maxVehiculos: int, plazoPqrs: int)&lt;br&gt;&lt;u&gt;+ porDefecto(): ConfiguracionGeneral&lt;/u&gt;" vertex="1">
           <mxGeometry height="41" width="370" y="91" as="geometry" />
         </mxCell>
-        <mxCell id="Nota" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=14;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Courier New;fontSize=11;fillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="{ rol = ADMINISTRADOR o VIGILANTE  →  persona = null }&lt;br&gt;{ rol = PERSONA_VINCULADA  →  persona &amp;lt;&amp;gt; null&lt;br&gt;&amp;nbsp;&amp;nbsp;y  persona.tipoPersona &amp;lt;&amp;gt; null }" vertex="1">
-          <mxGeometry height="70" width="400" x="290" y="2000" as="geometry" />
-        </mxCell>
         <mxCell id="Reserva" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#E8EEF7;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="Reserva" vertex="1">
           <mxGeometry height="347" width="450" x="1750" y="1990" as="geometry" />
         </mxCell>
@@ -617,9 +614,6 @@
           <mxGeometry relative="1" x="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="Nota-CuentaUsuario" edge="1" parent="1" source="Nota" style="html=1;rounded=1;strokeColor=#000000;startArrow=none;endArrow=none;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.9035;entryDx=0;entryDy=0;" target="CuentaUsuario">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Reserva-persona" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0889;exitY=0;exitDx=0;exitDy=0;entryX=0.9111;entryY=1;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
