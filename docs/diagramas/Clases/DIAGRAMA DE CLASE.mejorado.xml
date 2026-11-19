@@ -107,7 +107,7 @@
           <mxGeometry height="41" width="160" y="40" as="geometry" />
         </mxCell>
         <mxCell id="EResultadoContacto" parent="1" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=13;fillColor=#FFF8DC;swimlaneFillColor=#FFFFFF;strokeColor=#000000;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="&amp;laquo;enumeration&amp;raquo;&lt;br&gt;&lt;b&gt;EResultadoContacto&lt;/b&gt;" vertex="1">
-          <mxGeometry height="95" width="190" x="1830" y="1090" as="geometry" />
+          <mxGeometry height="95" width="190" x="1700" y="1090" as="geometry" />
         </mxCell>
         <mxCell id="EResultadoContacto-literales" parent="EResultadoContacto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=4;spacingBottom=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="APRUEBA&lt;br&gt;NO_APRUEBA&lt;br&gt;NO_CONTESTA" vertex="1">
           <mxGeometry height="55" width="190" y="40" as="geometry" />
@@ -325,59 +325,74 @@
         <mxCell id="RegistroVisita-inmueble" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.3158;exitY=1;exitDx=0;exitDy=0;entryX=0.1633;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="RegistroVisita-inmueble-etq2" connectable="0" parent="RegistroVisita-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="RegistroVisita-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-inmueble-etq3" connectable="0" parent="RegistroVisita-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="inmueble" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="37.4" y="-16" as="offset" />
+        <mxCell id="RegistroVisita-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-38.8" y="-30" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-parqueaderoAsignado" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.6842;exitY=1;exitDx=0;exitDy=0;entryX=0.449;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
+        <mxCell id="RegistroVisita-parqueaderoAsignado" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5789;exitY=1;exitDx=0;exitDy=0;entryX=0.3673;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="RegistroVisita-parqueaderoAsignado-etq2" connectable="0" parent="RegistroVisita-parqueaderoAsignado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-24.2" y="-16" as="offset" />
+        <mxCell id="RegistroVisita-parqueaderoAsignado-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-parqueaderoAsignado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-parqueaderoAsignado-etq3" connectable="0" parent="RegistroVisita-parqueaderoAsignado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="parqueaderoAsignado" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="73.7" y="-16" as="offset" />
+        <mxCell id="RegistroVisita-parqueaderoAsignado-etq2" value="parqueaderoAsignado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-parqueaderoAsignado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="77.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-residenteContactado" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.3477;exitDx=0;exitDy=0;entryX=0.4222;entryY=0;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="RegistroVisita-residenteContactado" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.3477;exitDx=0;exitDy=0;entryX=0.5333;entryY=0;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1570" y="1030" />
+              <mxPoint x="1620" y="1030" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-residenteContactado-etq2" connectable="0" parent="RegistroVisita-residenteContactado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-24.2" y="-16" as="offset" />
+        <mxCell id="RegistroVisita-residenteContactado-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-residenteContactado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="24.8" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-tipoVehiculo" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.3477;exitDx=0;exitDy=0;entryX=0.1333;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="RegistroVisita-residenteContactado-etq2" value="residenteContactado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-residenteContactado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="77.3" y="-30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RegistroVisita-tipoVehiculo" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.3477;exitDx=0;exitDy=0;entryX=0.0889;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="3220" y="1030" />
+              <mxPoint x="3200" y="1030" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-tipoVehiculo-etq2" connectable="0" parent="RegistroVisita-tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-24.2" y="-16" as="offset" />
+        <mxCell id="RegistroVisita-tipoVehiculo-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-tipoVehiculo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-preRegistro" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="PreRegistro">
+        <mxCell id="RegistroVisita-tipoVehiculo-etq2" value="tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-tipoVehiculo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-52.8" y="-30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RegistroVisita-preRegistro" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5000;exitY=0;exitDx=0;exitDy=0;entryX=0.5000;entryY=1;entryDx=0;entryDy=0;" target="PreRegistro">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="RegistroVisita-preRegistro-etq2" connectable="0" parent="RegistroVisita-preRegistro" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="24.2" y="16" as="offset" />
+        <mxCell id="RegistroVisita-preRegistro-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-preRegistro" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="24.8" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RegistroVisita-preRegistro-etq2" value="preRegistro" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-preRegistro" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-49.3" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="RegistroVisita-visitante" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.0891;exitDx=0;exitDy=0;entryX=0.8718;entryY=1;entryDx=0;entryDy=0;" target="Visitante">
@@ -387,272 +402,397 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-visitante-etq2" connectable="0" parent="RegistroVisita-visitante" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="RegistroVisita-visitante-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-visitante" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="RegistroVisita-respuestaResidente" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.658;exitDx=0;exitDy=0;entryX=1;entryY=0.5053;entryDx=0;entryDy=0;" target="EResultadoContacto">
+        <mxCell id="RegistroVisita-visitante-etq2" value="visitante" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-visitante" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-42.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RegistroVisita-respuestaResidente" edge="1" parent="1" source="RegistroVisita" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.6580;exitDx=0;exitDy=0;entryX=1;entryY=0.5053;entryDx=0;entryDy=0;" target="EResultadoContacto">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="RegistroVisita-respuestaResidente-etq2" connectable="0" parent="RegistroVisita-respuestaResidente" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="23.2" y="15" as="offset" />
+        <mxCell id="RegistroVisita-respuestaResidente-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-respuestaResidente" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="23.8" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RegistroVisita-respuestaResidente-etq2" value="respuestaResidente" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="RegistroVisita-respuestaResidente" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="72.8" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PreRegistro-visitante" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.8805;exitDx=0;exitDy=0;entryX=1;entryY=0.4242;entryDx=0;entryDy=0;" target="Visitante">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="PreRegistro-visitante-etq2" connectable="0" parent="PreRegistro-visitante" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="PreRegistro-visitante-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-visitante" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-persona" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.058;exitDx=0;exitDy=0;entryX=0.3111;entryY=0;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="PreRegistro-visitante-etq2" value="visitante" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-visitante" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="41.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PreRegistro-persona" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.0435;exitDx=0;exitDy=0;entryX=0.3333;entryY=0;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1520" y="524" />
+              <mxPoint x="1530" y="520" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-persona-etq2" connectable="0" parent="PreRegistro-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="PreRegistro-persona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PreRegistro-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="35.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PreRegistro-tipoVigencia" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.3695;exitDx=0;exitDy=0;entryX=1;entryY=0.4938;entryDx=0;entryDy=0;" target="ETipoVigencia">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="PreRegistro-tipoVigencia-etq2" connectable="0" parent="PreRegistro-tipoVigencia" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="PreRegistro-tipoVigencia-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-tipoVigencia" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-tipoVehiculo" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.3695;exitDx=0;exitDy=0;entryX=0.2667;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="PreRegistro-tipoVigencia-etq2" value="tipoVigencia" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-tipoVigencia" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="51.8" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PreRegistro-tipoVehiculo" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.3695;exitDx=0;exitDy=0;entryX=0.2222;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="3280" y="610" />
+              <mxPoint x="3260" y="610" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-tipoVehiculo-etq2" connectable="0" parent="PreRegistro-tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-24.2" y="-16" as="offset" />
+        <mxCell id="PreRegistro-tipoVehiculo-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-tipoVehiculo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-inmueble" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.9131;exitDx=0;exitDy=0;entryX=0.8163;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
+        <mxCell id="PreRegistro-tipoVehiculo-etq2" value="tipoVehiculo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-tipoVehiculo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="52.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PreRegistro-inmueble" edge="1" parent="1" source="PreRegistro" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.9131;exitDx=0;exitDy=0;entryX=0.7551;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="2520" y="760" />
+              <mxPoint x="2490" y="760" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="PreRegistro-inmueble-etq2" connectable="0" parent="PreRegistro-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="PreRegistro-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-persona" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="PreRegistro-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="PreRegistro-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="38.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vehiculo-persona" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.5000;exitDx=0;exitDy=0;entryX=0.2222;entryY=0;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1470" y="270" />
+              <mxPoint x="1480" y="270" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-persona-etq2" connectable="0" parent="Vehiculo-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Vehiculo-persona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-tipo" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.2826;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="Vehiculo-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-35.3" y="-30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vehiculo-tipo" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.2826;exitDx=0;exitDy=0;entryX=0.5333;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="3340" y="210" />
+              <mxPoint x="3400" y="210" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-tipo-etq2" connectable="0" parent="Vehiculo-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Vehiculo-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-inmueble" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.7536;exitDx=0;exitDy=0;entryX=0.9082;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
+        <mxCell id="Vehiculo-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="24.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vehiculo-inmueble" edge="1" parent="1" source="Vehiculo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.7536;exitDx=0;exitDy=0;entryX=0.9592;entryY=0;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="2565" y="340" />
+              <mxPoint x="2590" y="340" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vehiculo-inmueble-etq2" connectable="0" parent="Vehiculo-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-14.3" y="-16" as="offset" />
+        <mxCell id="Vehiculo-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Persona-tipoDocumento" edge="1" parent="1" source="Persona" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0889;exitY=0;exitDx=0;exitDy=0;entryX=0.5333;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="Vehiculo-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Vehiculo-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="38.8" y="-30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Persona-tipoDocumento" edge="1" parent="1" source="Persona" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0444;exitY=0;exitDx=0;exitDy=0;entryX=0.6667;entryY=0;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1420" y="60" />
-              <mxPoint x="3400" y="60" />
+              <mxPoint x="1400" y="60" />
+              <mxPoint x="3460" y="60" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Persona-tipoDocumento-etq2" connectable="0" parent="Persona-tipoDocumento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-14.3" y="-16" as="offset" />
+        <mxCell id="Persona-tipoDocumento-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Persona-tipoDocumento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-personas" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="Persona-tipoDocumento-etq2" value="tipoDocumento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Persona-tipoDocumento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="56.3" y="-30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Inmueble-personas" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;exitX=0;exitY=0.5000;exitDx=0;exitDy=0;entryX=1;entryY=0.5000;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Inmueble-personas-etq1" connectable="0" parent="Inmueble-personas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="-23.2" y="-15" as="offset" />
+        <mxCell id="Inmueble-personas-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-personas" vertex="1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="-23.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-personas-mult2" connectable="0" parent="Inmueble-personas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Inmueble-personas-etq2" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-personas" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="23.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-tipo" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="Inmueble-personas-etq3" value="personas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-personas" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="37.8" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Inmueble-tipo" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.5000;exitDx=0;exitDy=0;entryX=0;entryY=0.5000;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Inmueble-tipo-etq2" connectable="0" parent="Inmueble-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Inmueble-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Inmueble-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-23.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Inmueble-categoria" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.2044;exitDx=0;exitDy=0;entryX=0;entryY=0.4938;entryDx=0;entryDy=0;" target="ECategoriaInmueble">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Inmueble-categoria-etq2" connectable="0" parent="Inmueble-categoria" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Inmueble-categoria-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-categoria" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Inmueble-categoria-etq2" value="categoria" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-categoria" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-41.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="ValorCatalogo-tipo" edge="1" parent="1" source="ValorCatalogo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.1842;exitDx=0;exitDy=0;entryX=0;entryY=0.6522;entryDx=0;entryDy=0;" target="ETipoCatalogo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ValorCatalogo-tipo-etq2" connectable="0" parent="ValorCatalogo-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="ValorCatalogo-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ValorCatalogo-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-parqueaderos" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;exitX=1;exitY=0.8695;exitDx=0;exitDy=0;entryX=0.898;entryY=1;entryDx=0;entryDy=0;" target="Inmueble">
+        <mxCell id="ValorCatalogo-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ValorCatalogo-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-23.8" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Inmueble-parqueaderos" edge="1" parent="1" source="Inmueble" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;exitX=1;exitY=0.8695;exitDx=0;exitDy=0;entryX=0.8980;entryY=1;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="2655" y="1740" />
-              <mxPoint x="2655" y="1838" />
-              <mxPoint x="2560" y="1838" />
+              <mxPoint x="2660" y="1740" />
+              <mxPoint x="2660" y="1840" />
+              <mxPoint x="2560" y="1840" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-parqueaderos-etq1" connectable="0" parent="Inmueble-parqueaderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="23.2" y="15" as="offset" />
+        <mxCell id="Inmueble-parqueaderos-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-parqueaderos" vertex="1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="23.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-parqueaderos-etq2" connectable="0" parent="Inmueble-parqueaderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="21.2" y="13" as="offset" />
+        <mxCell id="Inmueble-parqueaderos-etq2" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-parqueaderos" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="24.8" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Inmueble-parqueaderos-etq3" connectable="0" parent="Inmueble-parqueaderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="inmuebleAsociado" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="62.8" y="-15" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Inmueble-parqueaderos-etq4" connectable="0" parent="Inmueble-parqueaderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="parqueaderos" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="47.6" y="63" as="offset" />
+        <mxCell id="Inmueble-parqueaderos-etq3" value="parqueaderos" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Inmueble-parqueaderos" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="52.8" y="30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Persona-tipoPersona" edge="1" parent="1" source="Persona" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.1138;exitDx=0;exitDy=0;entryX=1;entryY=0.7845;entryDx=0;entryDy=0;" target="TipoPersona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Persona-tipoPersona-etq2" connectable="0" parent="Persona-tipoPersona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Persona-tipoPersona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Persona-tipoPersona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Notificacion-persona" edge="1" parent="1" source="Notificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4571;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="Persona-tipoPersona-etq2" value="tipoPersona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Persona-tipoPersona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="48.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Notificacion-persona" edge="1" parent="1" source="Notificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4571;exitDx=0;exitDy=0;entryX=0;entryY=0.5000;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Notificacion-persona-etq2" connectable="0" parent="Notificacion-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-13.3" y="15" as="offset" />
+        <mxCell id="Notificacion-persona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Notificacion-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-13.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Notificacion-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Notificacion-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-34.3" y="-29" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="CuentaUsuario-persona" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.1308;exitDx=0;exitDy=0;entryX=0;entryY=0.8963;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CuentaUsuario-persona-etq2" connectable="0" parent="CuentaUsuario-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-23.2" y="15" as="offset" />
+        <mxCell id="CuentaUsuario-persona-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="CuentaUsuario-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-23.8" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Notificacion-evento" edge="1" parent="1" source="Notificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4571;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="ETipoEvento">
+        <mxCell id="CuentaUsuario-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="CuentaUsuario-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-34.3" y="29" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Notificacion-evento" edge="1" parent="1" source="Notificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4571;exitDx=0;exitDy=0;entryX=1;entryY=0.5000;entryDx=0;entryDy=0;" target="ETipoEvento">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Notificacion-evento-etq2" connectable="0" parent="Notificacion-evento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Notificacion-evento-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Notificacion-evento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ConfiguracionNotificacion-evento" edge="1" parent="1" source="ConfiguracionNotificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="ETipoEvento">
+        <mxCell id="Notificacion-evento-etq2" value="evento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Notificacion-evento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="30.8" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ConfiguracionNotificacion-evento" edge="1" parent="1" source="ConfiguracionNotificacion" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.5000;exitDx=0;exitDy=0;entryX=0;entryY=0.5000;entryDx=0;entryDy=0;" target="ETipoEvento">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ConfiguracionNotificacion-evento-etq2" connectable="0" parent="ConfiguracionNotificacion-evento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="ConfiguracionNotificacion-evento-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ConfiguracionNotificacion-evento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ConfiguracionNotificacion-evento-etq2" value="evento" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ConfiguracionNotificacion-evento" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-30.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="CuentaUsuario-rol" edge="1" parent="1" source="CuentaUsuario" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4576;exitDx=0;exitDy=0;entryX=1;entryY=0.4947;entryDx=0;entryDy=0;" target="ERolCuenta">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CuentaUsuario-rol-etq2" connectable="0" parent="CuentaUsuario-rol" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="CuentaUsuario-rol-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="CuentaUsuario-rol" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CuentaUsuario-rol-etq2" value="rol" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="CuentaUsuario-rol" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="20.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Reserva-persona" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0889;exitY=0;exitDx=0;exitDy=0;entryX=0.9111;entryY=1;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Reserva-persona-etq2" connectable="0" parent="Reserva-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Reserva-persona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Reserva-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="35.3" y="30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Reserva-inmueble" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.9111;exitY=0;exitDx=0;exitDy=0;entryX=0.0816;entryY=1;entryDx=0;entryDy=0;" target="Inmueble">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Reserva-inmueble-etq2" connectable="0" parent="Reserva-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="14.3" y="16" as="offset" />
+        <mxCell id="Reserva-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Reserva-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-38.8" y="30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Reserva-zonaComun" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4611;exitDx=0;exitDy=0;entryX=0;entryY=0.4149;entryDx=0;entryDy=0;" target="ZonaComun">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Reserva-zonaComun-etq2" connectable="0" parent="Reserva-zonaComun" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Reserva-zonaComun-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-zonaComun" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Mantenimiento-zonaComun" edge="1" parent="1" source="Mantenimiento" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.442;exitDx=0;exitDy=0;entryX=1;entryY=0.4149;entryDx=0;entryDy=0;" target="ZonaComun">
+        <mxCell id="Reserva-zonaComun-etq2" value="zonaComun" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-zonaComun" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-41.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mantenimiento-zonaComun" edge="1" parent="1" source="Mantenimiento" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4420;exitDx=0;exitDy=0;entryX=1;entryY=0.4149;entryDx=0;entryDy=0;" target="ZonaComun">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Mantenimiento-zonaComun-etq2" connectable="0" parent="Mantenimiento-zonaComun" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="23.2" y="-15" as="offset" />
+        <mxCell id="Mantenimiento-zonaComun-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-zonaComun" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="23.8" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mantenimiento-zonaComun-etq2" value="zonaComun" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-zonaComun" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="41.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Mantenimiento-tipo" edge="1" parent="1" source="Mantenimiento" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.4222;exitY=0;exitDx=0;exitDy=0;entryX=0.1111;entryY=1;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Mantenimiento-tipo-etq2" connectable="0" parent="Mantenimiento-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="14.3" y="16" as="offset" />
+        <mxCell id="Mantenimiento-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mantenimiento-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Mantenimiento-estado" edge="1" parent="1" source="Mantenimiento" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.2667;exitY=1;exitDx=0;exitDy=0;entryX=0.8333;entryY=0;entryDx=0;entryDy=0;" target="Estado">
@@ -663,9 +803,14 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Mantenimiento-estado-etq2" connectable="0" parent="Mantenimiento-estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-14.3" y="-16" as="offset" />
+        <mxCell id="Mantenimiento-estado-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="14.3" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mantenimiento-estado-etq2" value="estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Mantenimiento-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="31.8" y="-30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Reserva-estado" edge="1" parent="1" source="Reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.8222;exitY=1;exitDx=0;exitDy=0;entryX=0.1667;entryY=0;entryDx=0;entryDy=0;" target="Estado">
@@ -676,101 +821,141 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Reserva-estado-etq2" connectable="0" parent="Reserva-estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Reserva-estado-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZonaComun-horarios" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="HorarioDisponibilidad">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="ZonaComun-horarios-etq1" connectable="0" parent="ZonaComun-horarios" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="-14.3" y="17.5" as="offset" />
+        <mxCell id="Reserva-estado-etq2" value="estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Reserva-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-31.8" y="-30" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZonaComun-horarios-etq2" connectable="0" parent="ZonaComun-horarios" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1..*" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-20" y="-16" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ZonaComun-tipoUso" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.1442;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ETipoUsoZona">
+        <mxCell id="ZonaComun-horarios" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;exitX=0.5000;exitY=1;exitDx=0;exitDy=0;entryX=0.5000;entryY=0;entryDx=0;entryDy=0;" target="HorarioDisponibilidad">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ZonaComun-tipoUso-etq2" connectable="0" parent="ZonaComun-tipoUso" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="ZonaComun-horarios-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-horarios" vertex="1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZonaComun-horarios-etq2" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-horarios" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZonaComun-horarios-etq3" value="horarios" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-horarios" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="38.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZonaComun-tipoUso" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.1442;exitY=1;exitDx=0;exitDy=0;entryX=0.5000;entryY=0;entryDx=0;entryDy=0;" target="ETipoUsoZona">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZonaComun-tipoUso-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-tipoUso" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-14.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZonaComun-periodoLimite" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.8462;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="EPeriodoLimite">
+        <mxCell id="ZonaComun-tipoUso-etq2" value="tipoUso" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-tipoUso" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="35.3" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZonaComun-periodoLimite" edge="1" parent="1" source="ZonaComun" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.8462;exitY=1;exitDx=0;exitDy=0;entryX=0.5000;entryY=0;entryDx=0;entryDy=0;" target="EPeriodoLimite">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ZonaComun-periodoLimite-etq2" connectable="0" parent="ZonaComun-periodoLimite" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="-24.2" y="-16" as="offset" />
+        <mxCell id="ZonaComun-periodoLimite-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-periodoLimite" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZonaComun-periodoLimite-etq2" value="periodoLimite" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="ZonaComun-periodoLimite" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="56.3" y="-16" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="HorarioDisponibilidad-diaSemana" edge="1" parent="1" source="HorarioDisponibilidad" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4914;exitDx=0;exitDy=0;entryX=0;entryY=0.3713;entryDx=0;entryDy=0;" target="EDiaSemana">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HorarioDisponibilidad-diaSemana-etq2" connectable="0" parent="HorarioDisponibilidad-diaSemana" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="HorarioDisponibilidad-diaSemana-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="HorarioDisponibilidad-diaSemana" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Estado-proceso" edge="1" parent="1" source="Estado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4971;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="EProcesoEstado">
+        <mxCell id="HorarioDisponibilidad-diaSemana-etq2" value="diaSemana" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="HorarioDisponibilidad-diaSemana" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-41.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Estado-proceso" edge="1" parent="1" source="Estado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.4971;exitDx=0;exitDy=0;entryX=1;entryY=0.5000;entryDx=0;entryDy=0;" target="EProcesoEstado">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Estado-proceso-etq2" connectable="0" parent="Estado-proceso" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Estado-proceso-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Estado-proceso" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Estado-proceso-etq2" value="proceso" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Estado-proceso" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="34.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Estado-transiciones" edge="1" parent="1" source="Estado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;exitX=1;exitY=0.5143;exitDx=0;exitDy=0;entryX=0;entryY=0.2652;entryDx=0;entryDy=0;" target="TransicionEstado">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Estado-transiciones-etq1" connectable="0" parent="Estado-transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="13.3" y="15" as="offset" />
+        <mxCell id="Estado-transiciones-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Estado-transiciones" vertex="1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Estado-transiciones-etq3" connectable="0" parent="Estado-transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="estadoOrigen" vertex="1">
-          <mxGeometry relative="1" x="-1" as="geometry">
-            <mxPoint x="49.6" y="-15" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Estado-transiciones-mult2" connectable="0" parent="Estado-transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..*" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Estado-transiciones-etq2" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Estado-transiciones" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-23.8" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Estado-transiciones-etq3" value="transiciones" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Estado-transiciones" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-51.8" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TransicionEstado-estadoDestino" edge="1" parent="1" source="TransicionEstado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.6818;exitDx=0;exitDy=0;entryX=1;entryY=0.8286;entryDx=0;entryDy=0;" target="Estado">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="TransicionEstado-estadoDestino-etq2" connectable="0" parent="TransicionEstado-estadoDestino" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="13.3" y="-15" as="offset" />
+        <mxCell id="TransicionEstado-estadoDestino-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="TransicionEstado-estadoDestino" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="13.3" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TransicionEstado-estadoDestino-etq3" connectable="0" parent="TransicionEstado-estadoDestino" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="estadoDestino" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="52.9" y="15" as="offset" />
+        <mxCell id="TransicionEstado-estadoDestino-etq2" value="estadoDestino" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="TransicionEstado-estadoDestino" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="55.3" y="29" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Correspondencia-estado" edge="1" parent="1" source="Correspondencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.1974;exitDx=0;exitDy=0;entryX=1;entryY=0.1143;entryDx=0;entryDy=0;" target="Estado">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Correspondencia-estado-etq2" connectable="0" parent="Correspondencia-estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Correspondencia-estado-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pqrs-estado" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="Estado">
+        <mxCell id="Correspondencia-estado-etq2" value="estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="30.8" y="-29" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqrs-estado" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5000;exitY=0;exitDx=0;exitDy=0;entryX=0.5000;entryY=1;entryDx=0;entryDy=0;" target="Estado">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Pqrs-estado-etq2" connectable="0" parent="Pqrs-estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Pqrs-estado-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqrs-estado-etq2" value="estado" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-estado" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-31.8" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Correspondencia-inmueble" edge="1" parent="1" source="Correspondencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.0882;exitY=0;exitDx=0;exitDy=0;entryX=0.7959;entryY=1;entryDx=0;entryDy=0;" target="Inmueble">
@@ -781,30 +966,45 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Correspondencia-inmueble-etq2" connectable="0" parent="Correspondencia-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Correspondencia-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Correspondencia-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-38.8" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Correspondencia-tipo" edge="1" parent="1" source="Correspondencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.2059;exitY=0;exitDx=0;exitDy=0;entryX=0.8889;entryY=1;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Correspondencia-tipo-etq2" connectable="0" parent="Correspondencia-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Correspondencia-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Correspondencia-persona" edge="1" parent="1" source="Correspondencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5588;exitY=1;exitDx=0;exitDy=0;entryX=0.1333;entryY=1;entryDx=0;entryDy=0;" target="Persona">
+        <mxCell id="Correspondencia-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="24.8" y="30" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Correspondencia-persona" edge="1" parent="1" source="Correspondencia" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0.5588;exitY=1;exitDx=0;exitDy=0;entryX=0.0667;entryY=1;entryDx=0;entryDy=0;" target="Persona">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="3680" y="3619" />
-              <mxPoint x="1440" y="3619" />
+              <mxPoint x="3680" y="3620" />
+              <mxPoint x="1410" y="3620" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Correspondencia-persona-etq2" connectable="0" parent="Correspondencia-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
-            <mxPoint x="24.2" y="16" as="offset" />
+        <mxCell id="Correspondencia-persona-etq1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-24.8" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Correspondencia-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Correspondencia-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-35.3" y="30" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Pqrs-inmueble" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.2467;exitDx=0;exitDy=0;entryX=0;entryY=0.8448;entryDx=0;entryDy=0;" target="Inmueble">
@@ -812,14 +1012,19 @@
             <Array as="points">
               <mxPoint x="1580" y="3330" />
               <mxPoint x="1580" y="1880" />
-              <mxPoint x="1975" y="1880" />
-              <mxPoint x="1975" y="1730" />
+              <mxPoint x="1980" y="1880" />
+              <mxPoint x="1980" y="1730" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pqrs-inmueble-etq2" connectable="0" parent="Pqrs-inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Pqrs-inmueble-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="-13.3" y="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqrs-inmueble-etq2" value="inmueble" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-inmueble" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-37.8" y="29" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Pqrs-persona" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=0;exitY=0.5428;exitDx=0;exitDy=0;entryX=0.2667;entryY=1;entryDx=0;entryDy=0;" target="Persona">
@@ -829,22 +1034,32 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pqrs-persona-etq2" connectable="0" parent="Pqrs-persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Pqrs-persona-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="14.3" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pqrs-tipo" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4441;exitDx=0;exitDy=0;entryX=1;entryY=0.7895;entryDx=0;entryDy=0;" target="ValorCatalogo">
+        <mxCell id="Pqrs-persona-etq2" value="persona" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-persona" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="-35.3" y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqrs-tipo" edge="1" parent="1" source="Pqrs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;jumpStyle=arc;jumpSize=8;startArrow=none;endArrow=open;endFill=0;endSize=10;exitX=1;exitY=0.4441;exitDx=0;exitDy=0;entryX=1;entryY=0.8158;entryDx=0;entryDy=0;" target="ValorCatalogo">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="3880" y="3390" />
-              <mxPoint x="3880" y="1645" />
+              <mxPoint x="3880" y="1650" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Pqrs-tipo-etq2" connectable="0" parent="Pqrs-tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;rounded=1;roundedPerimeter=1;" value="1" vertex="1">
-          <mxGeometry relative="1" x="1" as="geometry">
+        <mxCell id="Pqrs-tipo-etq1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
             <mxPoint x="13.3" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqrs-tipo-etq2" value="tipo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontFamily=Courier New;fontSize=11;fontColor=#000000;" connectable="0" parent="Pqrs-tipo" vertex="1">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="23.8" y="15" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
